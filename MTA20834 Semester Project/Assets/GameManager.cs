@@ -276,7 +276,7 @@ public class GameManager : MonoBehaviour
             designedInputOrder.Add(InputTypes.RejectAllInput);
         }
 
-        Utils.Shuffle(designedInputOrder);
+        //Utils.Shuffle(designedInputOrder);
 
         string designedInputString = "";
         foreach (var i in designedInputOrder)

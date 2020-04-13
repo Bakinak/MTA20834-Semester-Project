@@ -131,7 +131,7 @@ public class KeySquenceInput : MonoBehaviour
         if (keyboardSequence == SequenceType.TYUI)
         { // T + YU + I
             keysToPress = new KeyCode[4, 2]; // 3 sequences, up to 2 keys simultaneously.
-            keysToPress[0, 0] = KeyCode.T; // In Slot 0 and 1 we check for both H or K keys 
+            keysToPress[0, 0] = KeyCode.T; // In Slot 0 and 1 we check for both T or Y keys 
             keysToPress[0, 1] = KeyCode.None;
             keysToPress[1, 0] = KeyCode.Y;
             keysToPress[1, 1] = KeyCode.I;
@@ -144,7 +144,7 @@ public class KeySquenceInput : MonoBehaviour
         if (keyboardSequence == SequenceType.TRWE)
         { // SR + W + E
             keysToPress = new KeyCode[4, 2]; // 3 sequences, up to 2 keys simultaneously.
-            keysToPress[0, 0] = KeyCode.T; // In Slot 0 and 1 we check for both H or K keys 
+            keysToPress[0, 0] = KeyCode.T; // In Slot 0 and 1 we check for both T or R keys 
             keysToPress[0, 1] = KeyCode.R;
             keysToPress[1, 0] = KeyCode.T;
             keysToPress[1, 1] = KeyCode.R;
@@ -157,7 +157,7 @@ public class KeySquenceInput : MonoBehaviour
         if (keyboardSequence == SequenceType.XCVB)
         { // SR + W + E
             keysToPress = new KeyCode[4, 2]; // 3 sequences, up to 2 keys simultaneously.
-            keysToPress[0, 0] = KeyCode.X; // In Slot 0 and 1 we check for both H or K keys 
+            keysToPress[0, 0] = KeyCode.X; // In Slot 0 and 1 we check for both X or C keys 
             keysToPress[0, 1] = KeyCode.None;
             keysToPress[1, 0] = KeyCode.C;
             keysToPress[1, 1] = KeyCode.None;
