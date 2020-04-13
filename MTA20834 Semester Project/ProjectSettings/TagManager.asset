@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - StopMovement
   - 
   - 
   - 
@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ocean
+    uniqueID: 671757759
+    locked: 0
+  - name: Ground
+    uniqueID: 1698849897
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 4149804013
     locked: 0
