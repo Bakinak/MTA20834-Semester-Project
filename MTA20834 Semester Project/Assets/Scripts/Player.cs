@@ -60,13 +60,13 @@ public class Player : MonoBehaviour
         {
             if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal")*(distanceBetweenTiles/2), 0f, 0f), .2f, block))
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal")*(distanceBetweenTiles), 0f, 0f), .2f, block))
                 {
                     movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*distanceBetweenTiles, 0f, 0f);
                 } 
             } else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical")*(distanceBetweenTiles / 2), 0f), .2f, block))
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical")*(distanceBetweenTiles), 0f), .2f, block))
                 {
                     movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical")*distanceBetweenTiles, 0f);
                 }

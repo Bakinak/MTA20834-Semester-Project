@@ -118,13 +118,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac854393b6eb6924abd78555b4ee2da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theCamera: {fileID: 0}
+  fishingCloseup: {fileID: 0}
   moveSpeed: 5
   preMoveDistance: 0
   distanceBetweenTiles: 2
   movePoint: {fileID: 5982838121782399312}
   block:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!61 &5982838121450624151
 BoxCollider2D:
   m_ObjectHideFlags: 0
