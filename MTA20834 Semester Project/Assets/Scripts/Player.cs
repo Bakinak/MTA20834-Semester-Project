@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Fish
+    //fishSpot fish;
+    public Transform fishSpawnLocation;
+    GameObject fishToSpawn;
 
     //Camera
     public Camera theCamera;
@@ -78,8 +82,13 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "fishSchool")
         {
-            controlstate = 1;
+            //Remove bubble spot so we don't hit it again
             collision.gameObject.SetActive(false);
+            //Select and spawn fish
+            fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
+            Instantiate(fishToSpawn, fishSpawnLocation);
+            //Remove control of ship and move camera position
+            controlstate = 1;
             currentLocation = theCamera.transform.position;
             theCamera.transform.position = fishingCloseup.position;
         }
