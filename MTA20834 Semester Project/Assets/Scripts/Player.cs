@@ -4,33 +4,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Access to our game manager
+    public ourGameManager manager;
+
     //Fish
-    //fishSpot fish;
-    public Transform fishSpawnLocation;
     GameObject fishToSpawn;
 
-    //Camera
-    public Camera theCamera;
-    public Transform fishingCloseup;
-    private Vector3 currentLocation;
+
 
     //Movement
     public float moveSpeed;
     public float preMoveDistance;
     public float distanceBetweenTiles = 2;
-    public Transform movePoint;
+    Transform movePoint;
     public LayerMask block;
 
 
 
-    int controlstate;
+    public int controlstate;
 
     // Start is called before the first frame update
     void Start()
     {
+        movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
-        currentLocation = theCamera.transform.position;
-        Debug.Log(currentLocation.ToString());
     }
 
     // Update is called once per frame
@@ -41,19 +38,8 @@ public class Player : MonoBehaviour
         if (controlstate == 0)
         {
             gridMovement();
-            theCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
 
-        if(controlstate == 1)
-        {
-            if (Input.GetKey("space"))
-            {
-                theCamera.transform.position = currentLocation;
-                
-                //Debug.Log(currentLocation.ToString());
-                controlstate = 0;
-            }
-        }
     }
 
 
@@ -86,11 +72,12 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false);
             //Select and spawn fish
             fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
-            Instantiate(fishToSpawn, fishSpawnLocation);
+            
+            
+
             //Remove control of ship and move camera position
-            controlstate = 1;
-            currentLocation = theCamera.transform.position;
-            theCamera.transform.position = fishingCloseup.position;
+            manager.switchControlState(0);
+
         }
     }
 
