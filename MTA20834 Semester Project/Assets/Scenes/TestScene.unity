@@ -42840,5 +42840,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 679567506}
+    - target: {fileID: 5982838121450624136, guid: d84fec69663b540469b26f14014484f8,
+        type: 3}
+      propertyPath: preMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84fec69663b540469b26f14014484f8, type: 3}
