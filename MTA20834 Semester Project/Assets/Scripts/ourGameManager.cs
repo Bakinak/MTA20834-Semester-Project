@@ -22,7 +22,6 @@ public class ourGameManager : MonoBehaviour
     public Transform fishingCloseup;
 
     //Spawning Fishies
-    public Transform fishSpawnLocation;
     public GameObject[] fishySpecies;
     public Transform[] fishSpawnLocations;
 
