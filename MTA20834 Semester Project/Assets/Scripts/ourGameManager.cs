@@ -31,6 +31,7 @@ public class ourGameManager : MonoBehaviour
     {
         playerScript = playerBoat.GetComponent<Player>();
         fishingScript = playerFishing.GetComponent<playerFishing>();
+        //Resources.Load
     }
 
     // Update is called once per frame

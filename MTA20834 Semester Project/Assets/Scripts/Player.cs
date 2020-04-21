@@ -20,9 +20,9 @@ public class Player : MonoBehaviour
     public LayerMask block;
 
 
-
+    
     public int controlstate;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
         {
             gridMovement();
         }
-
+        
+        
     }
 
 
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
             //Remove bubble spot so we don't hit it again
             collision.gameObject.SetActive(false);
             //Select and spawn fish
-            fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
+            //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
             
             
 
