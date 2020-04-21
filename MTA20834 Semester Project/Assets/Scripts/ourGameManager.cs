@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ourGameManager : MonoBehaviour
 {
@@ -24,13 +25,27 @@ public class ourGameManager : MonoBehaviour
     //Spawning Fishies
     public GameObject[] fishySpecies;
     public Transform[] fishSpawnLocations;
+    
 
+    //Updating UI Elements
+    public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
+    public Image controls;
+
+
+
+    public Text test;
 
     // Start is called before the first frame update
     void Start()
     {
         playerScript = playerBoat.GetComponent<Player>();
         fishingScript = playerFishing.GetComponent<playerFishing>();
+
+
+        //UI setup
+        controls.sprite = controlImages[0];
+        
+        //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
     }
 
@@ -39,14 +54,15 @@ public class ourGameManager : MonoBehaviour
     {
         if (currentScreen == 0)
         {
-            theCamera.transform.position = new Vector3(playerBoat.transform.position.x, playerBoat.transform.position.y, -10);
+            theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
         }
+
     }
 
 
     //Public functions accessed by others
 
-    public void switchControlState(int currentState)
+    public void switchControlState(int currentState) //Change control images and so on in here.
     {
         if(currentState == 0)
         {
@@ -58,6 +74,8 @@ public class ourGameManager : MonoBehaviour
             theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
 
             spawnFishies();
+
+            controls.sprite = controlImages[1];
         }
         else
         {
@@ -65,6 +83,7 @@ public class ourGameManager : MonoBehaviour
             fishingScript.controlstate = 1;
 
             currentScreen = 0;
+            controls.sprite = controlImages[0];
         }
     }
 

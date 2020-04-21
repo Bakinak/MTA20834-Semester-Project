@@ -18,6 +18,17 @@ public class playerFishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (controlstate == 0)
+        {
+            test();
+        }
+    }
+
+    void test()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            manager.switchControlState(1);
+        }
     }
 }
