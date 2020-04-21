@@ -7,20 +7,21 @@ public class Player : MonoBehaviour
     //Access to our game manager
     public ourGameManager manager;
 
-    //Fish
+    //Fish Skal måske ikke bruges mere
     GameObject fishToSpawn;
 
 
 
     //Movement
+    //Public kan ændres i inspector i Unity og tilgåes i andre scripts
     public float moveSpeed;
     public float preMoveDistance;
-    public float distanceBetweenTiles = 2;
+    public float distanceBetweenTiles = 2; //sørger for vi altid rammer midt af vandet
     Transform movePoint;
     public LayerMask block;
 
 
-
+    //Hvornår man kan styre båden, bliver deaktiveret ved BCI spil
     public int controlstate;
 
     // Start is called before the first frame update
@@ -40,17 +41,18 @@ public class Player : MonoBehaviour
             gridMovement();
         }
 
+        
     }
 
 
     void gridMovement()
     {
         
-        if (Vector3.Distance(transform.position, movePoint.position) <= preMoveDistance)
+        if (Vector3.Distance(transform.position, movePoint.position) <= preMoveDistance) //Hvis 0 kan man bevæge den, så det passer til tiles
         {
             if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal")*(distanceBetweenTiles), 0f, 0f), .2f, block))
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal")*(distanceBetweenTiles), 0f, 0f), .2f, block)) //hvis der hvor vi er nu +2 tiles frem ikke er noget der blokere (bliver blokeret ud fra laget), så videre
                 {
                     movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*distanceBetweenTiles, 0f, 0f);
                 } 
@@ -64,14 +66,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //tiggerenter er bobler
     {
         if (collision.gameObject.tag == "fishSchool")
         {
             //Remove bubble spot so we don't hit it again
             collision.gameObject.SetActive(false);
             //Select and spawn fish
-            fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
+            //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
             
             
 
@@ -81,5 +83,5 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    
 }
