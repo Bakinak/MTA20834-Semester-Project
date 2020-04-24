@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //Access to our game manager
     public ourGameManager manager;
 
+
     //Fish
     GameObject fishToSpawn;
 
@@ -39,8 +40,6 @@ public class Player : MonoBehaviour
         {
             gridMovement();
         }
-        
-        
     }
 
 
@@ -73,14 +72,9 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false);
             //Select and spawn fish
             //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
-            
-            
 
             //Remove control of ship and move camera position
             manager.switchControlState(0);
-
         }
     }
-
-
 }
