@@ -11,6 +11,7 @@ public class ourGameManager : MonoBehaviour
     //Things we need access to.
     Player playerScript;
     playerFishing fishingScript;
+    FishAI fishAIScript;
     public GameObject playerBoat;
     public GameObject playerFishing;
 
@@ -23,8 +24,12 @@ public class ourGameManager : MonoBehaviour
     public Transform fishingCloseup;
 
     //Spawning Fishies
+    public Transform fishHoldingPen;
     public GameObject[] fishySpecies;
     public Transform[] fishSpawnLocations;
+    
+
+    public GameObject[] currentFish = new GameObject[3];
     
 
     //Updating UI Elements
@@ -38,6 +43,14 @@ public class ourGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Spawn all the fish we need, and make them inactive until we need them.
+        for(int i = 0; i < fishySpecies.Length; i++)
+        {
+            fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
+            fishySpecies[i].SetActive(false);
+            fishySpecies[i].transform.parent = null;
+        }
+
         playerScript = playerBoat.GetComponent<Player>();
         fishingScript = playerFishing.GetComponent<playerFishing>();
 
@@ -57,6 +70,7 @@ public class ourGameManager : MonoBehaviour
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
         }
 
+        
     }
 
 
@@ -102,11 +116,25 @@ public class ourGameManager : MonoBehaviour
 
     void spawn(int addition)
     {
-        for(int i = addition; i <= addition+2; i++)
+        for (int i = addition; i <= addition + 2; i++)
         {
-            Instantiate(fishySpecies[i], fishSpawnLocations[i-addition]);
+            currentFish[i - addition] = fishySpecies[i];
+            currentFish[i - addition].transform.position = fishSpawnLocations[i - addition].transform.position;
+            currentFish[i - addition].SetActive(true);
+
+            
         }
     }
 
+
+    //Call this function to make fish start moving towards the fishing hook.
+    public void startFishMovement()
+    {
+        for(int i = 0; i < currentFish.Length; i++)
+        {
+            fishAIScript = currentFish[i].GetComponent<FishAI>();
+            fishAIScript.move = true;
+        }
+    }
 
 }

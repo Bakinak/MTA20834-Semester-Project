@@ -30,5 +30,11 @@ public class playerFishing : MonoBehaviour
         {
             manager.switchControlState(1);
         }
+
+        if (Input.GetKeyDown("return"))
+        {
+            manager.startFishMovement();
+        }
+
     }
 }
