@@ -27,8 +27,8 @@ public class ourGameManager : MonoBehaviour
     public Transform fishHoldingPen;
     public GameObject[] fishySpecies;
     public Transform[] fishSpawnLocations;
-    
 
+    GameObject hookedFish;
     public GameObject[] currentFish = new GameObject[3];
     
 
@@ -47,6 +47,7 @@ public class ourGameManager : MonoBehaviour
         for(int i = 0; i < fishySpecies.Length; i++)
         {
             fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
+            fishySpecies[i].GetComponent<FishAI>().manager = this.gameObject.GetComponent<ourGameManager>();
             fishySpecies[i].SetActive(false);
             fishySpecies[i].transform.parent = null;
         }
@@ -114,7 +115,7 @@ public class ourGameManager : MonoBehaviour
         }
     }
 
-    void spawn(int addition)
+    void spawn(int addition) //Used in the above function
     {
         for (int i = addition; i <= addition + 2; i++)
         {
@@ -135,6 +136,15 @@ public class ourGameManager : MonoBehaviour
             fishAIScript = currentFish[i].GetComponent<FishAI>();
             fishAIScript.move = true;
         }
+    }
+
+
+    public void fishOnHook(GameObject fishOnHook)
+    {
+        fishingScript.somethingOnHook = true;
+        hookedFish = fishOnHook;
+
+        //Start spawning waves?
     }
 
 }

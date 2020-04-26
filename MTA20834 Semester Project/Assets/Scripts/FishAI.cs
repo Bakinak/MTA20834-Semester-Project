@@ -5,16 +5,15 @@ using UnityEngine;
 public class FishAI : MonoBehaviour
 {
     public bool move;
-    public bool hooked;
     public int fishtype;
-    public float moveSpeed;
-    //public float timeToMove;
-    Vector3 hookPosition;
+
+
+    public ourGameManager manager;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //startPosition = transform.position;
         
     }
 
@@ -23,30 +22,26 @@ public class FishAI : MonoBehaviour
     {
         if(move == true)
         {
-            transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
-        } else if (hooked == true)
-        {
-            transform.position = hookPosition;
-        }
+            transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
+        } 
 
     }
 
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "fishBoundary")
+        if(other.tag == "fishBoundary") //If collision with boundary, stop moving and set fish to being inactive, where it will wait until needed to be used again. When set to active again, position will reset to where it needs to be.
         {
             move = false;
-            hooked = false;
             gameObject.SetActive(false);
         }
 
-        if (other.tag == "hook")
+        if (other.tag == "hook") //If collision with hook, stop forward movement, attach fish to hook, and tell GameManager what fish has been hooked. 
         {
             move = false;
-            hookPosition = other.transform.position;
-            hooked = true;
+            transform.parent = other.transform;
+            manager.fishOnHook(gameObject);
         }
 
 
