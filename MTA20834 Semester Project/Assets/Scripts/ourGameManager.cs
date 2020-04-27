@@ -11,9 +11,12 @@ public class ourGameManager : MonoBehaviour
     //Things we need access to.
     Player playerScript;
     playerFishing fishingScript;
+    playerSteadyBoat steadyScript;
     FishAI fishAIScript;
     public GameObject playerBoat;
     public GameObject playerFishing;
+    public GameObject playerSteady;
+    
 
     int currentScreen;
 
@@ -50,13 +53,19 @@ public class ourGameManager : MonoBehaviour
             fishySpecies[i].SetActive(false);
             fishySpecies[i].transform.parent = null;
         }
-
+        //Setup player scripts and stuff
         playerScript = playerBoat.GetComponent<Player>();
         fishingScript = playerFishing.GetComponent<playerFishing>();
+        steadyScript = playerSteady.GetComponent<playerSteadyBoat>();
 
+        //Making the player only in control of boat movement at the beginning
+        playerScript.controlstate = true;
+        fishingScript.controlstate = false;
+        steadyScript.controlstate = false;
 
         //UI setup
         controls.sprite = controlImages[0];
+        
         
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load

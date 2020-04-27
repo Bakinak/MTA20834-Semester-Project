@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
 
     
-    public bool controlstate = true;
+    public bool controlstate;
     
     // Start is called before the first frame update
     void Start()
