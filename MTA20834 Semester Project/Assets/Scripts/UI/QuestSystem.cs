@@ -11,19 +11,20 @@ public class QuestSystem : MonoBehaviour
     public GameObject FishYText;
     public GameObject FishZText;
 
-    public static int currentAmount;
+    public static int updateEel;
+    public static int updateCarb;
 
     void Update()
     {
-        eelText.GetComponent<Text>().text = currentAmount + "/2 eel";
+        eelText.GetComponent<Text>().text = updateEel + "/2 eel";
 
-        CarbText.GetComponent<Text>().text = currentAmount + "/2 carb";
+       CarbText.GetComponent<Text>().text = updateCarb + "/2 carb";
 
-        FishXText.GetComponent<Text>().text = currentAmount + "/2 fishX";
+        // FishXText.GetComponent<Text>().text = currentAmount + "/2 fishX";
 
-        FishYText.GetComponent<Text>().text = currentAmount + "/2 fishY";
+       // FishYText.GetComponent<Text>().text = currentAmount + "/2 fishY";
 
-        FishZText.GetComponent<Text>().text = currentAmount + "/2 fishZ";
+       // FishZText.GetComponent<Text>().text = currentAmount + "/2 fishZ";
 
     }
 }

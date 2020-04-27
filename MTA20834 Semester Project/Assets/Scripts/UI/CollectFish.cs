@@ -8,7 +8,9 @@ public class CollectFish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        QuestSystem.currentAmount += 1;
+        QuestSystem.updateEel += 1;
+        QuestSystem.updateCarb += 1;
+
 
     }
 }

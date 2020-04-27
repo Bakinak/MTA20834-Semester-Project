@@ -23039,7 +23039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eelText: {fileID: 826561821}
-  CarbText: {fileID: 0}
+  CarbText: {fileID: 1821941351}
   FishXText: {fileID: 0}
   FishYText: {fileID: 0}
   FishZText: {fileID: 0}
@@ -37367,6 +37367,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 370f81a89f90eae44b94246c1d7a0832, type: 3}
+--- !u!1 &1821941351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6013447241958928395, guid: 370f81a89f90eae44b94246c1d7a0832,
+    type: 3}
+  m_PrefabInstance: {fileID: 1821941350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1822065888
 PrefabInstance:
   m_ObjectHideFlags: 0
