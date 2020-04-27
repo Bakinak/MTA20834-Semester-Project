@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerFishing : MonoBehaviour
 {
     //Access to our game manager
-    public ourGameManager manager;
+    ourGameManager manager;
 
     //Creating fishing line
     public Transform lineStart;
@@ -16,15 +16,16 @@ public class playerFishing : MonoBehaviour
 
     bool hookLowered;
 
-    public int controlstate = 1;
+    public bool controlstate;
 
     Vector3 startPosition;
 
     int currentHookPosition = 0;
-    float moveSpeed = 6;
+    float moveSpeed = 7;
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         startPosition = transform.position;
         line.SetPosition(0, lineStart.position);
         lineStart.transform.parent = null;
@@ -33,7 +34,7 @@ public class playerFishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controlstate == 0)
+        if (controlstate == true)
         {
             test();
             movement();
@@ -83,7 +84,7 @@ public class playerFishing : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            manager.switchControlState(1);
+            manager.switchControlState(2);
         }
 
         if (Input.GetKeyDown("return"))

@@ -22,7 +22,7 @@ public class ourGameManager : MonoBehaviour
     //Camera
     public Camera theCamera;
     public Transform fishingCloseup;
-
+    
     //Spawning Fishies
     public Transform fishHoldingPen;
     public GameObject[] fishySpecies;
@@ -47,7 +47,6 @@ public class ourGameManager : MonoBehaviour
         for(int i = 0; i < fishySpecies.Length; i++)
         {
             fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
-            fishySpecies[i].GetComponent<FishAI>().manager = this.gameObject.GetComponent<ourGameManager>();
             fishySpecies[i].SetActive(false);
             fishySpecies[i].transform.parent = null;
         }
@@ -79,27 +78,37 @@ public class ourGameManager : MonoBehaviour
 
     public void switchControlState(int currentState) //Change control images and so on in here.
     {
-        if(currentState == 0)
+
+        switch (currentState)
         {
-            playerScript.controlstate = 1;
-            fishingScript.controlstate = 0;
+            case 0: //Changing from travel screen to fishing screen, where the player gains control of the hook.
+                playerScript.controlstate = false;
+                fishingScript.controlstate = true;
 
-            currentScreen = 1;
+                currentScreen = 1;
 
-            theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
+                theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
 
-            spawnFishies();
+                spawnFishies();
 
-            controls.sprite = controlImages[1];
+                controls.sprite = controlImages[1];
+                break;
+
+            case 1: //Changing controls when the player has hooked a fish, so they will now have to keep boat steady against waves
+                fishingScript.controlstate = false;
+                break;
+
+            case 2: //After keeping boat steady, or failing to do so, change back to travel screen, lose control of fish and steadying, and gain control of boat in travel screen
+                playerScript.controlstate = true;
+                //fishingScript.controlstate = false;
+
+                currentScreen = 0;
+                controls.sprite = controlImages[0];
+                break;
+
+
         }
-        else
-        {
-            playerScript.controlstate = 0;
-            fishingScript.controlstate = 1;
 
-            currentScreen = 0;
-            controls.sprite = controlImages[0];
-        }
     }
 
     public void spawnFishies()
@@ -138,13 +147,16 @@ public class ourGameManager : MonoBehaviour
         }
     }
 
-
+    //Called when a fish has collided with the hook
     public void fishOnHook(GameObject fishOnHook)
     {
         fishingScript.somethingOnHook = true;
         hookedFish = fishOnHook;
 
         //Start spawning waves?
+        switchControlState(1);
+
+        
     }
 
 }

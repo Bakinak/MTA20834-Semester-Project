@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Access to our game manager
-    public ourGameManager manager;
+    ourGameManager manager;
 
     //Fish
     GameObject fishToSpawn;
@@ -21,11 +21,12 @@ public class Player : MonoBehaviour
 
 
     
-    public int controlstate;
+    public bool controlstate = true;
     
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
     }
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-        if (controlstate == 0)
+        if (controlstate == true)
         {
             gridMovement();
         }

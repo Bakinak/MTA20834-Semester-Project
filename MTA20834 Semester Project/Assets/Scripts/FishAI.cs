@@ -8,13 +8,13 @@ public class FishAI : MonoBehaviour
     public int fishtype;
 
 
-    public ourGameManager manager;
+    ourGameManager manager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
     }
 
     // Update is called once per frame

@@ -7,6 +7,7 @@ TagManager:
   - fishSchool
   - fishBoundary
   - hook
+  - manager
   layers:
   - Default
   - TransparentFX
