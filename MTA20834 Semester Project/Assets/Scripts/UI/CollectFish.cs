@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class CollectFish : MonoBehaviour
 {
+    public GameObject QuestSystem;
+    QuestSystem questSystem;
+
+
+
     
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        QuestSystem.updateEel += 1;
-        QuestSystem.updateCarb += 1;
-
-
-    }
 }
