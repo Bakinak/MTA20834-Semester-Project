@@ -7,6 +7,8 @@ public class ourGameManager : MonoBehaviour
 {
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
     //Can also use this to update interface images. 
+    public bool experimentalCondition; //false = discrete, true = continuous
+    public float sequenceInputTime;
 
     //Things we need access to.
     Player playerScript;
@@ -61,11 +63,12 @@ public class ourGameManager : MonoBehaviour
         //Making the player only in control of boat movement at the beginning
         playerScript.controlstate = true;
         fishingScript.controlstate = false;
-        steadyScript.controlstate = false;
+        //steadyScript.controlstate = false;
 
         //UI setup
         controls.sprite = controlImages[0];
         
+        //KeySequence
         
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
