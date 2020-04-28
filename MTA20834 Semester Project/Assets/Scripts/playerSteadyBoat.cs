@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerSteadyBoat : MonoBehaviour
+public class playerSteadyBoat : KeySquenceInput
 {
 
     //I assume this script should inherit from Bastians scripts.
@@ -11,7 +11,7 @@ public class playerSteadyBoat : MonoBehaviour
     ourGameManager manager;
 
     public bool controlstate;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +32,10 @@ public class playerSteadyBoat : MonoBehaviour
     void steadying()
     {
 
+    }
+
+    public void test()
+    {
+        Debug.Log("something");
     }
 }

@@ -4023,6 +4023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fishScreenBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 5306041333490667506, guid: 4b51dff24bcc02e4897b7e6d967d44d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 6437531721940673314, guid: 4b51dff24bcc02e4897b7e6d967d44d3,
     type: 3}
@@ -4869,7 +4874,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a50c302a0a334947a00f48a5385e4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
+  sequenceTimeLimit_ms: 1.5
+  deadzoneTimeLimit_ms: 1
+  keyboardSequence: 2
+  onKeySequenceFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1354533305}
+        m_MethodName: onKeySequenceLogReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onInputFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 808754461}
+        m_MethodName: OnInputReceived
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onKeyDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 179474853}
+        m_MethodName: test
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  controlstate: 0
 --- !u!1001 &190870402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17807,6 +17857,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 807007293}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &808754460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808754462}
+  - component: {fileID: 808754461}
+  m_Layer: 0
+  m_Name: bastianGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &808754461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808754460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f8a10f43c510342b4d7e0ecd1b8a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fabInputRate: 0
+  recognitionRate: 1
+  noInputReceivedFabAlarm: 1
+  fabAlarmVariability: 0.5
+  startPolicyReview: 0.2
+  trials: 20
+  gamePolicy: 1
+  interTrialIntervalSeconds: 9
+  inputWindowSeconds: 2
+  onGameStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  gameDecision:
+    m_PersistentCalls:
+      m_Calls: []
+  onGamePolicyChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onInputWindowChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameTimeUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &808754462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808754460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &813839207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21738,7 +21855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d302ff1467dca4bb243c834244400e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1366238825}
   lineStart: {fileID: 58733491}
   lineEnd: {fileID: 431243438}
   line: {fileID: 986203270}
@@ -28744,6 +28860,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1350304762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1354533304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354533306}
+  - component: {fileID: 1354533305}
+  m_Layer: 0
+  m_Name: LogginManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1354533305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354533304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f10d9060b91a374199e4024a5f7a76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1354533306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354533304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1355878894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29000,6 +29159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBoat: {fileID: 418902032}
   playerFishing: {fileID: 1036214341}
+  playerSteady: {fileID: 179474852}
   theCamera: {fileID: 63975248}
   fishingCloseup: {fileID: 2006848936}
   fishHoldingPen: {fileID: 750555894}
