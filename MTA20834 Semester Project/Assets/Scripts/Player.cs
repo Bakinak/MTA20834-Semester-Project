@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     //Access to our game manager
     public ourGameManager manager;
-
+    public QuestSystem qst;
 
     //Fish
     GameObject fishToSpawn;
@@ -75,6 +75,14 @@ public class Player : MonoBehaviour
 
             //Remove control of ship and move camera position
             manager.switchControlState(0);
+        }
+
+        if (collision.gameObject.tag == "entranceTile")
+        {
+            //Debug.Log("hit");
+            //deactivate the arrowindicator when entering level 2
+            qst.arrowIndicatorLevel1.SetActive(false);
+            qst.arrowIndicatorLevel2.SetActive(false);
         }
     }
 }
