@@ -720,6 +720,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -4188235633888739060, guid: 829cf4c36fd0d459796bc7679273aefa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3843397004760360191, guid: 829cf4c36fd0d459796bc7679273aefa,
         type: 3}
       propertyPath: m_Name
@@ -27364,10 +27369,10 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 0, y: 0}
-  - {x: 20, y: 0}
-  - {x: 20, y: 0}
-  - {x: 20, y: 0}
-  - {x: 20, y: 0}
+  - {x: 8, y: 0}
+  - {x: 8, y: -4}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
 --- !u!4 &1335601283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7801827760101600167, guid: 3630fdb9d7b4a464caa833438e0be266,
