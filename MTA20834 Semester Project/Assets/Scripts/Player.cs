@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     GameObject fishToSpawn;
 
 
+    public GameObject noEnter;
+    private float timeWhenDisappear;
+    public float timeToDisappear = 2f;
+
 
     //Movement
     public float moveSpeed;
@@ -29,6 +33,8 @@ public class Player : MonoBehaviour
     {
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
+
+        noEnter.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,8 +46,12 @@ public class Player : MonoBehaviour
         {
             gridMovement();
         }
-    }
 
+        if(noEnter.activeSelf && (Time.time >= timeWhenDisappear))
+        {
+            noEnter.SetActive(false);
+        }
+    }
 
     void gridMovement()
     {
@@ -83,6 +93,16 @@ public class Player : MonoBehaviour
             //deactivate the arrowindicator when entering level 2
             qst.arrowIndicatorLevel1.SetActive(false);
             qst.arrowIndicatorLevel2.SetActive(false);
+        }
+
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb !=2)
+        {
+            noEnter.SetActive(true);
+            timeWhenDisappear = Time.time + timeToDisappear;
+        } else if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarbQuest2 != 2 && qst.updateCod != 2)
+        {
+            noEnter.SetActive(true);
+            timeWhenDisappear = Time.time + timeToDisappear;
         }
     }
 }

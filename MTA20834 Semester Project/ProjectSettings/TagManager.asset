@@ -7,6 +7,7 @@ TagManager:
   - fishSchool
   - entranceTile
   - entranceTileLevel3
+  - invisibleEntrance
   layers:
   - Default
   - TransparentFX

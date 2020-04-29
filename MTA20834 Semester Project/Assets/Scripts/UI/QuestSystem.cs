@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
+
+    public Player playerSc;
+
     public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete;
 
     public GameObject eelText, carbText, carbTextQuest2, codTextQuest2, codTextQuest3, rainbowTextQuest3, arrowIndicatorLevel1, arrowIndicatorLevel2, 
-                      Level2, Level3, entranceLevel2, entranceLevel3;
+                      entranceLevel2, entranceLevel3;
 
     public int updateEel, updateCarb, updateCarbQuest2, updateCod, updateCodQuest3, updateRainbow;
 
@@ -21,8 +24,6 @@ public class QuestSystem : MonoBehaviour
 
         arrowIndicatorLevel1.SetActive(false);
         arrowIndicatorLevel2.SetActive(false);
-        Level2.SetActive(false);
-        Level3.SetActive(false);
 
         fishPoleComplete.enabled = false;
         Umbrella.enabled = false;
@@ -92,7 +93,6 @@ public class QuestSystem : MonoBehaviour
                 eelText.SetActive(false); carbText.SetActive(false);
                 fishPole.enabled = false;
 
-                Level2.SetActive(true);
                 entranceLevel2.SetActive(false);
                 arrowIndicatorLevel1.SetActive(true);
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
@@ -115,7 +115,6 @@ public class QuestSystem : MonoBehaviour
                 codTextQuest2.SetActive(false); carbTextQuest2.SetActive(false);
                 Umbrella.enabled = false;
 
-                Level3.SetActive(true);
                 entranceLevel3.SetActive(false);
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
