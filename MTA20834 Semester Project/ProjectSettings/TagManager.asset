@@ -9,6 +9,10 @@ TagManager:
   - hook
   - manager
   - wave
+  - entranceTile
+  - entranceTileLevel3
+  - invisibleEntrance
+  - invisibleEntrance2
   layers:
   - Default
   - TransparentFX
