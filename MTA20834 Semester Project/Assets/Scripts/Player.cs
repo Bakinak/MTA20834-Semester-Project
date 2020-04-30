@@ -15,11 +15,11 @@ public class Player : MonoBehaviour
     public GameObject noEnter, noEnterLevel2, level2, level3;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
-    
+
 
     //Movement
     //Public kan ændres i inspector i Unity og tilgåes i andre scripts
-    public float moveSpeed;
+    public float moveSpeed = 4;
     public float preMoveDistance;
     public float distanceBetweenTiles = 2; //sørger for vi altid rammer midt af vandet
     Transform movePoint;
@@ -51,14 +51,11 @@ public class Player : MonoBehaviour
             gridMovement();
         }
 
-
-    }
-
-        if(noEnter.activeSelf && (Time.time >= timeWhenDisappear))
+        if (noEnter.activeSelf && (Time.time >= timeWhenDisappear))
         {
             noEnter.SetActive(false);
         }
-        else if(noEnterLevel2.activeSelf && (Time.time >= timeWhenDisappear))
+        else if (noEnterLevel2.activeSelf && (Time.time >= timeWhenDisappear))
         {
             noEnterLevel2.SetActive(false);
         }
@@ -66,14 +63,14 @@ public class Player : MonoBehaviour
 
     void gridMovement()
     {
-
         if (Vector3.Distance(transform.position, movePoint.position) <= preMoveDistance) //Hvis 0 kan man bevæge den, så det passer til tiles
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * (distanceBetweenTiles), 0f, 0f), .2f, block)) //hvis der hvor vi er nu +2 tiles frem ikke er noget der blokere (bliver blokeret ud fra laget), så videre
                 {
-                    if(Input.GetAxisRaw("Horizontal") == 1)  {
+                    if (Input.GetAxisRaw("Horizontal") == 1)
+                    {
                         animator.SetInteger("Direction", 0);
                         GetComponent<SpriteRenderer>().flipX = true;
                     }
@@ -150,6 +147,7 @@ public class Player : MonoBehaviour
         //if the quest in first level is not complete, show the text if player tries to move to next level
         if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb != 2)
         {
+            Debug.Log("You hit me");
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnter.SetActive(true);
         }
@@ -161,10 +159,10 @@ public class Player : MonoBehaviour
         }
 
         //if player has completed the quest, and moves on to next area, set minimap camera to the following level
-        if(collision.gameObject.tag == "invisibleEntrance" && qst.updateEel == 2 && qst.updateCarb == 2)
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel == 2 && qst.updateCarb == 2)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -10);
-        } 
+        }
         else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 == 2 && qst.updateCod == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -10);

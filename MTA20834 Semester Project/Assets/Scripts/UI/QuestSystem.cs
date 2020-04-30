@@ -113,7 +113,7 @@ public class QuestSystem : MonoBehaviour
                 codTextQuest2.SetActive(false); carbTextQuest2.SetActive(false);
                 Umbrella.enabled = false;
 
-                entranceLevel3.SetActive(false);
+                //entranceLevel3.SetActive(false);
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
                 isryder.enabled = true;

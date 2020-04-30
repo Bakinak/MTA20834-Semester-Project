@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetIndicator : MonoBehaviour
 {
     public Transform Target;
-    public float HideDistance;
+    public float hideDistance;
 
 
     // Update is called once per frame
@@ -13,7 +13,7 @@ public class TargetIndicator : MonoBehaviour
     {
         var dir = Target.position - transform.position;
 
-        if(dir.magnitude < HideDistance)
+        if(dir.magnitude < hideDistance)
         {
             SetChildActive(false);
         }
