@@ -8,6 +8,7 @@ TagManager:
   - entranceTile
   - entranceTileLevel3
   - invisibleEntrance
+  - invisibleEntrance2
   layers:
   - Default
   - TransparentFX

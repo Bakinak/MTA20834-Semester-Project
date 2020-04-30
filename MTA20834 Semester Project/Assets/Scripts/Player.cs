@@ -11,11 +11,11 @@ public class Player : MonoBehaviour
     //Fish
     GameObject fishToSpawn;
 
-
-    public GameObject noEnter;
+    public Camera minimap;
+    public GameObject noEnter, noEnterLevel2, level2, level3;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
-
+    
 
     //Movement
     public float moveSpeed;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         movePoint.parent = null;
 
         noEnter.SetActive(false);
+        noEnterLevel2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +51,10 @@ public class Player : MonoBehaviour
         if(noEnter.activeSelf && (Time.time >= timeWhenDisappear))
         {
             noEnter.SetActive(false);
+        }
+        else if(noEnterLevel2.activeSelf && (Time.time >= timeWhenDisappear))
+        {
+            noEnterLevel2.SetActive(false);
         }
     }
 
@@ -90,19 +95,32 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "entranceTile")
         {
             //Debug.Log("hit");
-            //deactivate the arrowindicator when entering level 2
+            //deactivate the arrowindicator when entering level 2 and 3
             qst.arrowIndicatorLevel1.SetActive(false);
             qst.arrowIndicatorLevel2.SetActive(false);
         }
 
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb !=2)
+        //if the quest in first level is not complete, show the text if player tries to move to next level
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb != 2)
         {
-            noEnter.SetActive(true);
             timeWhenDisappear = Time.time + timeToDisappear;
-        } else if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarbQuest2 != 2 && qst.updateCod != 2)
+            noEnter.SetActive(true);
+        }
+        //if the quest in second level is not complete, show the text if player tries to move to next level
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 != 2 && qst.updateCod != 2)
         {
-            noEnter.SetActive(true);
             timeWhenDisappear = Time.time + timeToDisappear;
+            noEnterLevel2.SetActive(true);
+        }
+
+        //if player has completed the quest, and moves on to next area, set minimap camera to the following level
+        if(collision.gameObject.tag == "invisibleEntrance" && qst.updateEel == 2 && qst.updateCarb == 2)
+        {
+            minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -10);
+        } 
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 == 2 && qst.updateCod == 2)
+        {
+            minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -10);
         }
     }
 }

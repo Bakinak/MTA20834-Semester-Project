@@ -56,7 +56,6 @@ public class ourGameManager : MonoBehaviour
         {
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
         }
-
     }
 
 

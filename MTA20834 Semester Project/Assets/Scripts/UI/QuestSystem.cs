@@ -70,9 +70,7 @@ public class QuestSystem : MonoBehaviour
             {
 
                 updateRainbow++;
-
                 updateCodQuest3++;
-
 
                 quest3Check();
             }
