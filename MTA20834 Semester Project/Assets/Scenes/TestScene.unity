@@ -730,15 +730,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartMaze
       objectReference: {fileID: 0}
+    - target: {fileID: -3843397004760360191, guid: 829cf4c36fd0d459796bc7679273aefa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3843397004760360191, guid: 829cf4c36fd0d459796bc7679273aefa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2550749370439839584, guid: 829cf4c36fd0d459796bc7679273aefa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.99
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: -2550749370439839584, guid: 829cf4c36fd0d459796bc7679273aefa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2550749370439839584, guid: 829cf4c36fd0d459796bc7679273aefa,
         type: 3}
@@ -27370,7 +27380,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 0, y: 0}
   - {x: 8, y: 0}
-  - {x: 8, y: -4}
+  - {x: 8, y: -6}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
 --- !u!4 &1335601283 stripped
@@ -35209,7 +35219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d302ff1467dca4bb243c834244400e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 820621081}
+  manager: {fileID: 0}
   controlstate: 1
 --- !u!4 &1748144084
 Transform:
