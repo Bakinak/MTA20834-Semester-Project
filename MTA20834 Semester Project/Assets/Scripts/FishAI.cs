@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishAI : MonoBehaviour
 {
     public bool move;
+    public bool escaped;
     public int fishtype;
 
 
@@ -14,6 +15,7 @@ public class FishAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        escaped = false;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
     }
 
@@ -22,11 +24,10 @@ public class FishAI : MonoBehaviour
     {
         if(move == true)
         {
-            transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(1.5f, 0, 0) * Time.deltaTime;
         } 
 
     }
-
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,10 +35,11 @@ public class FishAI : MonoBehaviour
         if(other.tag == "fishBoundary") //If collision with boundary, stop moving and set fish to being inactive, where it will wait until needed to be used again. When set to active again, position will reset to where it needs to be.
         {
             move = false;
+            escaped = false;
             gameObject.SetActive(false);
         }
 
-        if (other.tag == "hook") //If collision with hook, stop forward movement, attach fish to hook, and tell GameManager what fish has been hooked. 
+        if (other.tag == "hook" && escaped == false) //If collision with hook, stop forward movement, attach fish to hook, and tell GameManager what fish has been hooked. 
         {
             move = false;
             transform.parent = other.transform;
