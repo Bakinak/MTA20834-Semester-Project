@@ -15,6 +15,7 @@ public class playerFishing : MonoBehaviour
     public bool somethingOnHook;
     public bool inputSequenceOver;
 
+    public bool lowerKeyLetGo;
     bool hookLowered;
 
     public bool controlstate;
@@ -40,8 +41,11 @@ public class playerFishing : MonoBehaviour
     {
         if (controlstate == true) //Only allow movement of hook while in this control state.
         {
-            test();
             movement();
+            if(Input.GetAxisRaw("Vertical") == 0)
+            {
+                lowerKeyLetGo = true;
+            }
         }
         else if (inputSequenceOver) //When the input sequence is over, do something based on whether or not the player succesfully caught the fish. That means this should only run AFTER keeping boat steady.
         {
@@ -62,6 +66,7 @@ public class playerFishing : MonoBehaviour
                 
             }
         }
+        
         fishingLine();
 
     }
@@ -90,7 +95,7 @@ public class playerFishing : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
 
-            if (Input.GetAxisRaw("Vertical") < 0f)
+            if (Input.GetAxisRaw("Vertical") < 0f && lowerKeyLetGo == true)
             {
                 hookLowered = true;
                 manager.startFishMovement();
@@ -103,18 +108,5 @@ public class playerFishing : MonoBehaviour
         line.SetPosition(1, lineEnd.position);
     }
 
-    //For testing purposes
-    void test()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            manager.switchControlState(2);
-        }
 
-        if (Input.GetKeyDown("return"))
-        {
-            
-        }
-
-    }
 }

@@ -41,7 +41,6 @@ public class waves : MonoBehaviour
         {
             transform.position = startPosition;
             boatContact = false;
-            Debug.Log("I hit the boundary");
             gameObject.SetActive(false);
         }
 

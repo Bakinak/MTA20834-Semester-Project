@@ -103,7 +103,7 @@ public class ourGameManager : MonoBehaviour
             case 0: //Changing from travel screen to fishing screen, where the player gains control of the hook.
                 playerScript.controlstate = false;
                 fishingScript.controlstate = true;
-
+                fishingScript.lowerKeyLetGo = false;
                 currentScreen = 1;
 
                 theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
@@ -251,7 +251,7 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fishCaught");
-
+        
         //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
     }
 
@@ -276,7 +276,7 @@ public class ourGameManager : MonoBehaviour
             wavesPassed = 0;
             correctContinuousInputs = 0;
             inputResgisteredCorrectly = false;
-
+            steadyScript.tryingToSteady = true;
         }
     }
 
