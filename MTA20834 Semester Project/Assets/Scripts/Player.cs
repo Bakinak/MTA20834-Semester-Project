@@ -150,25 +150,25 @@ public class Player : MonoBehaviour
         }
 
         //if the quest in first level is not complete, show the text if player tries to move to next level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb != 2)
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb != 2 && qst.updateCod != 2)
         {
             Debug.Log("You hit me");
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnter.SetActive(true);
         }
         //if the quest in second level is not complete, show the text if player tries to move to next level
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 != 2 && qst.updateCod != 2)
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel != 2 && qst.updateRainbow != 2)
         {
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnterLevel2.SetActive(true);
         }
 
         //if player has completed the quest, and moves on to next area, set minimap camera to the following level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel == 2 && qst.updateCarb == 2)
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb == 2 && qst.updateCod == 2)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -10);
         }
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 == 2 && qst.updateCod == 2)
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel == 2 && qst.updateRainbow == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -10);
         }

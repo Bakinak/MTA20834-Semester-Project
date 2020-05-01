@@ -21,7 +21,8 @@ public class ourGameManager : MonoBehaviour
     public GameObject playerBoat;
     public GameObject playerFishing;
     public GameObject playerSteady;
-    
+    public QuestSystem QuestSystem;
+
 
     int currentScreen;
 
@@ -250,8 +251,9 @@ public class ourGameManager : MonoBehaviour
 
     public void fishCaught()
     {
-        Debug.Log("fishCaught");
+        Debug.Log("fish caught");
 
+        QuestSystem.updateFishUI(fishAIScript.fishtype);
         //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
     }
 

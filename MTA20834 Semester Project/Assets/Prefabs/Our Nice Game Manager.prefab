@@ -678,6 +678,7 @@ MonoBehaviour:
   playerBoat: {fileID: 6330472790024981469}
   playerFishing: {fileID: 682087959141375617}
   playerSteady: {fileID: 4671810717287714530}
+  QuestSystem: {fileID: 0}
   theCamera: {fileID: 0}
   fishingCloseup: {fileID: 682087960051198828}
   fishHoldingPen: {fileID: 682087959428508722}
