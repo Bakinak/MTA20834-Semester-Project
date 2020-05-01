@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public LayerMask block;
     public Animator animator;
 
-
+    GameObject previousFishSpot;
 
     public bool controlstate;
 
