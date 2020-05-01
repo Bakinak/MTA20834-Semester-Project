@@ -125,8 +125,13 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "fishSchool")
         {
-            //Remove bubble spot so we don't hit it again
+            //Remove bubble spot so we don't hit it again. Also, bring back the previous spot we hit, so the player can never run out of fish.
+            if(previousFishSpot != null)
+            {
+                previousFishSpot.SetActive(true);
+            }
             collision.gameObject.SetActive(false);
+            previousFishSpot = collision.gameObject;
             //Select and spawn fish
             //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
 

@@ -13,6 +13,7 @@ public class playerFishing : MonoBehaviour
     public LineRenderer line;
 
     public bool somethingOnHook;
+    public bool inputSequenceOver;
 
     bool hookLowered;
 
@@ -22,9 +23,12 @@ public class playerFishing : MonoBehaviour
 
     int currentHookPosition = 0;
     float moveSpeed = 7;
+    float startMoveSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        startMoveSpeed = moveSpeed;
+        inputSequenceOver = false;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         startPosition = transform.position;
         line.SetPosition(0, lineStart.position);
@@ -34,12 +38,32 @@ public class playerFishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controlstate == true)
+        if (controlstate == true) //Only allow movement of hook while in this control state.
         {
             test();
             movement();
         }
+        else if (inputSequenceOver) //When the input sequence is over, do something based on whether or not the player succesfully caught the fish. That means this should only run AFTER keeping boat steady.
+        {
+            moveSpeed = 3;
+            hookLowered = false;
+            transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime); //Move hook back up out of water. Once there, do something depending on wheteh fish was catched or not.
+            if (transform.position == startPosition)
+            {
+                currentHookPosition = 0;
+                if (somethingOnHook == true)
+                {
+                    somethingOnHook = false;
+                    manager.fishCaught();
+                }
+                moveSpeed = startMoveSpeed;
+                inputSequenceOver = false;
+                manager.switchControlState(2);
+                
+            }
+        }
         fishingLine();
+
     }
 
     //Move Fishing Hook

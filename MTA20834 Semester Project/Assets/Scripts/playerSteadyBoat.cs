@@ -9,7 +9,6 @@ public class playerSteadyBoat : MonoBehaviour
 
     //Get access to manager
     ourGameManager manager;
-    bool experimentalCondition; //false = discrete, true = continuous
     bool inWave;
     public bool controlstate;
 
@@ -33,32 +32,27 @@ public class playerSteadyBoat : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
-        experimentalCondition = manager.experimentalCondition;
         sequenceInputTime = manager.sequenceInputTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(inWave == true)
+        if (controlstate)
         {
-            
-
-            if (experimentalCondition == false) //Discrete version
+            if (inWave == true)
             {
-                steadyingDiscrete();
+                if (inputtingSequence())
+                {
+                    manager.correctInput();
+                }
             }
-            else // continuous version
+
+
+            if (attemptStarted == true)
             {
-                steadyingContinuous();
+                timePassed += Time.deltaTime;
             }
-        }
-
-
-        if (attemptStarted == true)
-        {
-            timePassed += Time.deltaTime;
         }
     }
 
@@ -77,10 +71,10 @@ public class playerSteadyBoat : MonoBehaviour
         if (Input.GetKeyDown(sequence[sequenceIndex])) //If the key pressed is the next key we needed to press in the sequence, check that...
         {
             sequenceIndex += 1;
-            Debug.Log("correct");
             if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
             {
                 resetSequenceAttempt();
+                Debug.Log("Correct Sequence Entered");
                 return true; //return true, so we can do whatever we need to do if we are using either discrete or continuous input.
             }
         }
@@ -99,38 +93,23 @@ public class playerSteadyBoat : MonoBehaviour
         attemptStarted = false;
     }
 
-    void steadyingDiscrete()
-    {
-        if(inputtingSequence() == true)
-        {
-            Debug.Log("This Totally Works");
-        }
-    }
-
-    void steadyingContinuous()
-    {
-        if (inputtingSequence() == true)
-        {
-            Debug.Log("This Totally Works");
-        }
-    }
 
 
     private void OnTriggerStay2D(Collider2D collision) //As long as we are in contact with a wave, allow the player to enter the keysequences.
     {
-        if (collision.tag == "wave" && controlstate == true)
+        if (collision.tag == "wave")
         {
             inWave = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) //Once a wave has passed, or we steadied boat to make it go away, reset sequence index and timePassed.
+    private void OnTriggerExit2D(Collider2D collision) 
     {
         
         if (collision.tag == "wave")
         {
-            resetSequenceAttempt();
             inWave = false;
+            manager.waveGoodbye();
         }
     }
 
