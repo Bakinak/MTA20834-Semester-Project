@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float timeToDisappear = 2f;
 
 
+
     //Movement
     //Public kan ændres i inspector i Unity og tilgåes i andre scripts
     public float moveSpeed = 4;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
@@ -124,14 +126,18 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) //tiggerenter er bobler
     {
         if (collision.gameObject.tag == "fishSchool")
+            
         {
             //Remove bubble spot so we don't hit it again. Also, bring back the previous spot we hit, so the player can never run out of fish.
             if(previousFishSpot != null)
             {
                 previousFishSpot.SetActive(true);
+
             }
+            SoundManager.PlaySound(SoundManager.Sound.splash);
             collision.gameObject.SetActive(false);
             previousFishSpot = collision.gameObject;
+            
             //Select and spawn fish
             //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
 
@@ -139,6 +145,8 @@ public class Player : MonoBehaviour
 
             //Remove control of ship and move camera position
             manager.switchControlState(0);
+
+            
         }
 
         if (collision.gameObject.tag == "entranceTile")

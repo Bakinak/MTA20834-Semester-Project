@@ -50,6 +50,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
     public Image controls;
+    
 
 
 
@@ -79,9 +80,10 @@ public class ourGameManager : MonoBehaviour
         controls.sprite = controlImages[0];
         originalInputAccuracy = inputAccuracy;
         //KeySequence
-        
+
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
+        SoundManager.PlaySound(SoundManager.Sound.backgroundMusic);
     }
 
     // Update is called once per frame
@@ -129,8 +131,6 @@ public class ourGameManager : MonoBehaviour
                 hookedFishReset();
                 //controls.sprite = controlImages[0];
                 break;
-
-
         }
 
     }
