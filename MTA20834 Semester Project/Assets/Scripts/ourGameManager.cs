@@ -241,7 +241,7 @@ public class ourGameManager : MonoBehaviour
         Debug.Log("letFishGo");
     }
 
-    void hookedFishReset()
+    void hookedFishReset() //Called after fishCaught, so hookedFish still available
     {
         fishAIScript.escaped = false;
         fishAIScript.move = false;
