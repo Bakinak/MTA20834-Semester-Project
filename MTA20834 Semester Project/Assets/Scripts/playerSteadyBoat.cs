@@ -9,15 +9,15 @@ public class playerSteadyBoat : MonoBehaviour
 
     //Get access to manager
     ourGameManager manager;
-    bool inWave;
+    public int inWave;
     public bool controlstate;
-    bool boatSuccesfullySteadied;
     public bool tryingToSteady;
     float currentTilt;
     float maxTilt = -20;
     float tiltSpeed = 10;
     float inputDelay;
     float timer;
+
 
     //Doing the Key Sequence. As it stands, T and R does not need to pressed at the same time, only the order matters.
     bool attemptStarted;
@@ -48,7 +48,7 @@ public class playerSteadyBoat : MonoBehaviour
         
         if (controlstate)
         {
-            if (inWave == true)
+            if (inWave > 0)
             {
                 if (inputtingSequence())
                 {
@@ -70,12 +70,14 @@ public class playerSteadyBoat : MonoBehaviour
             //Debug.Log(transform.eulerAngles.z);
             if (currentTilt < 0 && timer > inputDelay)
             {
-                boatSuccesfullySteadied = true;
                 transform.eulerAngles += new Vector3(0, 0, tiltSpeed*3f) * Time.deltaTime;
                 currentTilt += tiltSpeed * 3f * Time.deltaTime;
-                if(transform.eulerAngles.z < 10)
+                if(transform.eulerAngles.z < 100)
                 {
-                    boatSuccesfullySteadied = false;
+                    if(inWave > 0)
+                    {
+                        inWave -= 1;
+                    }
                     tryingToSteady = false;
                     timer = 0;
                 }
@@ -124,22 +126,18 @@ public class playerSteadyBoat : MonoBehaviour
 
     void tiltBoat()
     {
-        if (currentTilt > maxTilt  && boatSuccesfullySteadied == false)
+        if (currentTilt > maxTilt  && inWave > 0 && tryingToSteady == false)
         {
             transform.eulerAngles += new Vector3(0, 0, -tiltSpeed) * Time.deltaTime;
             currentTilt += -tiltSpeed * Time.deltaTime;
         }
     }
 
-    void steadyingBoat()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "wave")
         {
+            inWave += 1;
             //tryingToSteady = false;
         }
     }
@@ -148,7 +146,7 @@ public class playerSteadyBoat : MonoBehaviour
     {
         if (collision.tag == "wave")
         {
-            inWave = true;
+            
             tiltBoat();
         }
     }
@@ -158,7 +156,6 @@ public class playerSteadyBoat : MonoBehaviour
         
         if (collision.tag == "wave")
         {
-            inWave = false;
             manager.waveGoodbye();
             inputDelay = 0;
         }

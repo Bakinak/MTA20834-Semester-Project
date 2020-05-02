@@ -50,6 +50,11 @@ public class ourGameManager : MonoBehaviour
     public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
     public Image controls;
 
+    //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
+    int fishStreak;
+    int fishStillNeeded = 12;
+    int attemptsLeft = 20;
+
 
 
     public Text test;
@@ -116,10 +121,11 @@ public class ourGameManager : MonoBehaviour
             case 1: //Changing controls when the player has hooked a fish, so they will now have to keep boat steady against waves. Start spawning waves.
                 fishingScript.controlstate = false;
                 steadyScript.controlstate = true;
+                steadyScript.tryingToSteady = false;
                 spawnWaves();
                 break;
 
-            case 2: //After keeping boat steady, or failing to do so, change back to travel screen, lose control of fish and steadying, and gain control of boat in travel screen
+            case 2: //After keeping boat steady, or failing to do so, change back to travel screen, lose control of fish and steadying, and gain control of boat in travel screen.
                 steadyScript.controlstate = false;
                 playerScript.controlstate = true;
 
@@ -127,6 +133,17 @@ public class ourGameManager : MonoBehaviour
                 fishingAttemptUsed = false;
                 hookedFishReset();
                 //controls.sprite = controlImages[0];
+
+                //Also check to see if next fish should be a guaranteed catch or not, assuming correct input is entered.
+                attemptsLeft -= 1;
+                if (fishStillNeeded >= attemptsLeft)
+                {
+                    accuracyModifier = 1;
+                } else if(fishStillNeeded == 1 && attemptsLeft > 1)
+                {
+                    accuracyModifier = -1;
+                }
+
                 break;
 
 
@@ -236,6 +253,8 @@ public class ourGameManager : MonoBehaviour
         fishAIScript.escaped = true;
         hookedFish.transform.parent = null;
         fishAIScript.move = true;
+        accuracyModifier = 1;
+        fishStreak = 0;
         Debug.Log("letFishGo");
     }
 
@@ -251,7 +270,14 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fishCaught");
-        
+        fishStillNeeded -= 1;
+        accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
+        fishStreak += 1;
+        if (fishStreak == 2)
+        {
+            accuracyModifier = -1;
+            fishStreak = 0;
+        }
         //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
     }
 
@@ -277,6 +303,7 @@ public class ourGameManager : MonoBehaviour
             correctContinuousInputs = 0;
             inputResgisteredCorrectly = false;
             steadyScript.tryingToSteady = true;
+            steadyScript.inWave = 0;
         }
     }
 

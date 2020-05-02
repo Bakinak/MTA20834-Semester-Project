@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Horizon
+    uniqueID: 3672622705
+    locked: 0
   - name: Ocean
     uniqueID: 671757759
     locked: 0
@@ -58,4 +61,10 @@ TagManager:
     locked: 0
   - name: Sky
     uniqueID: 4149804013
+    locked: 0
+  - name: FishingLine
+    uniqueID: 912410647
+    locked: 0
+  - name: Hook
+    uniqueID: 1936658631
     locked: 0
