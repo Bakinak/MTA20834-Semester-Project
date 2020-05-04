@@ -271,6 +271,7 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fishCaught");
+        QuestSystem.updateFishUI(fishAIScript.fishtype);
         fishStillNeeded -= 1;
         accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
         fishStreak += 1;
