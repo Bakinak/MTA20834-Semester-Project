@@ -1135,6 +1135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &489994177 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4047565675902745878, guid: cb3363dd2b310db4b82ec67794b6a39a,
+    type: 3}
+  m_PrefabInstance: {fileID: 786504054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575662906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1171,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593822153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 682087959141375618, guid: cb3363dd2b310db4b82ec67794b6a39a,
+    type: 3}
+  m_PrefabInstance: {fileID: 786504054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d302ff1467dca4bb243c834244400e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &627235480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,20 +1289,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
+      propertyPath: controlImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 2103900360}
-    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
-        type: 3}
-      propertyPath: controlImages.Array.data[0]
-      value: 
-      objectReference: {fileID: 109378080}
-    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
-        type: 3}
-      propertyPath: theCamera
-      value: 
-      objectReference: {fileID: -6275203000558947912, guid: 1b35ead6c9a239c4999dcb73b601b4ee,
-        type: 3}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: controls
@@ -1453,7 +1465,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 400228818}
+      objectReference: {fileID: 489994177}
     - target: {fileID: 1017920804425113067, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: block.m_Bits
@@ -1468,7 +1480,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fishPlayer
       value: 
-      objectReference: {fileID: 924170083}
+      objectReference: {fileID: 593822153}
     - target: {fileID: 1017920804425113067, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: level2
@@ -2350,8 +2362,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103900358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
