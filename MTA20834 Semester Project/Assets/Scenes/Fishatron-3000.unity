@@ -1664,6 +1664,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SecondLevel 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8848395053444834628, guid: 3f1fe117a65721f4d8bbff34d8225a60,
+        type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848395053444834628, guid: 3f1fe117a65721f4d8bbff34d8225a60,
+        type: 3}
+      propertyPath: m_Points.Array.data[2].y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848395053444834650, guid: 3f1fe117a65721f4d8bbff34d8225a60,
+        type: 3}
+      propertyPath: m_Points.Array.data[4].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848395053444834650, guid: 3f1fe117a65721f4d8bbff34d8225a60,
+        type: 3}
+      propertyPath: m_Points.Array.data[5].x
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f1fe117a65721f4d8bbff34d8225a60, type: 3}
 --- !u!1001 &1205215340
