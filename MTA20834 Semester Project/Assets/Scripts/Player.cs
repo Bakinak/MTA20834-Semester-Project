@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //Access to our game manager
     public ourGameManager manager;
     public QuestSystem qst;
+    public playerFishing fishPlayer;
 
     //Fish Skal måske ikke bruges mere
     GameObject fishToSpawn;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public GameObject noEnter, noEnterLevel2, level2, level3;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
+
 
 
     //Movement
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
@@ -124,14 +127,20 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) //tiggerenter er bobler
     {
         if (collision.gameObject.tag == "fishSchool")
+            
         {
+            //set the reel sound to false again, when entering a fish school
+            fishPlayer.soundplayed = false;
             //Remove bubble spot so we don't hit it again. Also, bring back the previous spot we hit, so the player can never run out of fish.
             if(previousFishSpot != null)
             {
                 previousFishSpot.SetActive(true);
+
             }
+            SoundManager.PlaySound(SoundManager.Sound.splash);
             collision.gameObject.SetActive(false);
             previousFishSpot = collision.gameObject;
+            
             //Select and spawn fish
             //fishToSpawn = collision.gameObject.GetComponent<fishSpot>().fish;
 
@@ -139,6 +148,8 @@ public class Player : MonoBehaviour
 
             //Remove control of ship and move camera position
             manager.switchControlState(0);
+
+            
         }
 
         if (collision.gameObject.tag == "entranceTile")
@@ -150,25 +161,25 @@ public class Player : MonoBehaviour
         }
 
         //if the quest in first level is not complete, show the text if player tries to move to next level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel != 2 && qst.updateCarb != 2)
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb != 2 && qst.updateCod != 2)
         {
             Debug.Log("You hit me");
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnter.SetActive(true);
         }
         //if the quest in second level is not complete, show the text if player tries to move to next level
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 != 2 && qst.updateCod != 2)
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel != 2 && qst.updateRainbow != 2)
         {
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnterLevel2.SetActive(true);
         }
 
         //if player has completed the quest, and moves on to next area, set minimap camera to the following level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateEel == 2 && qst.updateCarb == 2)
+        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb == 2 && qst.updateCod == 2)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -10);
         }
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateCarbQuest2 == 2 && qst.updateCod == 2)
+        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel == 2 && qst.updateRainbow == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -10);
         }

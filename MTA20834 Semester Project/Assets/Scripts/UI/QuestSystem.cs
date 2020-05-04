@@ -5,22 +5,19 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
-
-    public Player playerSc;
-
     public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete;
 
-    public GameObject eelText, carbText, carbTextQuest2, codTextQuest2, codTextQuest3, rainbowTextQuest3, arrowIndicatorLevel1, arrowIndicatorLevel2, 
+    public GameObject codText, carbText, eelText, rainbowfishText, clownfishText, catfishText, arrowIndicatorLevel1, arrowIndicatorLevel2, 
                       entranceLevel2, entranceLevel3;
 
-    public int updateEel, updateCarb, updateCarbQuest2, updateCod, updateCodQuest3, updateRainbow;
+    public int updateEel, updateCarb, updateCod, updateRainbow, updateCatfish, updateClownfish;
 
     private void Start()
     {
-        codTextQuest2.SetActive(false);
-        carbTextQuest2.SetActive(false);
-        codTextQuest3.SetActive(false);
-        rainbowTextQuest3.SetActive(false);
+        eelText.SetActive(false);
+        rainbowfishText.SetActive(false);
+        catfishText.SetActive(false);
+        clownfishText.SetActive(false);
 
         arrowIndicatorLevel1.SetActive(false);
         arrowIndicatorLevel2.SetActive(false);
@@ -37,50 +34,45 @@ public class QuestSystem : MonoBehaviour
     void Update()
     {
         //updating the text values on the UI
-        eelText.GetComponent<Text>().text = updateEel + "/2 eel";
         carbText.GetComponent<Text>().text = updateCarb + "/2 carb";
-        carbTextQuest2.GetComponent<Text>().text = updateCarbQuest2 + "/2 carb";
-        codTextQuest2.GetComponent<Text>().text = updateCod + "/2 cod";
-        codTextQuest3.GetComponent<Text>().text = updateCodQuest3 + "/2 cod";
-        rainbowTextQuest3.GetComponent<Text>().text = updateRainbow + "/2 rainbow fish";
+        codText.GetComponent<Text>().text = updateCod + "/2 cod";
+        eelText.GetComponent<Text>().text = updateEel + "/2 eel";
+        rainbowfishText.GetComponent<Text>().text = updateRainbow + "/2 rainbowfish";
+        catfishText.GetComponent<Text>().text = updateCatfish + "/2 catfish";
+        clownfishText.GetComponent<Text>().text = updateClownfish + "/2 clownfish";
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+    public void updateFishUI(int fish)
+    {
+        if(fish == 0)
+        {
+            updateCod++;
+        } else if (fish == 1)
+        {
+            updateCarb++;
+        } else if(fish == 2)
         {
             updateEel++;
-            updateCarb++;
-
-            quest1Check();
-        }
-
-
-        if (codTextQuest2.activeInHierarchy == true)
+        } else if (fish == 3)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                updateCarbQuest2++;
-                updateCod++;
-
-                quest2Check();
-            }
-        }
-
-        if (rainbowTextQuest3.activeInHierarchy == true)
+            updateRainbow++;
+        } else if(fish == 4)
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-
-                updateRainbow++;
-                updateCodQuest3++;
-
-                quest3Check();
-            }
+            updateCatfish++;
+        } else if(fish == 5)
+        {
+            updateClownfish++;
         }
+
+        quest1Check();
+        quest2Check();
+        quest3Check();
     }
 
     public void quest1Check()
     {
         //add some logic to the if statement (if Umbrella == false then u can do this, but if active u cannot)
-        if (updateEel >= 2 && updateCarb >= 2)
+        if (updateCarb >= 2 && updateCod >= 2)
         {
             if (fishPoleComplete.enabled == true)
             {
@@ -88,13 +80,13 @@ public class QuestSystem : MonoBehaviour
             }
             else
             {
-                eelText.SetActive(false); carbText.SetActive(false);
+                carbText.SetActive(false); codText.SetActive(false);
                 fishPole.enabled = false;
-
+                SoundManager.PlaySound(SoundManager.Sound.questComplete);
                 entranceLevel2.SetActive(false);
                 arrowIndicatorLevel1.SetActive(true);
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
-                codTextQuest2.SetActive(true); carbTextQuest2.SetActive(true);
+                eelText.SetActive(true); rainbowfishText.SetActive(true);
             }
         }
     }
@@ -102,7 +94,7 @@ public class QuestSystem : MonoBehaviour
 
     public void quest2Check()
     {
-        if (updateCarb >= 2 && updateCod >= 2)
+        if (updateEel >= 2 && updateRainbow >= 2)
         {
             if (umbrellaComplete.enabled == true)
             {
@@ -110,23 +102,23 @@ public class QuestSystem : MonoBehaviour
             }
             else
             {
-                codTextQuest2.SetActive(false); carbTextQuest2.SetActive(false);
+                eelText.SetActive(false); rainbowfishText.SetActive(false);
                 Umbrella.enabled = false;
 
                 //entranceLevel3.SetActive(false);
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
                 isryder.enabled = true;
-                codTextQuest3.SetActive(true); rainbowTextQuest3.SetActive(true);
+                clownfishText.SetActive(true); catfishText.SetActive(true);
             }
         }
     }
 
     public void quest3Check()
     {
-        if (updateCodQuest3 >= 2 && updateRainbow >= 2)
+        if (updateClownfish >= 2 && updateCatfish >= 2)
         {
-            rainbowTextQuest3.SetActive(false); codTextQuest3.SetActive(false);
+            clownfishText.SetActive(false); catfishText.SetActive(false);
             isryderComplete.enabled = true;
         }
     }

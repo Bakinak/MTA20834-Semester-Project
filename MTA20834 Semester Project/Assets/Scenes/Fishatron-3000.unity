@@ -142,7 +142,7 @@ PrefabInstance:
         type: 3}
       propertyPath: eelText
       value: 
-      objectReference: {fileID: 433840143}
+      objectReference: {fileID: 433840141}
     - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
         type: 3}
       propertyPath: carbText
@@ -213,6 +213,26 @@ PrefabInstance:
       propertyPath: entranceLevel2
       value: 
       objectReference: {fileID: 1825010386}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: codText
+      value: 
+      objectReference: {fileID: 433840143}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: rainbowfishText
+      value: 
+      objectReference: {fileID: 433840140}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: clownfishText
+      value: 
+      objectReference: {fileID: 433840139}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: catfishText
+      value: 
+      objectReference: {fileID: 433840136}
     - target: {fileID: 1162202298524913979, guid: 3486e0f50dc074741aab359c1237ed92,
         type: 3}
       propertyPath: m_Name
@@ -381,6 +401,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2812449704917518064, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 33.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449704917518064, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 845.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449704917518065, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest3_catfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449704917518071, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 0/2 catfish
+      objectReference: {fileID: 0}
     - target: {fileID: 2812449705008749096, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,6 +550,96 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434848, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 723.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434848, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 77.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434848, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 49.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434848, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434849, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest2_rainbowfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705453434855, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 0/2 rainbow fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641076058, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 0/2 clown fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641076059, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 851.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641076059, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 68.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641076059, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 74.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641076059, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 37.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705641081508, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest3_clownfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706271768289, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 0/2 eel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706271768291, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest2_eel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706534035524, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 0/2 cod
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706534035525, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 567.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706534035525, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 52.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706534035526, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest1_cod
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3454c54abb575ed41b0fc5d7c18266f6, type: 3}
@@ -690,13 +820,28 @@ PrefabInstance:
         type: 3}
       propertyPath: controlImages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 1c7825853205c2c47a45b6a393ffa56b,
+      objectReference: {fileID: -3591907735516240906, guid: 3dab8d30095fb184894efb87039a9fb1,
         type: 3}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: controls
       value: 
       objectReference: {fileID: 1255191728}
+    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: QuestSystem
+      value: 
+      objectReference: {fileID: 109378080}
+    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: experimentalCondition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: inputAccuracy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 682087960557721774, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -752,6 +897,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 682087960586934352, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1017920804425113067, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: qst
@@ -787,6 +937,16 @@ PrefabInstance:
       propertyPath: block.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 1017920804425113067, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: SoundManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017920804425113067, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: fishPlayer
+      value: 
+      objectReference: {fileID: 924170083}
     - target: {fileID: 8844353834241608507, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: m_FlipX
@@ -806,6 +966,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1207449541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &924170083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 682087959141375618, guid: cb3363dd2b310db4b82ec67794b6a39a,
+    type: 3}
+  m_PrefabInstance: {fileID: 786504054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d302ff1467dca4bb243c834244400e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &926823165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1113,6 +1285,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FirstLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397024471354298529, guid: f0cbb73100aed224a93b3b634cb46142,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255029710417907532, guid: f0cbb73100aed224a93b3b634cb46142,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0cbb73100aed224a93b3b634cb46142, type: 3}

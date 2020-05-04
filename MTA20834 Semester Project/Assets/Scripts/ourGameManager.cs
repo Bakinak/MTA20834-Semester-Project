@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ourGameManager : MonoBehaviour
 {
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
-    //Can also use this to update interface images. 
+    //Can also use this to update interface images.
     public bool experimentalCondition; //false = discrete, true = continuous
     public float sequenceInputTime; //Time the user has to input the sequence. 1 second in Bastians game
     public float inputAccuracy; //Percentage chance of input being registered. Needs to be value between 0 and 1, with 1 = 100 % chance of input being registered.
@@ -21,7 +21,7 @@ public class ourGameManager : MonoBehaviour
     public GameObject playerBoat;
     public GameObject playerFishing;
     public GameObject playerSteady;
-    
+    public QuestSystem QuestSystem;
 
     int currentScreen;
 
@@ -30,7 +30,7 @@ public class ourGameManager : MonoBehaviour
     //Camera
     public Camera theCamera;
     public Transform fishingCloseup;
-    
+
     //Spawning Fishies
     public Transform fishHoldingPen;
     public GameObject[] fishySpecies;
@@ -49,6 +49,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
     public Image controls;
+
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
     int fishStreak;
@@ -83,9 +84,10 @@ public class ourGameManager : MonoBehaviour
         controls.sprite = controlImages[0];
         originalInputAccuracy = inputAccuracy;
         //KeySequence
-        
+
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
+        SoundManager.PlaySound(SoundManager.Sound.backgroundMusic);
     }
 
     // Update is called once per frame
@@ -145,8 +147,6 @@ public class ourGameManager : MonoBehaviour
                 }
 
                 break;
-
-
         }
 
     }
@@ -195,7 +195,7 @@ public class ourGameManager : MonoBehaviour
         fishAIScript = hookedFish.GetComponent<FishAI>();
         fishingScript.somethingOnHook = true;
         switchControlState(1);
-        
+
     }
 
     void spawnWaves()
@@ -217,7 +217,7 @@ public class ourGameManager : MonoBehaviour
     public void correctInput() // called from the playerSteadyBoat script whenever a key sequence has been correctly inputted? Handle it differently based on experimental condition.
     {
         if(experimentalCondition == false) //Discrete condition
-        {          
+        {
             if (rollDice() && fishingAttemptUsed == false)
             {
                 inputResgisteredCorrectly = true;
@@ -251,6 +251,7 @@ public class ourGameManager : MonoBehaviour
     void letFishGo() //Called when player fails to keep boat steady. Makes it "escaped", meaning it won't attach to hook again, releases it from hook, and makes it move forward again.
     {
         fishAIScript.escaped = true;
+        SoundManager.PlaySound(SoundManager.Sound.fishCaughtFailed);
         hookedFish.transform.parent = null;
         fishAIScript.move = true;
         accuracyModifier = 1;
