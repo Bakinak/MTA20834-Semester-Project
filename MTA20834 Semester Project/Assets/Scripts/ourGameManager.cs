@@ -48,7 +48,7 @@ public class ourGameManager : MonoBehaviour
 
     //Updating UI Elements
     public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
-    public Image controls;
+    public Image controlsWASD, TRWE;
 
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
@@ -81,7 +81,8 @@ public class ourGameManager : MonoBehaviour
         steadyScript.controlstate = false;
 
         //UI setup
-        controls.sprite = controlImages[0];
+        controlsWASD.enabled = true;
+        TRWE.enabled = false;
         originalInputAccuracy = inputAccuracy;
         //KeySequence
 
@@ -94,7 +95,13 @@ public class ourGameManager : MonoBehaviour
     {
         if (currentScreen == 0)
         {
+            controlsWASD.enabled = true;
+            TRWE.enabled = false;
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
+        } else
+        {
+            controlsWASD.enabled = false;
+            TRWE.enabled = true;
         }
     }
 
@@ -116,7 +123,7 @@ public class ourGameManager : MonoBehaviour
 
                 spawnFishies();
 
-                controls.sprite = controlImages[1];
+                
                 break;
 
             case 1: //Changing controls when the player has hooked a fish, so they will now have to keep boat steady against waves. Start spawning waves.
@@ -158,10 +165,10 @@ public class ourGameManager : MonoBehaviour
                 spawn(0);
                 break;
             case 2: //Rain Area
-                spawn(1);
+                spawn(3);
                 break;
             case 3: // Ice area
-                spawn(2);
+                spawn(6);
                 break;
         }
     }
