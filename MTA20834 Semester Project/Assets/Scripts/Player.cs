@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //Access to our game manager
     public ourGameManager manager;
     public QuestSystem qst;
+    public playerFishing fishPlayer;
 
     //Fish Skal måske ikke bruges mere
     GameObject fishToSpawn;
@@ -128,6 +129,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "fishSchool")
             
         {
+            //set the reel sound to false again, when entering a fish school
+            fishPlayer.soundplayed = false;
             //Remove bubble spot so we don't hit it again. Also, bring back the previous spot we hit, so the player can never run out of fish.
             if(previousFishSpot != null)
             {

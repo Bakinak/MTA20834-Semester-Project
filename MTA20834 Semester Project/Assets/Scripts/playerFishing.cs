@@ -11,6 +11,7 @@ public class playerFishing : MonoBehaviour
     public Transform lineStart;
     public Transform lineEnd;
     public LineRenderer line;
+    public bool soundplayed = false;
 
     public bool somethingOnHook;
     public bool inputSequenceOver;
@@ -47,12 +48,21 @@ public class playerFishing : MonoBehaviour
         {
             moveSpeed = 3;
             hookLowered = false;
+
+            if(!soundplayed)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.fishReel);
+                
+                soundplayed = true;
+            }
+
             transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime); //Move hook back up out of water. Once there, do something depending on wheteh fish was catched or not.
             if (transform.position == startPosition)
             {
                 currentHookPosition = 0;
                 if (somethingOnHook == true)
                 {
+                    SoundManager.PlaySound(SoundManager.Sound.fishCaughtSucces);
                     somethingOnHook = false;
                     manager.fishCaught();
                 }
@@ -63,6 +73,7 @@ public class playerFishing : MonoBehaviour
             }
         }
         fishingLine();
+        
 
     }
 
@@ -77,11 +88,13 @@ public class playerFishing : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Vertical") < 0f && currentHookPosition < 2)
                 {
+                    SoundManager.PlaySound(SoundManager.Sound.moveHook);
                     currentHookPosition += 1;
                 }
 
                 if (Input.GetAxisRaw("Vertical") > 0f && currentHookPosition > 0)
                 {
+                    SoundManager.PlaySound(SoundManager.Sound.moveHook);
                     currentHookPosition -= 1;
                 }
             }

@@ -23,7 +23,6 @@ public class ourGameManager : MonoBehaviour
     public GameObject playerSteady;
     public QuestSystem QuestSystem;
 
-
     int currentScreen;
 
     int currentLocation = 1;
@@ -235,6 +234,7 @@ public class ourGameManager : MonoBehaviour
     void letFishGo() //Called when player fails to keep boat steady. Makes it "escaped", meaning it won't attach to hook again, releases it from hook, and makes it move forward again.
     {
         fishAIScript.escaped = true;
+        SoundManager.PlaySound(SoundManager.Sound.fishCaughtFailed);
         hookedFish.transform.parent = null;
         fishAIScript.move = true;
         Debug.Log("letFishGo");
@@ -252,7 +252,6 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fish caught");
-
         QuestSystem.updateFishUI(fishAIScript.fishtype);
         //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
     }

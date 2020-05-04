@@ -9,11 +9,13 @@ public static class SoundManager
     {
         backgroundMusic,
         splash,
-        fishCaughtSuccess,
+        fishReel,
         fishCaughtFailed,
+        fishCaughtSucces,
         waves,
-        questComplete,
+        rain,
         moveHook,
+        questComplete,
         fishBiteHook,
     }
 
@@ -22,6 +24,7 @@ public static class SoundManager
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(GetAudioClip(sound)); // plays the sound that we are looking for in the array once
+        audioSource.volume = 0.05f;
     }
 
     private static AudioClip GetAudioClip(Sound sound)

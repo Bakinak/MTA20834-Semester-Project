@@ -82,7 +82,7 @@ public class QuestSystem : MonoBehaviour
             {
                 carbText.SetActive(false); codText.SetActive(false);
                 fishPole.enabled = false;
-
+                SoundManager.PlaySound(SoundManager.Sound.questComplete);
                 entranceLevel2.SetActive(false);
                 arrowIndicatorLevel1.SetActive(true);
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
