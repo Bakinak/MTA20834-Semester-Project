@@ -32,6 +32,15 @@ public class Player : MonoBehaviour
 
     public bool controlstate;
 
+    //Reset position in case we get stuck during experiment
+    KeyCode[] sequence = new KeyCode[]
+{
+        KeyCode.J,
+        KeyCode.U,
+        KeyCode.K,
+};
+    int sequenceIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,25 +111,18 @@ public class Player : MonoBehaviour
                 }
             }
 
-            //float x = Input.GetAxisRaw("Horizontal");
-            //float y = Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(sequence[sequenceIndex]))
+            {
+                if (++sequenceIndex == sequence.Length)
+                {
+                    sequenceIndex = 0;
+                    transform.position = new Vector3(0, 0, 0);
+                    movePoint.position = new Vector3(0, 0, 0); 
+                    // sequence typed
+                }
+            }
+            else if (Input.anyKeyDown) sequenceIndex = 0;
 
-            //if (y < 0)
-            //{
-            //    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(y * (distanceBetweenTiles), 0f, 0f), .2f, block)) //hvis der hvor vi er nu +2 tiles frem ikke er noget der blokere (bliver blokeret ud fra laget), så videre
-            //    {
-            //        animator.SetInteger("Direction", (int)y);
-            //        movePoint.position += new Vector3(0f, y * distanceBetweenTiles, 0f);
-            //    }
-            //}
-            //else if (y > 0)
-            //{
-            //    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, y * (distanceBetweenTiles), 0f), .2f, block))
-            //    {
-            //        animator.SetInteger("Direction", (int)y);
-            //        movePoint.position += new Vector3(0f, y * distanceBetweenTiles, 0f);
-            //    }
-            //}
         }
     }
 
