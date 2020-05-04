@@ -7,7 +7,6 @@ public static class SoundManager
 
     public enum Sound
     {
-        backgroundMusic,
         splash,
         fishReel,
         fishCaughtFailed,

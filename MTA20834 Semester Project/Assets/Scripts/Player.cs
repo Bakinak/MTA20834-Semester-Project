@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     GameObject fishToSpawn;
 
     public Camera minimap;
-    public GameObject noEnter, noEnterLevel2, level2, level3;
+    public GameObject noEnter, noEnterLevel2, level1, level2, level3;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
 
@@ -152,23 +152,22 @@ public class Player : MonoBehaviour
             
         }
 
-        if (collision.gameObject.tag == "entranceTile")
+        if (collision.gameObject.tag == "entranceTile" || collision.gameObject.tag == "entranceTileLevel3")
         {
-            //Debug.Log("hit");
             //deactivate the arrowindicator when entering level 2 and 3
             qst.arrowIndicatorLevel1.SetActive(false);
             qst.arrowIndicatorLevel2.SetActive(false);
         }
 
         //if the quest in first level is not complete, show the text if player tries to move to next level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb != 2 && qst.updateCod != 2)
+        if (collision.gameObject.tag == "entranceTile" && qst.updateCarb != 2 && qst.updateCod != 2)
         {
             Debug.Log("You hit me");
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnter.SetActive(true);
         }
         //if the quest in second level is not complete, show the text if player tries to move to next level
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel != 2 && qst.updateRainbow != 2)
+        else if (collision.gameObject.tag == "entranceTileLevel3" && qst.updateEel != 2 && qst.updateRainbow != 2)
         {
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnterLevel2.SetActive(true);
@@ -178,10 +177,22 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb == 2 && qst.updateCod == 2)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
+            manager.currentLocation = 2;
+        }
+        else if (collision.gameObject.tag == "entranceTile" && manager.currentLocation == 2)
+        {
+            minimap.transform.position = new Vector3(level1.transform.position.x, level1.transform.position.y, -20);
+            manager.currentLocation = 1;
         }
         else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel == 2 && qst.updateRainbow == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -20);
+            manager.currentLocation = 3;
+        }
+        else if (collision.gameObject.tag == "entranceTileLevel3" && manager.currentLocation == 3)
+        {
+            minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
+            manager.currentLocation = 2; 
         }
     }
 }

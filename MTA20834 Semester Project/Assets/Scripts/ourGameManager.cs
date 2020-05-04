@@ -25,7 +25,7 @@ public class ourGameManager : MonoBehaviour
 
     int currentScreen;
 
-    int currentLocation = 1;
+    public int currentLocation = 1;
 
     //Camera
     public Camera theCamera;
@@ -87,7 +87,6 @@ public class ourGameManager : MonoBehaviour
 
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
-        SoundManager.PlaySound(SoundManager.Sound.backgroundMusic);
     }
 
     // Update is called once per frame

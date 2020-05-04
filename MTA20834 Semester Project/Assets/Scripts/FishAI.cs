@@ -41,6 +41,7 @@ public class FishAI : MonoBehaviour
 
         if (other.tag == "hook" && escaped == false) //If collision with hook, stop forward movement, attach fish to hook, and tell GameManager what fish has been hooked. 
         {
+            SoundManager.PlaySound(SoundManager.Sound.fishBiteHook);
             move = false;
             transform.parent = other.transform;
             manager.fishOnHook(gameObject);

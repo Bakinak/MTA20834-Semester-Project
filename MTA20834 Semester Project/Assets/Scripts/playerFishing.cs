@@ -89,7 +89,7 @@ public class playerFishing : MonoBehaviour
         if (somethingOnHook == false && hookLowered == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, manager.fishSpawnLocations[currentHookPosition].position.y, 0), moveSpeed * Time.deltaTime);
-
+            
             if (transform.position.y == manager.fishSpawnLocations[currentHookPosition].position.y)
             {
                 if (Input.GetAxisRaw("Vertical") < 0f && currentHookPosition < 2)

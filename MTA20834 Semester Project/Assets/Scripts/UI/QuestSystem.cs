@@ -80,10 +80,10 @@ public class QuestSystem : MonoBehaviour
             }
             else
             {
+                entranceLevel2.layer = LayerMask.NameToLayer("Default");
                 carbText.SetActive(false); codText.SetActive(false);
                 fishPole.enabled = false;
                 SoundManager.PlaySound(SoundManager.Sound.questComplete);
-                entranceLevel2.SetActive(false);
                 arrowIndicatorLevel1.SetActive(true);
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
                 eelText.SetActive(true); rainbowfishText.SetActive(true);
@@ -104,8 +104,7 @@ public class QuestSystem : MonoBehaviour
             {
                 eelText.SetActive(false); rainbowfishText.SetActive(false);
                 Umbrella.enabled = false;
-
-                //entranceLevel3.SetActive(false);
+                entranceLevel3.layer = LayerMask.NameToLayer("Default");
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
                 isryder.enabled = true;
