@@ -32,13 +32,14 @@ public class playerFishing : MonoBehaviour
         inputSequenceOver = false;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         startPosition = transform.position;
-        line.SetPosition(0, lineStart.position);
-        lineStart.transform.parent = null;
+        
+        //lineStart.transform.parent = null;
     }
 
     // Update is called once per frame
     void Update()
     {
+        line.SetPosition(0, lineStart.position);
         if (controlstate == true) //Only allow movement of hook while in this control state.
         {
             movement();
