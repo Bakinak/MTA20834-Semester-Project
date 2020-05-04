@@ -716,11 +716,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d1b516321031d4084b488deee5421d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loggyboi: {fileID: 1094198165}
   experimentalCondition: 0
   sequenceInputTime: 1
   inputAccuracy: 1
   numberOfContinuousInputsNeeded: 3
+  loggerObject: {fileID: 1094198163}
   playerBoat: {fileID: 6330472790024981469}
   playerFishing: {fileID: 682087959141375617}
   playerSteady: {fileID: 4671810717287714530}
