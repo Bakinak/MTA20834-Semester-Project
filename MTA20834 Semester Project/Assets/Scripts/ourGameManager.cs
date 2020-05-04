@@ -8,7 +8,7 @@ public class ourGameManager : MonoBehaviour
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
     //Can also use this to update interface images.  
     public bool experimentalCondition; //false = discrete, true = continuous
-    public Logger loggyboi;
+    
     public float sequenceInputTime; //Time the user has to input the sequence. 1 second in Bastians game
     public float inputAccuracy; //Percentage chance of input being registered. Needs to be value between 0 and 1, with 1 = 100 % chance of input being registered.
     public int numberOfContinuousInputsNeeded; //How many correct inputs need to be registered in continuous output?
@@ -18,7 +18,9 @@ public class ourGameManager : MonoBehaviour
     Player playerScript;
     playerFishing fishingScript;
     playerSteadyBoat steadyScript;
+    Logger loggyboi;
     FishAI fishAIScript;
+    public GameObject loggerObject;
     public GameObject playerBoat;
     public GameObject playerFishing;
     public GameObject playerSteady;
@@ -64,6 +66,8 @@ public class ourGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        loggyboi = loggerObject.GetComponent<Logger>();
         loggyboi.writeCondition(experimentalCondition);
         //Spawn all the fish we need, and make them inactive until we need them.
         for(int i = 0; i < fishySpecies.Length; i++)
@@ -303,7 +307,7 @@ public class ourGameManager : MonoBehaviour
                 letFishGo();
                 Debug.Log("Missed Waves, or input not registered");
             }
-            loggyboi.NewLog(Mathf.Abs(attemptsLeft-20), Mathf.Abs(fishStillNeeded-12), fishingAttemptUsed, inputResgisteredCorrectly);
+            loggyboi.NewLog(attemptsLeft+21, fishStillNeeded+12, fishingAttemptUsed, inputResgisteredCorrectly);
             wavesPassed = 0;
             correctContinuousInputs = 0;
             inputResgisteredCorrectly = false;

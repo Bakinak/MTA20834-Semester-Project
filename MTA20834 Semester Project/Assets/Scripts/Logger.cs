@@ -7,14 +7,27 @@ public class Logger : MonoBehaviour
     private string filePath;
     string sequenceString, recognizedString;
 
-    // Start is called before the first frame update
-    void Start()
+    void CreateFile()
     {
-        filePath = Application.persistentDataPath + "/log.txt";
-
+        filePath = Application.dataPath + "/log.txt";
+        if (!File.Exists(filePath))
+        {
+            Debug.Log("Creating file?");
+            File.WriteAllText(filePath, "Login Log");
+        }
+        else
+        {
+            Debug.Log("Its already there 0u0");
+        }
         StreamWriter writer = new StreamWriter(filePath, true);
         writer.WriteLine("");
         writer.Close();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        CreateFile();
     }
 
     public void writeCondition(bool condition)
