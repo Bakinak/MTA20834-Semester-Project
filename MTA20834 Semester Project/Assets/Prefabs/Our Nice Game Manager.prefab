@@ -725,13 +725,20 @@ MonoBehaviour:
   playerFishing: {fileID: 682087959141375617}
   playerSteady: {fileID: 4671810717287714530}
   QuestSystem: {fileID: 0}
+  currentLocation: 1
   theCamera: {fileID: 0}
   fishingCloseup: {fileID: 682087960051198828}
   fishHoldingPen: {fileID: 682087959428508722}
   fishySpecies:
-  - {fileID: 8373168275983252908, guid: 7d4b772900b82514e8fed8cd45c70e9f, type: 3}
-  - {fileID: 2584140957977895472, guid: 185534e3a33bd834390350e1f2bc8108, type: 3}
-  - {fileID: 3441614589324563699, guid: e5f57e1e3fa31574bb40ab98dd844269, type: 3}
+  - {fileID: 8865011635588700643, guid: d639ab3353d825248b1c9aba9ea200d7, type: 3}
+  - {fileID: 1541041793146355191, guid: a4a8ad5654887bc49a3df88610662929, type: 3}
+  - {fileID: 1836248105811719725, guid: a9e4c227d80ade746805bad4d906ddd9, type: 3}
+  - {fileID: 3450336709492577257, guid: 4f38e813ba8959e4087430d8b05b7135, type: 3}
+  - {fileID: 1836248105811719725, guid: a9e4c227d80ade746805bad4d906ddd9, type: 3}
+  - {fileID: 395052654225964618, guid: 2cfd1027bc7f4354699978d1df9433c9, type: 3}
+  - {fileID: 1836248105811719725, guid: a9e4c227d80ade746805bad4d906ddd9, type: 3}
+  - {fileID: 4922584959024289291, guid: 6c7b2990b2accb04cad0365d9855afe9, type: 3}
+  - {fileID: 981961213695169234, guid: bc59dae8c77266a44bc073f2d00dfe98, type: 3}
   fishSpawnLocations:
   - {fileID: 682087960483637551}
   - {fileID: 682087961020509254}
@@ -745,9 +752,10 @@ MonoBehaviour:
   - {fileID: 4624557017684151697}
   - {fileID: 4624557019589841857}
   controlImages:
-  - {fileID: 21300000, guid: 1c7825853205c2c47a45b6a393ffa56b, type: 3}
+  - {fileID: 0}
   - {fileID: -3591907735516240906, guid: 3dab8d30095fb184894efb87039a9fb1, type: 3}
-  controls: {fileID: 0}
+  controlsWASD: {fileID: 0}
+  TRWE: {fileID: 0}
   test: {fileID: 0}
 --- !u!1 &682087961020509253
 GameObject:
@@ -1190,12 +1198,12 @@ PrefabInstance:
     - target: {fileID: 8046474478763464624, guid: d8835044f31615a4cb6cf542e3e09d28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8046474478763464624, guid: d8835044f31615a4cb6cf542e3e09d28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8046474478763464624, guid: d8835044f31615a4cb6cf542e3e09d28,
         type: 3}
