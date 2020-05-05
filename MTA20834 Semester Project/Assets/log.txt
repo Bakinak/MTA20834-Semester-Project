@@ -6,3 +6,9 @@ Discrete Condition
 Discrete Condition
 41, 24, CoSeq, CoRecog, 52,17733
 40, 23, CoSeq, CoRecog, 81,79604
+
+Discrete Condition
+
+Discrete Condition
+41, 24, CoSeq, CoRecog, 40,99022
+40, 23, CoSeq, CoRecog, 63,5874

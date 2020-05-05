@@ -844,6 +844,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quest3_clownfish
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449705848314174, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705848314174, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449705848314174, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706067880025, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706067880025, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706067880025, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706226525697, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706226525697, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706226525697, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 2812449706271768289, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_Text
@@ -853,6 +898,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quest2_eel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706347770639, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706347770639, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706347770639, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706393781956, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706393781956, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706393781956, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 2812449706534035524, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
@@ -873,6 +948,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quest1_cod
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706880532630, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706880532630, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812449706880532630, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 6324619262319115106, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
