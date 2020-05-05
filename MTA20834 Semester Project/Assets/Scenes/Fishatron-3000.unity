@@ -238,6 +238,16 @@ PrefabInstance:
       propertyPath: entranceLevel3
       value: 
       objectReference: {fileID: 2027641809}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: lockLevel3
+      value: 
+      objectReference: {fileID: 433840148}
+    - target: {fileID: 1162202298524913978, guid: 3486e0f50dc074741aab359c1237ed92,
+        type: 3}
+      propertyPath: lockLevel2
+      value: 
+      objectReference: {fileID: 433840149}
     - target: {fileID: 1162202298524913979, guid: 3486e0f50dc074741aab359c1237ed92,
         type: 3}
       propertyPath: m_Name
@@ -736,6 +746,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quest3_clownfish
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449705848314173, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5472014777192873009, guid: 5129d31d5555a794c9a233151a59b729,
+        type: 3}
     - target: {fileID: 2812449705848314174, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -766,6 +782,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.68
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449706067880031, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -271823026486820459, guid: 58a9a9357a35535488441ca576f1462d,
+        type: 3}
+    - target: {fileID: 2812449706226525696, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4677857572975522827, guid: 06ed58d5903e84e4ba64db06f0679a34,
+        type: 3}
     - target: {fileID: 2812449706226525697, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -791,6 +819,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quest2_eel
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449706347770638, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2845143970339795840, guid: d719c60fbcd040943a853a003dce13f8,
+        type: 3}
     - target: {fileID: 2812449706347770639, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -821,6 +855,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.68
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449706393782011, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7551815422558662524, guid: e787012a35ca4cd4a9f07c7a76934839,
+        type: 3}
     - target: {fileID: 2812449706534035524, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_Text
@@ -841,6 +881,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quest1_cod
       objectReference: {fileID: 0}
+    - target: {fileID: 2812449706880532629, guid: 3454c54abb575ed41b0fc5d7c18266f6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1170171190662412748, guid: 8c51c7d69177c324c92e825744733a57,
+        type: 3}
     - target: {fileID: 2812449706880532630, guid: 3454c54abb575ed41b0fc5d7c18266f6,
         type: 3}
       propertyPath: m_LocalScale.x

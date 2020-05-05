@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
-    public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete;
+    public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete, lockLevel2, lockLevel3;
 
     public GameObject codText, carbText, eelText, rainbowfishText, clownfishText, catfishText, arrowIndicatorLevel1, arrowIndicatorLevel2, 
                       entranceLevel2, entranceLevel3;
@@ -85,6 +85,7 @@ public class QuestSystem : MonoBehaviour
                 fishPole.enabled = false;
                 SoundManager.PlaySound(SoundManager.Sound.questComplete);
                 arrowIndicatorLevel1.SetActive(true);
+                lockLevel2.enabled = false;
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
                 eelText.SetActive(true); rainbowfishText.SetActive(true);
             }
@@ -108,6 +109,7 @@ public class QuestSystem : MonoBehaviour
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
                 isryder.enabled = true;
+                lockLevel3.enabled = false;
                 clownfishText.SetActive(true); catfishText.SetActive(true);
             }
         }
