@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     public Camera minimap;
     public GameObject noEnter, noEnterLevel2, level1, level2, level3;
+    public AudioSource rain;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
 
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
 
+        rain.enabled = false;
         noEnter.SetActive(false);
         noEnterLevel2.SetActive(false);
     }
@@ -180,21 +182,25 @@ public class Player : MonoBehaviour
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
             manager.currentLocation = 2;
+            rain.enabled = true;
         }
         else if (collision.gameObject.tag == "entranceTile" && manager.currentLocation == 2)
         {
             minimap.transform.position = new Vector3(level1.transform.position.x, level1.transform.position.y, -20);
             manager.currentLocation = 1;
+            rain.enabled = false;
         }
         else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel == 2 && qst.updateRainbow == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -20);
             manager.currentLocation = 3;
+            rain.enabled = false;
         }
         else if (collision.gameObject.tag == "entranceTileLevel3" && manager.currentLocation == 3)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
-            manager.currentLocation = 2; 
+            manager.currentLocation = 2;
+            rain.enabled = true;
         }
     }
 }

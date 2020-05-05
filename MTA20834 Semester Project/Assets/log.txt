@@ -1,0 +1,21 @@
+Login Log
+Discrete Condition
+1, 1, CoSeq, CoRecog, 26,868
+2, 2, CoSeq, CoRecog, 47,51229
+3, 2, CoSeq, FaRecog, 71,58793
+4, 3, CoSeq, CoRecog, 92,24751
+5, 4, CoSeq, CoRecog, 112,1504
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 25,25568
+2, 2, CoSeq, CoRecog, 45,45409
+3, 2, CoSeq, FaRecog, 65,49408
+4, 3, CoSeq, CoRecog, 85,67555
+5, 4, CoSeq, CoRecog, 107,2943
+
+Discrete Condition
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 37,86293
+
+Discrete Condition
