@@ -50,8 +50,8 @@ public class ourGameManager : MonoBehaviour
     bool inputResgisteredCorrectly;
 
     //Updating UI Elements
-    public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
-    public Image controlsWASD, TRWE;
+    public Image controlsWASD, TRWE, hookUpDown;
+    public Text controlsWASDText, TRWEText, hookUpDownText;
     public GameObject prepareText, steadyText;
 
 
@@ -87,8 +87,12 @@ public class ourGameManager : MonoBehaviour
         steadyScript.controlstate = false;
 
         //UI setup
-        controlsWASD.enabled = true;
+        
         TRWE.enabled = false;
+        TRWEText.enabled = false;
+        hookUpDownText.enabled = false;
+        hookUpDown.enabled = false;
+        
         originalInputAccuracy = inputAccuracy;
         //KeySequence
 
@@ -105,11 +109,18 @@ public class ourGameManager : MonoBehaviour
         {
             controlsWASD.enabled = true;
             TRWE.enabled = false;
+            TRWEText.enabled = false;
+            hookUpDownText.enabled = false;
+            hookUpDown.enabled = false;
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
         } else
         {
+            controlsWASDText.enabled = false;
             controlsWASD.enabled = false;
             TRWE.enabled = true;
+            TRWEText.enabled = true;
+            hookUpDownText.enabled = true;
+            hookUpDown.enabled = true;
         }
     }
 

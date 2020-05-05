@@ -98,3 +98,28 @@ Discrete Condition
 1, 1, CoSeq, CoRecog, 27.23325
 
 Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 26,23512
+2, 2, CoSeq, CoRecog, 46,75339
+3, 2, CoSeq, FaRecog, 67,81561
+4, 3, CoSeq, CoRecog, 88,3938
+5, 4, CoSeq, CoRecog, 111,215
