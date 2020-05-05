@@ -491,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682087959716040054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0950003, y: 1.7574978, z: 0}
+  m_LocalPosition: {x: -1.922, y: 1.563, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 939092999221233076}
@@ -751,12 +751,14 @@ MonoBehaviour:
   - {fileID: 4624557017967644757}
   - {fileID: 4624557017684151697}
   - {fileID: 4624557019589841857}
-  controlImages:
-  - {fileID: 0}
-  - {fileID: -3591907735516240906, guid: 3dab8d30095fb184894efb87039a9fb1, type: 3}
   controlsWASD: {fileID: 0}
   TRWE: {fileID: 0}
-  test: {fileID: 0}
+  hookUpDown: {fileID: 0}
+  controlsWASDText: {fileID: 0}
+  TRWEText: {fileID: 0}
+  hookUpDownText: {fileID: 0}
+  prepareText: {fileID: 0}
+  steadyText: {fileID: 0}
 --- !u!1 &682087961020509253
 GameObject:
   m_ObjectHideFlags: 0
