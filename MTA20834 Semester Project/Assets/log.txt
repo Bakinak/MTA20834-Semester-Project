@@ -79,3 +79,22 @@ Discrete Condition
 4, 3, CoSeq, CoRecog, 88,48152
 5, 4, CoSeq, CoRecog, 108,3617
 6, 4, CoSeq, FaRecog, 151,8227
+
+Discrete Condition
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 25.74272
+2, 2, CoSeq, CoRecog, 47.18567
+3, 2, CoSeq, FaRecog, 69.16825
+4, 3, CoSeq, CoRecog, 91.96808
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 24.90633
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 24.84499
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 27.23325
+
+Discrete Condition
