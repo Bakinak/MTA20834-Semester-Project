@@ -137,6 +137,8 @@ public class playerSteadyBoat : MonoBehaviour
     {
         if (collision.tag == "wave")
         {
+            manager.prepareText.SetActive(false);
+            manager.steadyText.SetActive(true);
             inWave += 1;
             //tryingToSteady = false;
         }

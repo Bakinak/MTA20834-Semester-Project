@@ -52,6 +52,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
     public Image controlsWASD, TRWE;
+    public GameObject prepareText, steadyText;
 
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
@@ -60,8 +61,6 @@ public class ourGameManager : MonoBehaviour
     int attemptsLeft = 20;
 
 
-
-    public Text test;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +72,7 @@ public class ourGameManager : MonoBehaviour
         for(int i = 0; i < fishySpecies.Length; i++)
         {
             fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
+            fishySpecies[i].GetComponent<FishAI>().qst = QuestSystem;
             fishySpecies[i].SetActive(false);
             fishySpecies[i].transform.parent = null;
         }
@@ -94,6 +94,8 @@ public class ourGameManager : MonoBehaviour
 
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
+        prepareText.SetActive(false);
+        steadyText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -185,6 +187,7 @@ public class ourGameManager : MonoBehaviour
         {
             currentFish[i - addition] = fishySpecies[i];
             currentFish[i - addition].transform.position = fishSpawnLocations[i - addition].transform.position;
+            currentFish[i - addition].GetComponent<FishAI>().checkOutline();
             currentFish[i - addition].SetActive(true);
         }
     }
@@ -212,6 +215,7 @@ public class ourGameManager : MonoBehaviour
 
     void spawnWaves()
     {
+        prepareText.SetActive(true);
         if(experimentalCondition == false) //Discrete wave
         {
             waves[0].SetActive(true);
@@ -284,7 +288,6 @@ public class ourGameManager : MonoBehaviour
     {
         Debug.Log("fishCaught");
         QuestSystem.updateFishUI(fishAIScript.fishtype);
-        fishStillNeeded -= 1;
         accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
         fishStreak += 1;
         if (fishStreak == 2)
@@ -302,6 +305,7 @@ public class ourGameManager : MonoBehaviour
         {
             if (inputResgisteredCorrectly)
             {
+                fishStillNeeded -= 1;
                 Debug.Log("Input registered, how lucky!");
                 fishingScript.inputSequenceOver = true;
             }
@@ -313,12 +317,13 @@ public class ourGameManager : MonoBehaviour
                 letFishGo();
                 Debug.Log("Missed Waves, or input not registered");
             }
-            loggyboi.NewLog(attemptsLeft+21, fishStillNeeded+12, fishingAttemptUsed, inputResgisteredCorrectly);
+            loggyboi.NewLog(Mathf.Abs(attemptsLeft - 21), Mathf.Abs(fishStillNeeded - 12), fishingAttemptUsed, inputResgisteredCorrectly);
             wavesPassed = 0;
             correctContinuousInputs = 0;
             inputResgisteredCorrectly = false;
             steadyScript.tryingToSteady = true;
             steadyScript.inWave = 0;
+            steadyText.SetActive(false);
         }
     }
 

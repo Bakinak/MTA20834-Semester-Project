@@ -8,7 +8,7 @@ public class FishAI : MonoBehaviour
     public bool escaped;
     public int fishtype;
 
-
+    public QuestSystem qst;
     ourGameManager manager;
 
 
@@ -17,6 +17,7 @@ public class FishAI : MonoBehaviour
     {
         escaped = false;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
+        
     }
 
     // Update is called once per frame
@@ -27,6 +28,82 @@ public class FishAI : MonoBehaviour
             transform.position += new Vector3(1.5f, 0, 0) * Time.deltaTime;
         } 
 
+    }
+
+    public void checkOutline()
+    {
+        switch (fishtype)
+        {
+            case 0:
+                if(qst.updateCod < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            case 1:
+                if(qst.updateCarb < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            case 2:
+                if (qst.updateEel < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            case 3:
+                if (qst.updateRainbow < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            case 4:
+                if (qst.updateCatfish < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            case 5:
+                if (qst.updateClownfish < 2)
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                break;
+
+            default:
+
+                break;
+        }
     }
 
 

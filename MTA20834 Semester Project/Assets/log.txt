@@ -1,14 +1,64 @@
 Login Log
 Discrete Condition
+41, 24, CoSeq, CoRecog, 28.47461
 
 Discrete Condition
 
 Discrete Condition
-41, 24, CoSeq, CoRecog, 52,17733
-40, 23, CoSeq, CoRecog, 81,79604
 
 Discrete Condition
 
 Discrete Condition
-41, 24, CoSeq, CoRecog, 40,99022
-40, 23, CoSeq, CoRecog, 63,5874
+41, 24, CoSeq, CoRecog, 24.68932
+
+Discrete Condition
+41, 24, CoSeq, CoRecog, 24.96948
+
+Discrete Condition
+41, 24, CoSeq, CoRecog, 24.4274
+40, 23, CoSeq, CoRecog, 47.64722
+39, 22, CoSeq, FaRecog, 70.42967
+38, 22, CoSeq, CoRecog, 92.7277
+
+Discrete Condition
+41, 24, CoSeq, CoRecog, 30.03663
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+
+Discrete Condition
+41, 24, CoSeq, CoRecog, 24.52869
+40, 23, CoSeq, CoRecog, 45.48901
+39, 22, CoSeq, FaRecog, 68.42953
+38, 22, CoSeq, CoRecog, 89.35006
+37, 21, CoSeq, CoRecog, 118.4108
+36, 20, CoSeq, FaRecog, 154.1279
+35, 20, CoSeq, CoRecog, 176.4489
+34, 19, CoSeq, CoRecog, 197.4722
+33, 18, CoSeq, FaRecog, 251.5896
+32, 18, CoSeq, CoRecog, 273.5699
+31, 17, CoSeq, CoRecog, 296.029
+30, 16, CoSeq, FaRecog, 319.45
+29, 16, CoSeq, CoRecog, 344.7896
+28, 15, CoSeq, CoRecog, 381.4703
+27, 14, CoSeq, FaRecog, 403.788
+26, 14, CoSeq, CoRecog, 427.7281
+25, 13, CoSeq, FaRecog, 451.0304
+24, 13, CoSeq, FaRecog, 475.2905
+23, 13, CoSeq, FaRecog, 501.2681
+22, 13, CoSeq, CoRecog, 524.3307
+21, 12, CoSeq, CoRecog, 544.8708
+
+Discrete Condition
+1, 0, CoSeq, CoRecog, 24.46037
+2, 1, CoSeq, CoRecog, 44.97932
+3, 2, CoSeq, FaRecog, 67.93903
+
+Discrete Condition
+1, 1, CoSeq, CoRecog, 24.45932
+2, 2, CoSeq, CoRecog, 45.45752
+3, 2, CoSeq, FaRecog, 67.78038
+4, 3, CoSeq, CoRecog, 90.53915
