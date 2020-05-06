@@ -1,0 +1,29 @@
+Login Log
+Discrete Condition
+1, 1, CoSeq, CoRecog, 28.97453
+
+Discrete Condition
+1, 0, CoSeq, FaRecog, 24.4768
+
+Discrete Condition
+1, 0, CoSeq, FaRecog, 24.18756
+2, 1, CoSeq, CoRecog, 44.36605
+
+Continuos Condition
+1, 0, CoSeq, FaRecog, 27.46165
+2, 1, CoSeq, CoRecog, 50.96078
+3, 2, CoSeq, CoRecog, 76.32176
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 27.6571
+
+Continuos Condition
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 27.38796
+2, 2, CoSeq, CoRecog, 50.86689
+3, 2, FaSeq, FaRecog, 75.56573
+
+Continuos Condition
+1, 0, FaSeq, FaRecog, 27.47737
+2, 1, CoSeq, CoRecog, 51.49811

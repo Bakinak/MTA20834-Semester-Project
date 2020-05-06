@@ -259,14 +259,19 @@ public class ourGameManager : MonoBehaviour
         else //Continuous condition
         {
             correctContinuousInputs += 1; //Counting up everytime they do it correcly. Reach some number before we try to roll dice.
-            if (correctContinuousInputs >= numberOfContinuousInputsNeeded && fishingAttemptUsed == false)
+            
+            if (correctContinuousInputs >= numberOfContinuousInputsNeeded && rollDice() && fishingAttemptUsed == false)
             {
+                steadyScript.tryingToSteady = true;
+                inputResgisteredCorrectly = true;
                 fishingAttemptUsed = true;
-                if (rollDice())
-                {
-                    inputResgisteredCorrectly = true;
-                }
             }
+            else if (roll < inputAccuracy)
+            {
+                steadyScript.tryingToSteady = true;
+            }
+            
+
         }
     }
 

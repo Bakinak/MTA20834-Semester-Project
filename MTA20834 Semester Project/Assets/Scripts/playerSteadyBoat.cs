@@ -124,7 +124,7 @@ public class playerSteadyBoat : MonoBehaviour
 
     void tiltBoat()
     {
-        if (currentTilt > maxTilt && tryingToSteady == false)
+        if (currentTilt > maxTilt && inWave > 0 && tryingToSteady == false)
         {
             transform.eulerAngles += new Vector3(0, 0, -tiltSpeed) * Time.deltaTime;
             currentTilt += -tiltSpeed * Time.deltaTime;
