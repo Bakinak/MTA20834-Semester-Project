@@ -48,6 +48,7 @@ public class ourGameManager : MonoBehaviour
     int correctContinuousInputs;
     int wavesPassed;
     bool inputResgisteredCorrectly;
+    float roll;
 
     //Updating UI Elements
     public Image controlsWASD, TRWE, hookUpDown;
@@ -247,7 +248,11 @@ public class ourGameManager : MonoBehaviour
         {
             if (rollDice() && fishingAttemptUsed == false)
             {
+                steadyScript.tryingToSteady = true;
                 inputResgisteredCorrectly = true;
+            } else if (roll < inputAccuracy)
+            {
+                steadyScript.tryingToSteady = true;
             }
             fishingAttemptUsed = true; //This is done to only give the user one correct attempt in the discrete version.
         }
@@ -267,7 +272,8 @@ public class ourGameManager : MonoBehaviour
 
     bool rollDice()
     {
-        if(Random.value < inputAccuracy + accuracyModifier)
+        roll = Random.value;
+        if(roll < inputAccuracy + accuracyModifier)
         {
             return true;
         }
@@ -298,7 +304,7 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fishCaught");
-        QuestSystem.updateFishUI(fishAIScript.fishtype);
+        QuestSystem.updateFishUI(fishAIScript.fishtype); //Updating UI.
         accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
         fishStreak += 1;
         if (fishStreak == 2)
@@ -306,7 +312,7 @@ public class ourGameManager : MonoBehaviour
             accuracyModifier = -1;
             fishStreak = 0;
         }
-        //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
+        
     }
 
     public void waveGoodbye() //Called when a wave has passed the boat. Called from playerSteadyBoat, in the onTriggerExit2D function. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.

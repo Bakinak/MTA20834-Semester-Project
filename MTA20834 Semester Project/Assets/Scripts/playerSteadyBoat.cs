@@ -50,10 +50,7 @@ public class playerSteadyBoat : MonoBehaviour
         {
             if (inWave > 0)
             {
-                if (inputtingSequence())
-                {
-                    manager.correctInput();
-                }
+                inputtingSequence();
             }
 
 
@@ -86,7 +83,7 @@ public class playerSteadyBoat : MonoBehaviour
     }
 
 
-    bool inputtingSequence()
+    void inputtingSequence()
     {
         //Debug.Log("hey");
 
@@ -104,9 +101,10 @@ public class playerSteadyBoat : MonoBehaviour
             {
                 resetSequenceAttempt();
                 Debug.Log("Correct Sequence Entered");
-                tryingToSteady = true;
+                //tryingToSteady = true;
                 inputDelay = Random.value;
-                return true; //return true, so we can do whatever we need to do if we are using either discrete or continuous input.
+                manager.correctInput();
+
             }
         }
         else if (Input.anyKeyDown || timePassed > sequenceInputTime) //else, if we input any other key, or spend too long trying to input the sequence, start over.
@@ -114,7 +112,7 @@ public class playerSteadyBoat : MonoBehaviour
             Debug.Log("failed");
             resetSequenceAttempt();
         }
-        return false;
+        
     }
 
     void resetSequenceAttempt() //Reset all the stuff we need to check whether correct sequence has been typed.
@@ -126,7 +124,7 @@ public class playerSteadyBoat : MonoBehaviour
 
     void tiltBoat()
     {
-        if (currentTilt > maxTilt  && inWave > 0 && tryingToSteady == false)
+        if (currentTilt > maxTilt && tryingToSteady == false)
         {
             transform.eulerAngles += new Vector3(0, 0, -tiltSpeed) * Time.deltaTime;
             currentTilt += -tiltSpeed * Time.deltaTime;
@@ -147,8 +145,7 @@ public class playerSteadyBoat : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision) //As long as we are in contact with a wave, allow the player to enter the keysequences.
     {
         if (collision.tag == "wave")
-        {
-            
+        {           
             tiltBoat();
         }
     }
