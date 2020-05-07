@@ -6,7 +6,6 @@ public class waves : MonoBehaviour
 {
     Vector3 startPosition;
     public float moveSpeed;
-    bool boatContact;
     bool waveBroken;
     Transform distanceToBoat;
 
@@ -22,32 +21,14 @@ public class waves : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
-
-        if (boatContact)
-        {
-            if(waveBroken == false && Vector2.Distance(transform.position, distanceToBoat.transform.position) < 2)
-            {
-                //Do something in animator controller so it breaks against the ship
-                Debug.Log("The wave crashed into the boat!, Splooosh!!!");
-                waveBroken = true;
-                
-            }
-        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.tag == "fishBoundary") 
+        if (collision.tag == "fishBoundary")
         {
             transform.position = startPosition;
-            boatContact = false;
             gameObject.SetActive(false);
-        }
-
-
-        if(other.tag == "Player")
-        {
-            boatContact = true;
         }
     }
 }

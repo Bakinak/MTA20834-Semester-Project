@@ -69,7 +69,6 @@ public class playerFishing : MonoBehaviour
                 {
                     SoundManager.PlaySound(SoundManager.Sound.fishCaughtSucces);
                     somethingOnHook = false;
-                    manager.fishCaught();
                 }
                 moveSpeed = startMoveSpeed;
                 inputSequenceOver = false;

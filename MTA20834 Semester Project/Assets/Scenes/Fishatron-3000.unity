@@ -1664,24 +1664,9 @@ PrefabInstance:
       objectReference: {fileID: 187129751}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
-      propertyPath: prepareText
-      value: 
-      objectReference: {fileID: 1854785694}
-    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
-        type: 3}
-      propertyPath: steadyText
-      value: 
-      objectReference: {fileID: 1711872339}
-    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
-        type: 3}
       propertyPath: hookUpDown
       value: 
       objectReference: {fileID: 1889042735}
-    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
-        type: 3}
-      propertyPath: hookUpDownText
-      value: 
-      objectReference: {fileID: 424377522}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: controlsWASDText
@@ -1694,14 +1679,19 @@ PrefabInstance:
       objectReference: {fileID: 1625151777}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
-      propertyPath: inputAccuracy
-      value: 0.6
-      objectReference: {fileID: 0}
+      propertyPath: hookUpDownText
+      value: 
+      objectReference: {fileID: 424377522}
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
-      propertyPath: experimentalCondition
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: prepareText
+      value: 
+      objectReference: {fileID: 1854785694}
+    - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
+        type: 3}
+      propertyPath: steadyText
+      value: 
+      objectReference: {fileID: 1711872339}
     - target: {fileID: 682087960557721774, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: m_LocalPosition.x
