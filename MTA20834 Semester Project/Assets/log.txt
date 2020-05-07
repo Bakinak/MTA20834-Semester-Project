@@ -27,3 +27,25 @@ Continuos Condition
 Continuos Condition
 1, 0, FaSeq, FaRecog, 27.47737
 2, 1, CoSeq, CoRecog, 51.49811
+
+Continuos Condition
+
+Continuos Condition
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 27.67503
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 27.74457
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 28.50193
+
+Continuos Condition
+
+Continuos Condition
+1, 1, CoSeq, CoRecog, 29.63975
+2, 1, FaSeq, FaRecog, 53.17794
+3, 1, FaSeq, FaRecog, 80.69934
+4, 2, CoSeq, CoRecog, 107.3163
+5, 3, CoSeq, CoRecog, 132.978
