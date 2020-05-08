@@ -21,6 +21,7 @@ public class playerSteadyBoat : MonoBehaviour
     //Doing the Key Sequence. As it stands, T and R does not need to pressed at the same time, only the order matters.
     bool inWave;
     bool experimentalCondition;
+    bool sequenceOver;
     float inputAccuracy;
     int numberOfContinuousInputsNeeded;
     bool attemptStarted;
@@ -41,6 +42,7 @@ public class playerSteadyBoat : MonoBehaviour
     //Fun Data to Log
     int windowCorrectInputs;
     int windowInputAtteempts;
+    float lastKeyPressTime;
 
     //Create key sequence
     KeyCode[] sequence = new KeyCode[]
@@ -107,7 +109,9 @@ public class playerSteadyBoat : MonoBehaviour
         //Debug.Log("hey");
         if (Input.anyKeyDown)
         {
-            manager.keyPressedLog(Input.inputString);
+            string correctKeyOrNot = "Failed";
+            string expectedKey = sequence[sequenceIndex].ToString();
+
 
             if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
             {
@@ -118,20 +122,33 @@ public class playerSteadyBoat : MonoBehaviour
 
             if (Input.GetKeyDown(sequence[sequenceIndex])) //If the key pressed is the next key we needed to press in the sequence, check that...
             {
+                correctKeyOrNot = "Correct";
+                
+
                 sequenceIndex += 1;
                 if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
                 {
-                    resetSequenceAttempt();
                     Debug.Log("Correct Sequence Entered");
                     //tryingToSteady = true;
                     inputDelay = Random.value;
                     correctInput();
-
+                    sequenceOver = true;
                 }
             }
             else if (Input.anyKeyDown || timePassed > sequenceInputTime) //else, if we input any other key, or spend too long trying to input the sequence, start over.
             {
-                Debug.Log("failed");
+                Debug.Log("failed");               
+                sequenceOver = true;
+            }
+
+            manager.keyPressedLog(Input.inputString, correctKeyOrNot, expectedKey, (timePassed - lastKeyPressTime).ToString());
+
+            lastKeyPressTime = timePassed;
+
+            if (sequenceOver)
+            {
+                //manager.keySequenceCompleteLog();
+                sequenceOver = false;               
                 resetSequenceAttempt();
             }
         }
@@ -140,6 +157,7 @@ public class playerSteadyBoat : MonoBehaviour
 
     void resetSequenceAttempt() //Reset all the stuff we need to check whether correct sequence has been typed.
     {
+        lastKeyPressTime = 0;
         sequenceIndex = 0;
         timePassed = 0;
         attemptStarted = false;
@@ -273,6 +291,7 @@ public class playerSteadyBoat : MonoBehaviour
             waveGoodbye();
             inputDelay = 0;
             inWave = false;
+            resetSequenceAttempt();
         }
     }
 

@@ -255,9 +255,14 @@ public class ourGameManager : MonoBehaviour
     }
 
 
-    public void keyPressedLog(string keyPressed)
+    public void keyPressedLog(string keyPressed, string correctKey, string keyExpected,  string timeSinceLastKey)
     {
-        //loggingManager.newKeyInput(currentCondition, playerID);
+        loggingManager.newKeyInput(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), keyPressed, correctKey, keyExpected, timeSinceLastKey);
+    }
+
+    public void keySequenceCompleteLog()
+    {
+
     }
 
     public void inputWindowOver(bool success)
