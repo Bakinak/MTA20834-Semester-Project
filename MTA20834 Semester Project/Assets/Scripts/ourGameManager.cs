@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class ourGameManager : MonoBehaviour
 {
+    //Things we need to log
+    [SerializeField]
+    private LoggingManager loggingManager;
+
+    public string playerID;
+    string currentCondition;
+    int bubbleNumber;
+    int fishCaught;
+
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
     //Can also use this to update interface images.  
     public bool experimentalCondition; //false = discrete, true = continuous
@@ -17,9 +26,7 @@ public class ourGameManager : MonoBehaviour
     Player playerScript;
     playerFishing fishingScript;
     playerSteadyBoat steadyScript;
-    Logger loggyboi;
     FishAI fishAIScript;
-    public GameObject loggerObject;
     public GameObject playerBoat;
     public GameObject playerFishing;
     public GameObject playerSteady;
@@ -56,10 +63,17 @@ public class ourGameManager : MonoBehaviour
     void Start()
     {
 
-        loggyboi = loggerObject.GetComponent<Logger>();
-        loggyboi.writeCondition(experimentalCondition);
+        if (experimentalCondition)
+        {
+            currentCondition = "Continuous";
+        }
+        else
+        {
+            currentCondition = "Discrete";
+        }
+
         //Spawn all the fish we need, and make them inactive until we need them.
-        for(int i = 0; i < fishySpecies.Length; i++)
+        for (int i = 0; i < fishySpecies.Length; i++)
         {
             fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
             fishySpecies[i].GetComponent<FishAI>().qst = QuestSystem;
@@ -90,6 +104,9 @@ public class ourGameManager : MonoBehaviour
         //Resources.Load
         prepareText.SetActive(false);
         steadyText.SetActive(false);
+
+
+        loggingManager.AddNewEvent("Game Started!", currentCondition, playerID);
     }
 
     // Update is called once per frame
@@ -127,7 +144,7 @@ public class ourGameManager : MonoBehaviour
                 fishingScript.controlstate = true;
                 fishingScript.lowerKeyLetGo = false;
                 currentScreen = 1;
-
+                bubbleNumber += 1;
                 theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
 
                 spawnFishies();
@@ -238,12 +255,18 @@ public class ourGameManager : MonoBehaviour
     }
 
 
+    public void keyPressedLog(string keyPressed)
+    {
+        //loggingManager.newKeyInput(currentCondition, playerID);
+    }
+
     public void inputWindowOver(bool success)
     {
         if (success)
         {
             fishingScript.inputSequenceOver = true;
             QuestSystem.updateFishUI(fishAIScript.fishtype); //Updating UI.
+            fishCaught += 1;
         }
         else
         {
@@ -252,8 +275,12 @@ public class ourGameManager : MonoBehaviour
             fishingScript.inputSequenceOver = true;
         }
         //Log Things here using new Logging system from Bastian
+        loggingManager.inputWindowOverLog(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString());
         steadyText.SetActive(false);
     }
 
-
+    void OnApplicationQuit()
+    {
+        loggingManager.LogToDisk();
+    }
 }

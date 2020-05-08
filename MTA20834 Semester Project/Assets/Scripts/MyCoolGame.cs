@@ -5,7 +5,7 @@ using UnityEngine;
 public class MyCoolGame : MonoBehaviour
 {
 
-    [SerializeField]
+    /*[SerializeField]
     private LoggingManager loggingManager;
 
     // Start is called before the first frame update
@@ -22,5 +22,5 @@ public class MyCoolGame : MonoBehaviour
 
     void OnApplicationQuit() {
         loggingManager.LogToDisk();
-    }
+    }*/
 }

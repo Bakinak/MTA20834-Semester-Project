@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1094198164}
-  - component: {fileID: 1094198165}
+  - component: {fileID: 786504056}
   m_Layer: 0
   m_Name: Logger
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 682087960557721774}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1094198165
+--- !u!114 &786504056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1094198163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3749dfd900ebc874788bd19a48a3f5b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2471bbab434a43642a3e46e496eb512b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &682087959058086464
@@ -715,11 +715,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d1b516321031d4084b488deee5421d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experimentalCondition: 1
+  loggingManager: {fileID: 786504056}
+  playerID: Lilla Banan
+  experimentalCondition: 0
   sequenceInputTime: 1
   inputAccuracy: 0.6
   numberOfContinuousInputsNeeded: 3
-  loggerObject: {fileID: 1094198163}
   playerBoat: {fileID: 6330472790024981469}
   playerFishing: {fileID: 682087959141375617}
   playerSteady: {fileID: 4671810717287714530}
@@ -846,7 +847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a50c302a0a334947a00f48a5385e4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inWave: 0
   controlstate: 1
   tryingToSteady: 0
 --- !u!1001 &62978644
@@ -1280,7 +1280,7 @@ PrefabInstance:
     - target: {fileID: 1643765565039499342, guid: 44c6aeb470290a34796ade23f6a9401e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13
+      value: -8.25
       objectReference: {fileID: 0}
     - target: {fileID: 1643765565039499342, guid: 44c6aeb470290a34796ade23f6a9401e,
         type: 3}

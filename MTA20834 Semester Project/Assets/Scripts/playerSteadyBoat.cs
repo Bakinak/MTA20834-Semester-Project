@@ -105,31 +105,35 @@ public class playerSteadyBoat : MonoBehaviour
     void inputtingSequence()
     {
         //Debug.Log("hey");
-
-        if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
+        if (Input.anyKeyDown)
         {
-            Debug.Log("Sequence Started");
-            timePassed = 0;
-            attemptStarted = true;
-        }
+            manager.keyPressedLog(Input.inputString);
 
-        if (Input.GetKeyDown(sequence[sequenceIndex])) //If the key pressed is the next key we needed to press in the sequence, check that...
-        {
-            sequenceIndex += 1;
-            if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
+            if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
             {
-                resetSequenceAttempt();
-                Debug.Log("Correct Sequence Entered");
-                //tryingToSteady = true;
-                inputDelay = Random.value;
-                correctInput();
-
+                Debug.Log("Sequence Started");
+                timePassed = 0;
+                attemptStarted = true;
             }
-        }
-        else if (Input.anyKeyDown || timePassed > sequenceInputTime) //else, if we input any other key, or spend too long trying to input the sequence, start over.
-        {
-            Debug.Log("failed");
-            resetSequenceAttempt();
+
+            if (Input.GetKeyDown(sequence[sequenceIndex])) //If the key pressed is the next key we needed to press in the sequence, check that...
+            {
+                sequenceIndex += 1;
+                if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
+                {
+                    resetSequenceAttempt();
+                    Debug.Log("Correct Sequence Entered");
+                    //tryingToSteady = true;
+                    inputDelay = Random.value;
+                    correctInput();
+
+                }
+            }
+            else if (Input.anyKeyDown || timePassed > sequenceInputTime) //else, if we input any other key, or spend too long trying to input the sequence, start over.
+            {
+                Debug.Log("failed");
+                resetSequenceAttempt();
+            }
         }
         
     }
@@ -213,9 +217,7 @@ public class playerSteadyBoat : MonoBehaviour
             accuracyModifier = 1;
         }
 
-        manager.inputWindowOver(inputResgisteredCorrectly); //Update UI and log data.
 
-        inputResgisteredCorrectly = false;
 
         attemptsLeft -= 1;
         if (fishStillNeeded >= attemptsLeft)
@@ -229,6 +231,9 @@ public class playerSteadyBoat : MonoBehaviour
 
         fishingAttemptUsed = false;
 
+        manager.inputWindowOver(inputResgisteredCorrectly); //Update UI and log data.
+
+        inputResgisteredCorrectly = false;
     }
 
     void tiltBoat()
