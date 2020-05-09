@@ -260,27 +260,31 @@ public class ourGameManager : MonoBehaviour
         loggingManager.newKeyInput(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), keyPressed, correctKey, keyExpected, timeSinceLastKey);
     }
 
-    public void keySequenceCompleteLog()
+    public void keySequenceCompleteLog(string sequenceResult, string sequenceTime)
     {
-
+        loggingManager.sequenceComplete(sequenceResult, currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), sequenceTime);
     }
 
-    public void inputWindowOver(bool success)
+    public void inputWindowOver(bool success, int correctSequencesEntered, int sequencesFailed, int correctSequencesDiscarded, int totalAttemptsInBubble)
     {
+        string fishGot;
         if (success)
         {
             fishingScript.inputSequenceOver = true;
             QuestSystem.updateFishUI(fishAIScript.fishtype); //Updating UI.
             fishCaught += 1;
+            fishGot = "Got Fish";
         }
         else
         {
             letFishGo();
             fishingScript.somethingOnHook = false;
             fishingScript.inputSequenceOver = true;
+            fishGot = "Fish Escaped";
         }
         //Log Things here using new Logging system from Bastian
-        loggingManager.inputWindowOverLog(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString());
+        loggingManager.inputWindowOverLog(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), 
+            correctSequencesEntered.ToString(), sequencesFailed.ToString(), correctSequencesDiscarded.ToString(), totalAttemptsInBubble.ToString(), fishGot);
         steadyText.SetActive(false);
     }
 

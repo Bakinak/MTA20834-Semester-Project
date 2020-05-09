@@ -32,7 +32,7 @@ public class playerSteadyBoat : MonoBehaviour
     bool inputResgisteredCorrectly;
     float roll;
     float accuracyModifier; //Change this to ensure a player catches a fish next time they input correct sequence, or make sure they DON'T catch a fish, in case they've gotten too many in a row.
-
+    int keyStreak;
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
     int fishStreak;
@@ -43,6 +43,12 @@ public class playerSteadyBoat : MonoBehaviour
     int windowCorrectInputs;
     int windowInputAtteempts;
     float lastKeyPressTime;
+    bool sequenceResult;
+    int sequencesComplete;
+    int sequencesFailed;
+    int discardedInputs;
+    string result;
+
 
     //Create key sequence
     KeyCode[] sequence = new KeyCode[]
@@ -75,13 +81,12 @@ public class playerSteadyBoat : MonoBehaviour
             if (inWave)
             {
                 inputtingSequence();
+                if (keyStreak > 0 || attemptStarted)
+                {
+                    timePassed += Time.deltaTime;
+                }
             }
 
-
-            if (attemptStarted == true)
-            {
-                timePassed += Time.deltaTime;
-            }
             
         }
 
@@ -112,11 +117,17 @@ public class playerSteadyBoat : MonoBehaviour
             string correctKeyOrNot = "Failed";
             string expectedKey = sequence[sequenceIndex].ToString();
 
+            keyStreak += 1;
 
             if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
             {
                 Debug.Log("Sequence Started");
-                timePassed = 0;
+                if (keyStreak < 3)
+                {
+                    timePassed = 0;
+                    lastKeyPressTime = 0;
+                }
+                sequenceIndex = 0;
                 attemptStarted = true;
             }
 
@@ -132,27 +143,52 @@ public class playerSteadyBoat : MonoBehaviour
                     //tryingToSteady = true;
                     inputDelay = Random.value;
                     correctInput();
+                    sequenceResult = true;
                     sequenceOver = true;
                 }
             }
-            else if (Input.anyKeyDown || timePassed > sequenceInputTime) //else, if we input any other key, or spend too long trying to input the sequence, start over.
+            else if (Input.anyKeyDown && attemptStarted || timePassed > sequenceInputTime ) //else, if we input any other key, or spend too long trying to input the sequence, start over.
             {
-                Debug.Log("failed");               
+                Debug.Log("failed");
+                sequenceResult = false;
                 sequenceOver = true;
             }
 
+
             manager.keyPressedLog(Input.inputString, correctKeyOrNot, expectedKey, (timePassed - lastKeyPressTime).ToString());
+
+            if (keyStreak >= 2)
+            {
+                attemptStarted = true;
+            }
+
 
             lastKeyPressTime = timePassed;
 
-            if (sequenceOver)
+            if (sequenceOver && attemptStarted)
             {
-                //manager.keySequenceCompleteLog();
-                sequenceOver = false;               
-                resetSequenceAttempt();
+                sequenceOverMethod(sequenceResult);
             }
         }
         
+    }
+
+    void sequenceOverMethod(bool sequenceResult)
+    {
+        if (sequenceResult) //Doing things for the logging system
+        {
+            result = "Sequence Success";
+            sequencesComplete += 1;
+        }
+        else
+        {
+            sequencesFailed += 1;
+            result = "Sequence Failed";
+        }
+
+        manager.keySequenceCompleteLog(result, timePassed.ToString());
+        sequenceOver = false;
+        resetSequenceAttempt();
     }
 
     void resetSequenceAttempt() //Reset all the stuff we need to check whether correct sequence has been typed.
@@ -161,6 +197,7 @@ public class playerSteadyBoat : MonoBehaviour
         sequenceIndex = 0;
         timePassed = 0;
         attemptStarted = false;
+        keyStreak = 0;
     }
 
 
@@ -174,11 +211,14 @@ public class playerSteadyBoat : MonoBehaviour
                 tryingToSteady = true;
                 inputResgisteredCorrectly = true;
                 fishStillNeeded -= 1;
-
             }
             else if (roll < inputAccuracy)
             {
                 tryingToSteady = true;
+            }
+            else
+            {
+                discardedInputs += 1;            
             }
             fishingAttemptUsed = true; //This is done to only give the user one correct attempt in the discrete version.
         }
@@ -191,11 +231,14 @@ public class playerSteadyBoat : MonoBehaviour
                 tryingToSteady = true;
                 inputResgisteredCorrectly = true;
                 fishingAttemptUsed = true;
-
             }
             else if (roll < inputAccuracy)
             {
                 tryingToSteady = true;
+            }
+            else
+            {
+                discardedInputs += 1;
             }
 
 
@@ -215,6 +258,11 @@ public class playerSteadyBoat : MonoBehaviour
 
     public void waveGoodbye() //Called when a wave has passed the boat. Called from playerSteadyBoat, in the onTriggerExit2D function. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.
     {
+        if (attemptStarted)
+        {
+            sequenceOverMethod(false);
+        }
+
         correctContinuousInputs = 0;
         tryingToSteady = true;
 
@@ -249,7 +297,9 @@ public class playerSteadyBoat : MonoBehaviour
 
         fishingAttemptUsed = false;
 
-        manager.inputWindowOver(inputResgisteredCorrectly); //Update UI and log data.
+        int totalSequenceAttempts = sequencesComplete + sequencesFailed;
+
+        manager.inputWindowOver(inputResgisteredCorrectly, sequencesComplete, sequencesFailed, discardedInputs, sequencesComplete + sequencesFailed); //Update UI and log data.
 
         inputResgisteredCorrectly = false;
     }
@@ -292,6 +342,9 @@ public class playerSteadyBoat : MonoBehaviour
             inputDelay = 0;
             inWave = false;
             resetSequenceAttempt();
+            sequencesComplete = 0;
+            sequencesFailed = 0;
+            discardedInputs = 0;
         }
     }
 

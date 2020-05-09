@@ -1,0 +1,22 @@
+Date,Timestamp,PlayerID,currentCondition,Event,WorldID,FishID,TotalFishCaught,BubbleNumber,KeyCode,CorrectKey,KeyExpected,TimeSinceLastKey,SequenceCompleteTime,CorrectSequencesEntered,SequencesFailed,CorrectSequencesDiscarded,TotalAttemptsInBubble,GotFish
+09/05/2020,07:38.7,Lilla Banan,Discrete,Game Started!,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+09/05/2020,07:58.6,Lilla Banan,Discrete,KeyDown,1,0,0,1,t,Correct,T,0,NA,NA,NA,NA,NA,NA
+09/05/2020,07:58.7,Lilla Banan,Discrete,KeyDown,1,0,0,1,r,Correct,R,0.095368,NA,NA,NA,NA,NA,NA
+09/05/2020,07:59.0,Lilla Banan,Discrete,KeyDown,1,0,0,1,w,Correct,W,0.2881151,NA,NA,NA,NA,NA,NA
+09/05/2020,07:59.1,Lilla Banan,Discrete,KeyDown,1,0,0,1,e,Correct,E,0.07994282,NA,NA,NA,NA,NA,NA
+09/05/2020,07:59.1,Lilla Banan,Discrete,Sequence Success,1,0,0,1,NA,NA,NA,NA,0.4634259,NA,NA,NA,NA,NA
+09/05/2020,07:59.8,Lilla Banan,Discrete,KeyDown,1,0,0,1,r,Failed,T,0,NA,NA,NA,NA,NA,NA
+09/05/2020,08:01.3,Lilla Banan,Discrete,InputWindowOver,1,0,1,1,NA,NA,NA,NA,NA,1,0,0,1,Got Fish
+09/05/2020,08:19.0,Lilla Banan,Discrete,KeyDown,1,8,1,2,r,Failed,T,0,NA,NA,NA,NA,NA,NA
+09/05/2020,08:19.2,Lilla Banan,Discrete,KeyDown,1,8,1,2,e,Failed,T,0.1292554,NA,NA,NA,NA,NA,NA
+09/05/2020,08:19.3,Lilla Banan,Discrete,KeyDown,1,8,1,2,w,Failed,T,0.1515077,NA,NA,NA,NA,NA,NA
+09/05/2020,08:19.3,Lilla Banan,Discrete,Sequence Failed,1,8,1,2,NA,NA,NA,NA,0.2807631,NA,NA,NA,NA,NA
+09/05/2020,08:19.7,Lilla Banan,Discrete,KeyDown,1,8,1,2,t,Correct,T,0,NA,NA,NA,NA,NA,NA
+09/05/2020,08:19.8,Lilla Banan,Discrete,KeyDown,1,8,1,2,r,Correct,R,0.1211569,NA,NA,NA,NA,NA,NA
+09/05/2020,08:20.0,Lilla Banan,Discrete,KeyDown,1,8,1,2,w,Correct,W,0.2175932,NA,NA,NA,NA,NA,NA
+09/05/2020,08:20.1,Lilla Banan,Discrete,KeyDown,1,8,1,2,e,Correct,E,0.1078385,NA,NA,NA,NA,NA,NA
+09/05/2020,08:20.1,Lilla Banan,Discrete,Sequence Success,1,8,1,2,NA,NA,NA,NA,0.4465886,NA,NA,NA,NA,NA
+09/05/2020,08:21.7,Lilla Banan,Discrete,InputWindowOver,1,8,2,2,NA,NA,NA,NA,NA,1,1,0,2,Got Fish
+09/05/2020,08:42.6,Lilla Banan,Discrete,KeyDown,1,1,2,3,t,Correct,T,0,NA,NA,NA,NA,NA,NA
+09/05/2020,08:44.5,Lilla Banan,Discrete,Sequence Failed,1,1,2,3,NA,NA,NA,NA,1.900197,NA,NA,NA,NA,NA
+09/05/2020,08:44.5,Lilla Banan,Discrete,InputWindowOver,1,1,2,3,NA,NA,NA,NA,NA,0,1,0,1,Fish Escaped
