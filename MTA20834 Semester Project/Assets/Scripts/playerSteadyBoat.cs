@@ -11,9 +11,8 @@ public class playerSteadyBoat : MonoBehaviour
     ourGameManager manager;
     public bool controlstate;
     public bool tryingToSteady;
-    float currentTilt;
-    float maxTilt = -20;
-    float tiltSpeed = 10;
+    float tiltSpeed = 1;
+    float originalTiltSpeed;
     float inputDelay;
     float timer;
 
@@ -33,6 +32,10 @@ public class playerSteadyBoat : MonoBehaviour
     float roll;
     float accuracyModifier; //Change this to ensure a player catches a fish next time they input correct sequence, or make sure they DON'T catch a fish, in case they've gotten too many in a row.
     int keyStreak;
+    float slowTiltTimer; //Used to provide a bit of feedback in the continuous condition.
+    bool continuousSmallFeedback;
+    public Transform targetRotation;
+    float maxTilt = -20;
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
     int fishStreak;
@@ -65,6 +68,7 @@ public class playerSteadyBoat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalTiltSpeed = tiltSpeed;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         sequenceInputTime = manager.sequenceInputTime;
         inputAccuracy = manager.inputAccuracy;
@@ -90,24 +94,51 @@ public class playerSteadyBoat : MonoBehaviour
             
         }
 
+        if (continuousSmallFeedback)
+        {
+            slowTiltTimer += Time.deltaTime;
+            if(slowTiltTimer > 0.5f)
+            {               
+                resetContinuousFeedback();
+            }
+        }
+
         if (tryingToSteady)
         {
+            targetRotation.eulerAngles = new Vector3(0, 0, 0);
             timer += Time.deltaTime;
             //Debug.Log(transform.eulerAngles.z);
-            if (currentTilt < 0 && timer > inputDelay)
+            if (timer > inputDelay)
             {
-                transform.eulerAngles += new Vector3(0, 0, tiltSpeed*3f) * Time.deltaTime;
-                currentTilt += tiltSpeed * 3f * Time.deltaTime;
-                if(transform.eulerAngles.z < 100)
+                resetContinuousFeedback();
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation.rotation, tiltSpeed / 2);
+
+                if (transform.rotation == targetRotation.rotation)
                 {
-                    inWave = false;
-                    tryingToSteady = false;
-                    timer = 0;
+                    doneSteadying();
                 }
             }
+
         }
     }
 
+    void doneSteadying()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 0);
+        inWave = false;
+        tryingToSteady = false;
+        timer = 0;
+        resetSequenceAttempt();
+        resetContinuousFeedback();
+    }
+
+    void resetContinuousFeedback()
+    {
+        continuousSmallFeedback = false;
+        tiltSpeed = originalTiltSpeed;
+        slowTiltTimer = 0;
+    }
 
     void inputtingSequence()
     {
@@ -141,7 +172,7 @@ public class playerSteadyBoat : MonoBehaviour
                 {
                     Debug.Log("Correct Sequence Entered");
                     //tryingToSteady = true;
-                    inputDelay = Random.value;
+                    inputDelay = Random.value*1.5f;
                     correctInput();
                     sequenceResult = true;
                     sequenceOver = true;
@@ -212,10 +243,10 @@ public class playerSteadyBoat : MonoBehaviour
                 inputResgisteredCorrectly = true;
                 fishStillNeeded -= 1;
             }
-            else if (roll < inputAccuracy)
+            /*else if (roll < inputAccuracy) //Outcommenting this to make it so that you can only receive feedback once in the discrete condition, and if you don't get it right, you get no feedback. 
             {
                 tryingToSteady = true;
-            }
+            }*/
             else
             {
                 discardedInputs += 1;            
@@ -228,13 +259,15 @@ public class playerSteadyBoat : MonoBehaviour
 
             if (correctContinuousInputs >= numberOfContinuousInputsNeeded && rollDice() && fishingAttemptUsed == false)
             {
-                tryingToSteady = true;
+                //tryingToSteady = true;
                 inputResgisteredCorrectly = true;
                 fishingAttemptUsed = true;
             }
-            else if (roll < inputAccuracy)
+            else if (roll < inputAccuracy) //Smaller feedback, like slowing the tilting.
             {
-                tryingToSteady = true;
+                tiltSpeed = originalTiltSpeed / 2;
+                continuousSmallFeedback = true;
+                slowTiltTimer = 0;
             }
             else
             {
@@ -255,6 +288,7 @@ public class playerSteadyBoat : MonoBehaviour
 
         return false;
     }
+
 
     public void waveGoodbye() //Called when a wave has passed the boat. Called from playerSteadyBoat, in the onTriggerExit2D function. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.
     {
@@ -283,8 +317,6 @@ public class playerSteadyBoat : MonoBehaviour
             accuracyModifier = 1;
         }
 
-
-
         attemptsLeft -= 1;
         if (fishStillNeeded >= attemptsLeft)
         {
@@ -306,11 +338,16 @@ public class playerSteadyBoat : MonoBehaviour
 
     void tiltBoat()
     {
-        if (currentTilt > maxTilt && inWave && tryingToSteady == false)
+        if (inWave)
         {
-            transform.eulerAngles += new Vector3(0, 0, -tiltSpeed) * Time.deltaTime;
-            currentTilt += -tiltSpeed * Time.deltaTime;
-        }
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation.rotation, tiltSpeed);
+
+            if (transform.rotation == targetRotation.rotation)
+            {
+                maxTilt *= -1;
+                targetRotation.eulerAngles = new Vector3(0, 0, maxTilt);
+            }
+        }       
     }
 
 
@@ -318,6 +355,7 @@ public class playerSteadyBoat : MonoBehaviour
     {
         if (collision.tag == "wave")
         {
+            targetRotation.eulerAngles = new Vector3(0, 0, maxTilt);
             manager.prepareText.SetActive(false);
             manager.steadyText.SetActive(true);
             inWave = true;
@@ -345,6 +383,10 @@ public class playerSteadyBoat : MonoBehaviour
             sequencesComplete = 0;
             sequencesFailed = 0;
             discardedInputs = 0;
+
+            resetContinuousFeedback();
+            
+           
         }
     }
 
