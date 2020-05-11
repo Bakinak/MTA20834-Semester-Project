@@ -33,6 +33,7 @@ public class ourGameManager : MonoBehaviour
     public QuestSystem QuestSystem;
 
     int currentScreen;
+    bool intro = false;
 
     public int currentLocation = 1;
 
@@ -56,7 +57,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Image controlsWASD, TRWE, hookUpDown;
     public Text controlsWASDText, TRWEText, hookUpDownText;
-    public GameObject prepareText, steadyText;
+    public GameObject prepareText, steadyText, introScreen;
 
 
     // Start is called before the first frame update
@@ -86,7 +87,7 @@ public class ourGameManager : MonoBehaviour
         steadyScript = playerSteady.GetComponent<playerSteadyBoat>();
 
         //Making the player only in control of boat movement at the beginning
-        playerScript.controlstate = true;
+        playerScript.controlstate = false;
         fishingScript.controlstate = false;
         steadyScript.controlstate = false;
 
@@ -112,6 +113,16 @@ public class ourGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(intro == false)
+        {
+            if (Input.GetKeyDown("return"))
+            {
+                introScreen.SetActive(false);
+                playerScript.controlstate = true;
+                intro = true;
+            }
+        }
+
         if (currentScreen == 0)
         {
             controlsWASD.enabled = true;
