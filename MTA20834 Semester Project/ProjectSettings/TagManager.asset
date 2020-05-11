@@ -13,6 +13,8 @@ TagManager:
   - entranceTileLevel3
   - invisibleEntrance
   - invisibleEntrance2
+  - backToLevel1
+  - backToLevel2
   layers:
   - Default
   - TransparentFX

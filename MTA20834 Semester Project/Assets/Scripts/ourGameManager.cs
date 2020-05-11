@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ourGameManager : MonoBehaviour
 {
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
-    //Can also use this to update interface images.
+    //Can also use this to update interface images.  
     public bool experimentalCondition; //false = discrete, true = continuous
+    
     public float sequenceInputTime; //Time the user has to input the sequence. 1 second in Bastians game
     public float inputAccuracy; //Percentage chance of input being registered. Needs to be value between 0 and 1, with 1 = 100 % chance of input being registered.
     public int numberOfContinuousInputsNeeded; //How many correct inputs need to be registered in continuous output?
@@ -17,7 +18,9 @@ public class ourGameManager : MonoBehaviour
     Player playerScript;
     playerFishing fishingScript;
     playerSteadyBoat steadyScript;
+    Logger loggyboi;
     FishAI fishAIScript;
+    public GameObject loggerObject;
     public GameObject playerBoat;
     public GameObject playerFishing;
     public GameObject playerSteady;
@@ -25,7 +28,7 @@ public class ourGameManager : MonoBehaviour
 
     int currentScreen;
 
-    int currentLocation = 1;
+    public int currentLocation = 1;
 
     //Camera
     public Camera theCamera;
@@ -45,10 +48,12 @@ public class ourGameManager : MonoBehaviour
     int correctContinuousInputs;
     int wavesPassed;
     bool inputResgisteredCorrectly;
+    float roll;
 
     //Updating UI Elements
-    public Sprite[] controlImages; //For this to work, boat controls has to be first sprite in array, hook controls second, and boat steady third.
-    public Image controls;
+    public Image controlsWASD, TRWE, hookUpDown;
+    public Text controlsWASDText, TRWEText, hookUpDownText;
+    public GameObject prepareText, steadyText;
 
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
@@ -58,15 +63,17 @@ public class ourGameManager : MonoBehaviour
 
 
 
-    public Text test;
-
     // Start is called before the first frame update
     void Start()
     {
+
+        loggyboi = loggerObject.GetComponent<Logger>();
+        loggyboi.writeCondition(experimentalCondition);
         //Spawn all the fish we need, and make them inactive until we need them.
         for(int i = 0; i < fishySpecies.Length; i++)
         {
             fishySpecies[i] = Instantiate(fishySpecies[i], fishHoldingPen);
+            fishySpecies[i].GetComponent<FishAI>().qst = QuestSystem;
             fishySpecies[i].SetActive(false);
             fishySpecies[i].transform.parent = null;
         }
@@ -81,13 +88,19 @@ public class ourGameManager : MonoBehaviour
         steadyScript.controlstate = false;
 
         //UI setup
-        controls.sprite = controlImages[0];
+        
+        TRWE.enabled = false;
+        TRWEText.enabled = false;
+        hookUpDownText.enabled = false;
+        hookUpDown.enabled = false;
+        
         originalInputAccuracy = inputAccuracy;
         //KeySequence
 
         //Potentially useful function that lets us load things from the Assets directly:
         //Resources.Load
-        SoundManager.PlaySound(SoundManager.Sound.backgroundMusic);
+        prepareText.SetActive(false);
+        steadyText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -95,7 +108,20 @@ public class ourGameManager : MonoBehaviour
     {
         if (currentScreen == 0)
         {
+            controlsWASD.enabled = true;
+            TRWE.enabled = false;
+            TRWEText.enabled = false;
+            hookUpDownText.enabled = false;
+            hookUpDown.enabled = false;
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
+        } else
+        {
+            controlsWASDText.enabled = false;
+            controlsWASD.enabled = false;
+            TRWE.enabled = true;
+            TRWEText.enabled = true;
+            hookUpDownText.enabled = true;
+            hookUpDown.enabled = true;
         }
     }
 
@@ -117,7 +143,7 @@ public class ourGameManager : MonoBehaviour
 
                 spawnFishies();
 
-                controls.sprite = controlImages[1];
+                
                 break;
 
             case 1: //Changing controls when the player has hooked a fish, so they will now have to keep boat steady against waves. Start spawning waves.
@@ -159,10 +185,10 @@ public class ourGameManager : MonoBehaviour
                 spawn(0);
                 break;
             case 2: //Rain Area
-                spawn(1);
+                spawn(3);
                 break;
             case 3: // Ice area
-                spawn(2);
+                spawn(6);
                 break;
         }
     }
@@ -173,6 +199,7 @@ public class ourGameManager : MonoBehaviour
         {
             currentFish[i - addition] = fishySpecies[i];
             currentFish[i - addition].transform.position = fishSpawnLocations[i - addition].transform.position;
+            currentFish[i - addition].GetComponent<FishAI>().checkOutline();
             currentFish[i - addition].SetActive(true);
         }
     }
@@ -200,6 +227,7 @@ public class ourGameManager : MonoBehaviour
 
     void spawnWaves()
     {
+        prepareText.SetActive(true);
         if(experimentalCondition == false) //Discrete wave
         {
             waves[0].SetActive(true);
@@ -220,27 +248,37 @@ public class ourGameManager : MonoBehaviour
         {
             if (rollDice() && fishingAttemptUsed == false)
             {
+                steadyScript.tryingToSteady = true;
                 inputResgisteredCorrectly = true;
+            } else if (roll < inputAccuracy)
+            {
+                steadyScript.tryingToSteady = true;
             }
             fishingAttemptUsed = true; //This is done to only give the user one correct attempt in the discrete version.
         }
         else //Continuous condition
         {
             correctContinuousInputs += 1; //Counting up everytime they do it correcly. Reach some number before we try to roll dice.
-            if (correctContinuousInputs >= numberOfContinuousInputsNeeded && fishingAttemptUsed == false)
+            
+            if (correctContinuousInputs >= numberOfContinuousInputsNeeded && rollDice() && fishingAttemptUsed == false)
             {
+                steadyScript.tryingToSteady = true;
+                inputResgisteredCorrectly = true;
                 fishingAttemptUsed = true;
-                if (rollDice())
-                {
-                    inputResgisteredCorrectly = true;
-                }
             }
+            else if (roll < inputAccuracy)
+            {
+                steadyScript.tryingToSteady = true;
+            }
+            
+
         }
     }
 
     bool rollDice()
     {
-        if(Random.value < inputAccuracy + accuracyModifier)
+        roll = Random.value;
+        if(roll < inputAccuracy + accuracyModifier)
         {
             return true;
         }
@@ -271,8 +309,7 @@ public class ourGameManager : MonoBehaviour
     public void fishCaught()
     {
         Debug.Log("fishCaught");
-        QuestSystem.updateFishUI(fishAIScript.fishtype);
-        fishStillNeeded -= 1;
+        QuestSystem.updateFishUI(fishAIScript.fishtype); //Updating UI.
         accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
         fishStreak += 1;
         if (fishStreak == 2)
@@ -280,7 +317,7 @@ public class ourGameManager : MonoBehaviour
             accuracyModifier = -1;
             fishStreak = 0;
         }
-        //UPDATE UI / QUEST MANAGER THINGY HERE, TO SUCCESFULLY HAVE CAUGHT FISH, MAYBE PLAY HAPPY SOUND, WHO KNOWS.
+        
     }
 
     public void waveGoodbye() //Called when a wave has passed the boat. Called from playerSteadyBoat, in the onTriggerExit2D function. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.
@@ -290,22 +327,25 @@ public class ourGameManager : MonoBehaviour
         {
             if (inputResgisteredCorrectly)
             {
+                fishStillNeeded -= 1;
                 Debug.Log("Input registered, how lucky!");
                 fishingScript.inputSequenceOver = true;
             }
             else
             {
-                fishingAttemptUsed = true;
+                //fishingAttemptUsed = true;
                 fishingScript.somethingOnHook = false;
                 fishingScript.inputSequenceOver = true;
                 letFishGo();
                 Debug.Log("Missed Waves, or input not registered");
             }
+            loggyboi.NewLog(Mathf.Abs(attemptsLeft - 21), Mathf.Abs(fishStillNeeded - 12), fishingAttemptUsed, inputResgisteredCorrectly);
             wavesPassed = 0;
             correctContinuousInputs = 0;
             inputResgisteredCorrectly = false;
             steadyScript.tryingToSteady = true;
             steadyScript.inWave = 0;
+            steadyText.SetActive(false);
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
-    public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete;
+    public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete, lockLevel2, lockLevel3;
 
     public GameObject codText, carbText, eelText, rainbowfishText, clownfishText, catfishText, arrowIndicatorLevel1, arrowIndicatorLevel2, 
                       entranceLevel2, entranceLevel3;
@@ -80,11 +80,12 @@ public class QuestSystem : MonoBehaviour
             }
             else
             {
+                entranceLevel2.layer = LayerMask.NameToLayer("Default");
                 carbText.SetActive(false); codText.SetActive(false);
                 fishPole.enabled = false;
                 SoundManager.PlaySound(SoundManager.Sound.questComplete);
-                entranceLevel2.SetActive(false);
                 arrowIndicatorLevel1.SetActive(true);
+                lockLevel2.enabled = false;
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
                 eelText.SetActive(true); rainbowfishText.SetActive(true);
             }
@@ -104,11 +105,11 @@ public class QuestSystem : MonoBehaviour
             {
                 eelText.SetActive(false); rainbowfishText.SetActive(false);
                 Umbrella.enabled = false;
-
-                //entranceLevel3.SetActive(false);
+                entranceLevel3.layer = LayerMask.NameToLayer("Default");
                 arrowIndicatorLevel2.SetActive(true);
                 umbrellaComplete.enabled = true;
                 isryder.enabled = true;
+                lockLevel3.enabled = false;
                 clownfishText.SetActive(true); catfishText.SetActive(true);
             }
         }

@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     GameObject fishToSpawn;
 
     public Camera minimap;
-    public GameObject noEnter, noEnterLevel2, level2, level3;
+    public GameObject noEnter, noEnterLevel2, level1, level2, level3;
+    public AudioSource rain;
     private float timeWhenDisappear;
     public float timeToDisappear = 2f;
 
@@ -32,6 +33,15 @@ public class Player : MonoBehaviour
 
     public bool controlstate;
 
+    //Reset position in case we get stuck during experiment
+    KeyCode[] sequence = new KeyCode[]
+{
+        KeyCode.J,
+        KeyCode.U,
+        KeyCode.K,
+};
+    int sequenceIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +50,7 @@ public class Player : MonoBehaviour
         movePoint = gameObject.transform.GetChild(0);
         movePoint.parent = null;
 
+        rain.enabled = false;
         noEnter.SetActive(false);
         noEnterLevel2.SetActive(false);
     }
@@ -102,25 +113,18 @@ public class Player : MonoBehaviour
                 }
             }
 
-            //float x = Input.GetAxisRaw("Horizontal");
-            //float y = Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(sequence[sequenceIndex]))
+            {
+                if (++sequenceIndex == sequence.Length)
+                {
+                    sequenceIndex = 0;
+                    transform.position = new Vector3(0, 0, 0);
+                    movePoint.position = new Vector3(0, 0, 0); 
+                    // sequence typed
+                }
+            }
+            else if (Input.anyKeyDown) sequenceIndex = 0;
 
-            //if (y < 0)
-            //{
-            //    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(y * (distanceBetweenTiles), 0f, 0f), .2f, block)) //hvis der hvor vi er nu +2 tiles frem ikke er noget der blokere (bliver blokeret ud fra laget), så videre
-            //    {
-            //        animator.SetInteger("Direction", (int)y);
-            //        movePoint.position += new Vector3(0f, y * distanceBetweenTiles, 0f);
-            //    }
-            //}
-            //else if (y > 0)
-            //{
-            //    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, y * (distanceBetweenTiles), 0f), .2f, block))
-            //    {
-            //        animator.SetInteger("Direction", (int)y);
-            //        movePoint.position += new Vector3(0f, y * distanceBetweenTiles, 0f);
-            //    }
-            //}
         }
     }
 
@@ -152,23 +156,22 @@ public class Player : MonoBehaviour
             
         }
 
-        if (collision.gameObject.tag == "entranceTile")
+        if (collision.gameObject.tag == "entranceTile" || collision.gameObject.tag == "entranceTileLevel3")
         {
-            //Debug.Log("hit");
             //deactivate the arrowindicator when entering level 2 and 3
             qst.arrowIndicatorLevel1.SetActive(false);
             qst.arrowIndicatorLevel2.SetActive(false);
         }
 
         //if the quest in first level is not complete, show the text if player tries to move to next level
-        if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb != 2 && qst.updateCod != 2)
+        if (collision.gameObject.tag == "entranceTile" && qst.updateCarb != 2 && qst.updateCod != 2)
         {
             Debug.Log("You hit me");
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnter.SetActive(true);
         }
         //if the quest in second level is not complete, show the text if player tries to move to next level
-        else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel != 2 && qst.updateRainbow != 2)
+        else if (collision.gameObject.tag == "entranceTileLevel3" && qst.updateEel != 2 && qst.updateRainbow != 2)
         {
             timeWhenDisappear = Time.time + timeToDisappear;
             noEnterLevel2.SetActive(true);
@@ -178,10 +181,26 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "invisibleEntrance" && qst.updateCarb == 2 && qst.updateCod == 2)
         {
             minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
+            manager.currentLocation = 2;
+            rain.enabled = true;
+        }
+        else if (collision.gameObject.tag == "entranceTile" && manager.currentLocation == 2)
+        {
+            minimap.transform.position = new Vector3(level1.transform.position.x, level1.transform.position.y, -20);
+            manager.currentLocation = 1;
+            rain.enabled = false;
         }
         else if (collision.gameObject.tag == "invisibleEntrance2" && qst.updateEel == 2 && qst.updateRainbow == 2)
         {
             minimap.transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, -20);
+            manager.currentLocation = 3;
+            rain.enabled = false;
+        }
+        else if (collision.gameObject.tag == "entranceTileLevel3" && manager.currentLocation == 3)
+        {
+            minimap.transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, -20);
+            manager.currentLocation = 2;
+            rain.enabled = true;
         }
     }
 }

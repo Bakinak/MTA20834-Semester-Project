@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Fishatron-3000.unity
+    guid: e6cead4e500222543b9c1c5d7b02a14b
   m_configObjects: {}
