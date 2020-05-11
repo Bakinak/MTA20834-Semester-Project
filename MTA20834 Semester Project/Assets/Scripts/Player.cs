@@ -113,19 +113,20 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(sequence[sequenceIndex]))
-            {
-                if (++sequenceIndex == sequence.Length)
-                {
-                    sequenceIndex = 0;
-                    transform.position = new Vector3(0, 0, 0);
-                    movePoint.position = new Vector3(0, 0, 0); 
-                    // sequence typed
-                }
-            }
-            else if (Input.anyKeyDown) sequenceIndex = 0;
-
+            
         }
+
+        if (Input.GetKeyDown(sequence[sequenceIndex]))
+        {
+            if (++sequenceIndex == sequence.Length)
+            {
+                sequenceIndex = 0;
+                transform.position = new Vector3(0, 0, 0);
+                movePoint.position = new Vector3(0, 0, 0);
+                // sequence typed
+            }
+        }
+        else if (Input.anyKeyDown) sequenceIndex = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //tiggerenter er bobler
