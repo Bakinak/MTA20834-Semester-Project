@@ -5,8 +5,6 @@ using UnityEngine;
 public class playerSteadyBoat : MonoBehaviour
 {
 
-    //I assume this script should inherit from Bastians scripts.
-
     //Get access to manager
     ourGameManager manager;
     public bool controlstate;

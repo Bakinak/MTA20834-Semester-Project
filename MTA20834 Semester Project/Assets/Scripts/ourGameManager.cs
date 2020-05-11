@@ -9,10 +9,11 @@ public class ourGameManager : MonoBehaviour
     [SerializeField]
     private LoggingManager loggingManager;
 
-    public string playerID;
     string currentCondition;
     int bubbleNumber;
     int fishCaught;
+    int instantFrustrationLevel, globalFrustrationLevel;
+    
 
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
     //Can also use this to update interface images.  
@@ -34,6 +35,8 @@ public class ourGameManager : MonoBehaviour
 
     int currentScreen;
     bool intro = false;
+    public bool questionnaireTime;
+    bool frustationQuestionNumber;
 
     public int currentLocation = 1;
 
@@ -57,7 +60,21 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Image controlsWASD, TRWE, hookUpDown;
     public Text controlsWASDText, TRWEText, hookUpDownText;
-    public GameObject prepareText, steadyText, introScreen;
+    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration;
+
+    string[] numberKeys = new string[] //The inputs available when rating frustration, in order from lowest frustration to highest. 0 = 10.
+    {
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "0"
+    };
 
 
     // Start is called before the first frame update
@@ -105,14 +122,18 @@ public class ourGameManager : MonoBehaviour
         //Resources.Load
         prepareText.SetActive(false);
         steadyText.SetActive(false);
+        instantfrustation.SetActive(false);
+        globalfrustration.SetActive(false);
 
 
-        loggingManager.AddNewEvent("Game Started!", currentCondition, playerID);
+        loggingManager.AddNewEvent("Game Started!", currentCondition);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(intro == false)
         {
             if (Input.GetKeyDown("return"))
@@ -123,7 +144,7 @@ public class ourGameManager : MonoBehaviour
             }
         }
 
-        if (currentScreen == 0)
+        if (currentScreen == 0) //This is being called each frame, not efficient, should just be turned into a method and called once when needed. Probably in switch controlstate. 
         {
             controlsWASD.enabled = true;
             TRWE.enabled = false;
@@ -140,6 +161,38 @@ public class ourGameManager : MonoBehaviour
             hookUpDownText.enabled = true;
             hookUpDown.enabled = true;
         }
+
+        if (questionnaireTime)
+        {
+            if (Input.anyKeyDown)
+            {
+                if (frustationQuestionNumber == false)
+                {
+                    if(badWayToCheckKeys() > 0)
+                    {
+                        instantfrustation.SetActive(false);
+                        globalfrustration.SetActive(true);
+                        instantFrustrationLevel = badWayToCheckKeys();
+                        frustationQuestionNumber = true;
+                    }
+                    
+                }
+                else
+                {
+                    if(badWayToCheckKeys() > 0)
+                    {
+                        globalfrustration.SetActive(false);
+                        globalFrustrationLevel = badWayToCheckKeys();
+                        questionnaireTime = false;
+                        playerScript.controlstate = true;
+                        frustationQuestionNumber = false;
+                        Debug.Log(instantFrustrationLevel + " and " + globalFrustrationLevel);
+                        loggingManager.logFrustrationLevels(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), instantFrustrationLevel.ToString(), globalFrustrationLevel.ToString());
+                    }
+                }
+            }
+        }
+
     }
 
 
@@ -171,12 +224,18 @@ public class ourGameManager : MonoBehaviour
                 break;
 
             case 2: //After keeping boat steady, or failing to do so, change back to travel screen, lose control of fish and steadying, and gain control of boat in travel screen.
-                steadyScript.controlstate = false;
-                playerScript.controlstate = true;
 
+                if (questionnaireTime)
+                {
+                    instantfrustation.SetActive(true);
+                }
+                else
+                {                   
+                    playerScript.controlstate = true;
+                }
+                steadyScript.controlstate = false;
                 currentScreen = 0;
                 hookedFishReset();
-                //controls.sprite = controlImages[0];
 
                 //Also check to see if next fish should be a guaranteed catch or not, assuming correct input is entered.
 
@@ -268,12 +327,12 @@ public class ourGameManager : MonoBehaviour
 
     public void keyPressedLog(string keyPressed, string correctKey, string keyExpected,  string timeSinceLastKey)
     {
-        loggingManager.newKeyInput(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), keyPressed, correctKey, keyExpected, timeSinceLastKey);
+        loggingManager.newKeyInput(currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), keyPressed, correctKey, keyExpected, timeSinceLastKey);
     }
 
     public void keySequenceCompleteLog(string sequenceResult, string sequenceTime)
     {
-        loggingManager.sequenceComplete(sequenceResult, currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), sequenceTime);
+        loggingManager.sequenceComplete(sequenceResult, currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), sequenceTime);
     }
 
     public void inputWindowOver(bool success, int correctSequencesEntered, int sequencesFailed, int correctSequencesDiscarded, int totalAttemptsInBubble)
@@ -294,10 +353,30 @@ public class ourGameManager : MonoBehaviour
             fishGot = "Fish Escaped";
         }
         //Log Things here using new Logging system from Bastian
-        loggingManager.inputWindowOverLog(currentCondition, playerID, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), 
+        loggingManager.inputWindowOverLog(currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), 
             correctSequencesEntered.ToString(), sequencesFailed.ToString(), correctSequencesDiscarded.ToString(), totalAttemptsInBubble.ToString(), fishGot);
         steadyText.SetActive(false);
     }
+
+    int badWayToCheckKeys() //Check which number has been pressed, and return the correct value.
+    {
+
+        int frustrationValue = 0;
+
+        if (Input.anyKeyDown)
+        {
+            for(int i = 0; i<numberKeys.Length; i++)
+            {
+                if (Input.inputString == numberKeys[i].ToString())
+                {
+                    frustrationValue = i+1;
+                }
+            }
+        }
+
+        return frustrationValue;
+    }
+
 
     void OnApplicationQuit()
     {

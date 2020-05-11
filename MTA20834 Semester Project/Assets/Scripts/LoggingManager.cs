@@ -23,7 +23,6 @@ public class LoggingManager : MonoBehaviour
 
         logCollection["Date"] = new List<string>();
         logCollection["Timestamp"] = new List<string>();
-        logCollection["PlayerID"] = new List<string>();
         logCollection["currentCondition"] = new List<string>();
         logCollection["Event"] = new List<string>();
         logCollection["WorldID"] = new List<string>();
@@ -40,29 +39,32 @@ public class LoggingManager : MonoBehaviour
         logCollection["CorrectSequencesDiscarded"] = new List<string>();
         logCollection["TotalAttemptsInBubble"] = new List<string>();
         logCollection["GotFish"] = new List<string>();
+        logCollection["InstantFrustration"] = new List<string>();
+        logCollection["GlobalFrustration"] = new List<string>();
     }
 
-    public void AddNewEvent(string theEvent, string currentCondition, string playerID) //When the game is started
+    public void AddNewEvent(string theEvent, string currentCondition) //When the game is started
     {
         logCollection["Event"].Add(theEvent);
         logCollection["Date"].Add(System.DateTime.Now.ToString("yyyy-MM-dd"));
         logCollection["Timestamp"].Add(System.DateTime.Now.ToString("HH:mm:ss.ffff"));
         logCollection["currentCondition"].Add(currentCondition);
-        logCollection["PlayerID"].Add(playerID);
 
         fillKeyColumns();
+
+        logCollection["InstantFrustration"].Add("NA");
+        logCollection["GlobalFrustration"].Add("NA");
 
         //logCollection[""].Add();
     }
 
-    public void newKeyInput(string currentCondition, string playerID, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, string keyCode, string correctKey, string keyExpected,
+    public void newKeyInput(string currentCondition, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, string keyCode, string correctKey, string keyExpected,
         string timeSinceLastKey) //Whenever a key is pressed
     {
         logCollection["Event"].Add("KeyDown");
         logCollection["Date"].Add(System.DateTime.Now.ToString("yyyy-MM-dd"));
         logCollection["Timestamp"].Add(System.DateTime.Now.ToString("HH:mm:ss.ffff"));
         logCollection["currentCondition"].Add(currentCondition);
-        logCollection["PlayerID"].Add(playerID);
 
         logCollection["WorldID"].Add(worldID);
         logCollection["FishID"].Add(FishID);
@@ -79,15 +81,17 @@ public class LoggingManager : MonoBehaviour
         logCollection["SequencesFailed"].Add("NA");
         logCollection["CorrectSequencesDiscarded"].Add("NA");
         logCollection["TotalAttemptsInBubble"].Add("NA");
+
+        logCollection["InstantFrustration"].Add("NA");
+        logCollection["GlobalFrustration"].Add("NA");
     }
 
-    public void sequenceComplete(string currentEvent, string currentCondition, string playerID, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, string sequenceCompleteTime) //Whenever a key sequence is failed or completed
+    public void sequenceComplete(string currentEvent, string currentCondition, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, string sequenceCompleteTime) //Whenever a key sequence is failed or completed
     {
         logCollection["Event"].Add(currentEvent);
         logCollection["Date"].Add(System.DateTime.Now.ToString("yyyy-MM-dd"));
         logCollection["Timestamp"].Add(System.DateTime.Now.ToString("HH:mm:ss.ffff"));
         logCollection["currentCondition"].Add(currentCondition);
-        logCollection["PlayerID"].Add(playerID);
 
         logCollection["WorldID"].Add(worldID);
         logCollection["FishID"].Add(FishID);
@@ -106,16 +110,17 @@ public class LoggingManager : MonoBehaviour
         logCollection["CorrectSequencesDiscarded"].Add("NA");
         logCollection["TotalAttemptsInBubble"].Add("NA");
 
+        logCollection["InstantFrustration"].Add("NA");
+        logCollection["GlobalFrustration"].Add("NA");
     }
 
-    public void inputWindowOverLog(string currentCondition, string playerID, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, 
+    public void inputWindowOverLog(string currentCondition, string worldID, string FishID, string TotalFishCaught, string BubbleNumber, 
         string CorrectSequencesEntered, string SequencesFailed, string CorrectSequencesDiscarded, string TotalAttemptsInBubble, string GotFish) //Whenever a wave has passed
     {
         logCollection["Event"].Add("InputWindowOver");
         logCollection["Date"].Add(System.DateTime.Now.ToString("yyyy-MM-dd"));
         logCollection["Timestamp"].Add(System.DateTime.Now.ToString("HH:mm:ss.ffff"));
         logCollection["currentCondition"].Add(currentCondition);
-        logCollection["PlayerID"].Add(playerID);
 
         logCollection["WorldID"].Add(worldID);
         logCollection["FishID"].Add(FishID);
@@ -132,9 +137,38 @@ public class LoggingManager : MonoBehaviour
         logCollection["CorrectKey"].Add("NA");
         logCollection["KeyExpected"].Add("NA");
         logCollection["TimeSinceLastKey"].Add("NA");
-        logCollection["SequenceCompleteTime"].Add("NA");       
+        logCollection["SequenceCompleteTime"].Add("NA");
+
+        logCollection["InstantFrustration"].Add("NA");
+        logCollection["GlobalFrustration"].Add("NA");
+    }
+
+    public void logFrustrationLevels(string currentCondition, string TotalFishCaught, string BubbleNumber, string InstantFrustration, string GlobalFrustration)
+    {
+        logCollection["Event"].Add("Frustration Questionnaire");
+        logCollection["Date"].Add(System.DateTime.Now.ToString("yyyy-MM-dd"));
+        logCollection["Timestamp"].Add(System.DateTime.Now.ToString("HH:mm:ss.ffff"));
+        logCollection["currentCondition"].Add(currentCondition);
+
+        logCollection["TotalFishCaught"].Add(TotalFishCaught);
+        logCollection["BubbleNumber"].Add(BubbleNumber);
+
+        logCollection["InstantFrustration"].Add(InstantFrustration);
+        logCollection["GlobalFrustration"].Add(GlobalFrustration);
 
 
+        logCollection["WorldID"].Add("NA");
+        logCollection["FishID"].Add("NA");
+        logCollection["KeyCode"].Add("NA");
+        logCollection["CorrectKey"].Add("NA");
+        logCollection["KeyExpected"].Add("NA");
+        logCollection["TimeSinceLastKey"].Add("NA");
+        logCollection["SequenceCompleteTime"].Add("NA");
+        logCollection["GotFish"].Add("NA");
+        logCollection["CorrectSequencesEntered"].Add("NA");
+        logCollection["SequencesFailed"].Add("NA");
+        logCollection["CorrectSequencesDiscarded"].Add("NA");
+        logCollection["TotalAttemptsInBubble"].Add("NA");
     }
 
     void fillKeyColumns()

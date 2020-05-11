@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
+    public ourGameManager manager;
+
     public Image fishPole, fishPoleComplete, Umbrella, umbrellaComplete, lockSpriteQuest2, lockSpriteQuest3, isryder, isryderComplete, lockLevel2, lockLevel3;
 
     public GameObject codText, carbText, eelText, rainbowfishText, clownfishText, catfishText, arrowIndicatorLevel1, arrowIndicatorLevel2, 
@@ -88,6 +90,8 @@ public class QuestSystem : MonoBehaviour
                 lockLevel2.enabled = false;
                 Umbrella.enabled = true; fishPoleComplete.enabled = true;
                 eelText.SetActive(true); rainbowfishText.SetActive(true);
+
+                manager.questionnaireTime = true;
             }
         }
     }
@@ -111,6 +115,8 @@ public class QuestSystem : MonoBehaviour
                 isryder.enabled = true;
                 lockLevel3.enabled = false;
                 clownfishText.SetActive(true); catfishText.SetActive(true);
+
+                manager.questionnaireTime = true;
             }
         }
     }
@@ -121,6 +127,8 @@ public class QuestSystem : MonoBehaviour
         {
             clownfishText.SetActive(false); catfishText.SetActive(false);
             isryderComplete.enabled = true;
+
+            manager.questionnaireTime = true;
         }
     }
 }
