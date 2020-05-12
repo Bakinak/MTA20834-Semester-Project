@@ -1,8 +1,0 @@
-Date,Timestamp,currentCondition,Event,WorldID,FishID,TotalFishCaught,BubbleNumber,KeyCode,CorrectKey,KeyExpected,TimeSinceLastKey,SequenceCompleteTime,CorrectSequencesEntered,SequencesFailed,CorrectSequencesDiscarded,TotalAttemptsInBubble,GotFish,InstantFrustration,GlobalFrustration
-2020-05-12,11:47:29.2372,Discrete,Game Started!,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:52.1212,Discrete,KeyDown,1,1,0,1,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:52.2988,Discrete,KeyDown,1,1,0,1,r,Correct,R,0,1800392,NA,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:52.4606,Discrete,KeyDown,1,1,0,1,w,Correct,W,0,1621088,NA,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:52.5952,Discrete,KeyDown,1,1,0,1,e,Correct,E,0,1333593,NA,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:52.5952,Discrete,Sequence Success,1,1,0,1,NA,NA,NA,NA,0,4755073,NA,NA,NA,NA,NA,NA,NA,
-2020-05-12,11:47:54.7294,Discrete,InputWindowOver,1,1,1,1,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,

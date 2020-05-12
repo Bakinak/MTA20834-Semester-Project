@@ -36,6 +36,7 @@ public class ourGameManager : MonoBehaviour
     int currentScreen;
     bool intro = false;
     public bool questionnaireTime;
+    bool conditionBool;
     bool frustationQuestionNumber;
 
     public int currentLocation = 1;
@@ -81,14 +82,6 @@ public class ourGameManager : MonoBehaviour
     void Start()
     {
 
-        if (experimentalCondition)
-        {
-            currentCondition = "Continuous";
-        }
-        else
-        {
-            currentCondition = "Discrete";
-        }
 
         //Spawn all the fish we need, and make them inactive until we need them.
         for (int i = 0; i < fishySpecies.Length; i++)
@@ -122,6 +115,7 @@ public class ourGameManager : MonoBehaviour
         //Resources.Load
         prepareText.SetActive(false);
         steadyText.SetActive(false);
+        introScreen.SetActive(false);
         instantfrustation.SetActive(false);
         globalfrustration.SetActive(false);
 
@@ -135,6 +129,20 @@ public class ourGameManager : MonoBehaviour
     {
 
         //Make player able to choose condition here. Needs a bool, and once done it should activate intro screen and make intro = false, so player can input Enter key. Set intro as inactive in Start().
+
+        if(conditionBool == false)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                experimentalCondition = false;
+                settingCondition();
+            }
+            else if (Input.GetKeyDown(KeyCode.K))
+            {
+                experimentalCondition = true;                
+                settingCondition();               
+            }
+        }
 
         if(intro == false)
         {
@@ -194,7 +202,22 @@ public class ourGameManager : MonoBehaviour
 
     }
 
+    void settingCondition()
+    {
+        steadyScript.experimentalCondition = experimentalCondition;
+        conditionBool = true;
+        chooseCondition.SetActive(false);
+        introScreen.SetActive(true);
 
+        if (experimentalCondition)
+        {
+            currentCondition = "Continuous";
+        }
+        else
+        {
+            currentCondition = "Discrete";
+        }
+    }
     //Public functions accessed by others
 
     public void switchControlState(int currentState) //Change control images and so on in here.

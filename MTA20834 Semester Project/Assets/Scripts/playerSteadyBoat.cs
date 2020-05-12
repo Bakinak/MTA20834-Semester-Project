@@ -17,7 +17,7 @@ public class playerSteadyBoat : MonoBehaviour
 
     //Doing the Key Sequence. As it stands, T and R does not need to pressed at the same time, only the order matters.
     bool inWave;
-    bool experimentalCondition;
+    public bool experimentalCondition;
     bool sequenceOver;
     float inputAccuracy;
     int numberOfContinuousInputsNeeded;
@@ -70,7 +70,6 @@ public class playerSteadyBoat : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
         sequenceInputTime = manager.sequenceInputTime;
         inputAccuracy = manager.inputAccuracy;
-        experimentalCondition = manager.experimentalCondition;
         numberOfContinuousInputsNeeded = manager.numberOfContinuousInputsNeeded;
     }
 
