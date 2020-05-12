@@ -60,7 +60,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Image controlsWASD, TRWE, hookUpDown;
     public Text controlsWASDText, TRWEText, hookUpDownText;
-    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration;
+    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition;
 
     string[] numberKeys = new string[] //The inputs available when rating frustration, in order from lowest frustration to highest. 0 = 10.
     {
@@ -133,6 +133,8 @@ public class ourGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Make player able to choose condition here. Needs a bool, and once done it should activate intro screen and make intro = false, so player can input Enter key. Set intro as inactive in Start().
 
         if(intro == false)
         {
