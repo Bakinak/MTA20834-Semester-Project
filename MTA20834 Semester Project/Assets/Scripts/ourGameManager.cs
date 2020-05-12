@@ -13,16 +13,16 @@ public class ourGameManager : MonoBehaviour
     int bubbleNumber;
     int fishCaught;
     int instantFrustrationLevel, globalFrustrationLevel;
-    
+
 
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
-    //Can also use this to update interface images.  
+    //Can also use this to update interface images.
     public bool experimentalCondition; //false = discrete, true = continuous
-    
+
     public float sequenceInputTime; //Time the user has to input the sequence. 1 second in Bastians game
     public float inputAccuracy; //Percentage chance of input being registered. Needs to be value between 0 and 1, with 1 = 100 % chance of input being registered.
     public int numberOfContinuousInputsNeeded; //How many correct inputs need to be registered in continuous output?
-    
+
     //Things we need access to.
     Player playerScript;
     playerFishing fishingScript;
@@ -58,8 +58,8 @@ public class ourGameManager : MonoBehaviour
     int wavesPassed;
 
     //Updating UI Elements
-    public Image controlsWASD, TRWE, hookUpDown;
-    public Text controlsWASDText, TRWEText, hookUpDownText;
+    public Image controlsWASD, hookUpDown;
+    public Text controlsWASDText, hookUpDownText;
     public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition;
 
     string[] numberKeys = new string[] //The inputs available when rating frustration, in order from lowest frustration to highest. 0 = 10.
@@ -109,9 +109,9 @@ public class ourGameManager : MonoBehaviour
         steadyScript.controlstate = false;
 
         //UI setup
-        
-        TRWE.enabled = false;
-        TRWEText.enabled = false;
+
+
+
         hookUpDownText.enabled = false;
         hookUpDown.enabled = false;
 
@@ -146,11 +146,10 @@ public class ourGameManager : MonoBehaviour
             }
         }
 
-        if (currentScreen == 0) //This is being called each frame, not efficient, should just be turned into a method and called once when needed. Probably in switch controlstate. 
+        if (currentScreen == 0) //This is being called each frame, not efficient, should just be turned into a method and called once when needed. Probably in switch controlstate.
         {
             controlsWASD.enabled = true;
-            TRWE.enabled = false;
-            TRWEText.enabled = false;
+            controlsWASDText.enabled = true;
             hookUpDownText.enabled = false;
             hookUpDown.enabled = false;
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
@@ -158,8 +157,6 @@ public class ourGameManager : MonoBehaviour
         {
             controlsWASDText.enabled = false;
             controlsWASD.enabled = false;
-            TRWE.enabled = true;
-            TRWEText.enabled = true;
             hookUpDownText.enabled = true;
             hookUpDown.enabled = true;
         }
@@ -177,7 +174,7 @@ public class ourGameManager : MonoBehaviour
                         instantFrustrationLevel = badWayToCheckKeys();
                         frustationQuestionNumber = true;
                     }
-                    
+
                 }
                 else
                 {
@@ -215,7 +212,7 @@ public class ourGameManager : MonoBehaviour
 
                 spawnFishies();
 
-                
+
                 break;
 
             case 1: //Changing controls when the player has hooked a fish, so they will now have to keep boat steady against waves. Start spawning waves.
@@ -232,7 +229,7 @@ public class ourGameManager : MonoBehaviour
                     instantfrustation.SetActive(true);
                 }
                 else
-                {                   
+                {
                     playerScript.controlstate = true;
                 }
                 steadyScript.controlstate = false;
@@ -318,7 +315,7 @@ public class ourGameManager : MonoBehaviour
     }
 
     void hookedFishReset() //Called after fishCaught, so hookedFish still available
-    {       
+    {
         fishAIScript.escaped = false;
         fishAIScript.move = false;
         hookedFish.transform.parent = null;
@@ -355,7 +352,7 @@ public class ourGameManager : MonoBehaviour
             fishGot = "Fish Escaped";
         }
         //Log Things here using new Logging system from Bastian
-        loggingManager.inputWindowOverLog(currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(), 
+        loggingManager.inputWindowOverLog(currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(),
             correctSequencesEntered.ToString(), sequencesFailed.ToString(), correctSequencesDiscarded.ToString(), totalAttemptsInBubble.ToString(), fishGot);
         steadyText.SetActive(false);
     }

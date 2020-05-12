@@ -1,0 +1,2 @@
+Date,Timestamp,currentCondition,Event,WorldID,FishID,TotalFishCaught,BubbleNumber,KeyCode,CorrectKey,KeyExpected,TimeSinceLastKey,SequenceCompleteTime,CorrectSequencesEntered,SequencesFailed,CorrectSequencesDiscarded,TotalAttemptsInBubble,GotFish,InstantFrustration,GlobalFrustration
+2020-05-12,11:40:15.3337,Discrete,Game Started!,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
