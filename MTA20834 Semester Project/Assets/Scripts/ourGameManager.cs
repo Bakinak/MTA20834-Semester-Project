@@ -58,8 +58,8 @@ public class ourGameManager : MonoBehaviour
     int wavesPassed;
 
     //Updating UI Elements
-    public Image controlsWASD, TRWE, hookUpDown;
-    public Text controlsWASDText, TRWEText, hookUpDownText;
+    public Image controlsWASD, hookUpDown;
+    public Text controlsWASDText, hookUpDownText;
     public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration;
 
     string[] numberKeys = new string[] //The inputs available when rating frustration, in order from lowest frustration to highest. 0 = 10.
@@ -110,8 +110,8 @@ public class ourGameManager : MonoBehaviour
 
         //UI setup
         
-        TRWE.enabled = false;
-        TRWEText.enabled = false;
+        
+        
         hookUpDownText.enabled = false;
         hookUpDown.enabled = false;
 
@@ -147,8 +147,7 @@ public class ourGameManager : MonoBehaviour
         if (currentScreen == 0) //This is being called each frame, not efficient, should just be turned into a method and called once when needed. Probably in switch controlstate. 
         {
             controlsWASD.enabled = true;
-            TRWE.enabled = false;
-            TRWEText.enabled = false;
+            controlsWASDText.enabled = true;
             hookUpDownText.enabled = false;
             hookUpDown.enabled = false;
             theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
@@ -156,8 +155,6 @@ public class ourGameManager : MonoBehaviour
         {
             controlsWASDText.enabled = false;
             controlsWASD.enabled = false;
-            TRWE.enabled = true;
-            TRWEText.enabled = true;
             hookUpDownText.enabled = true;
             hookUpDown.enabled = true;
         }
