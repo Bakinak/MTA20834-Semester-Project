@@ -33,7 +33,6 @@ public class ourGameManager : MonoBehaviour
     public GameObject playerSteady;
     public QuestSystem QuestSystem;
 
-    int currentScreen;
     bool intro = false;
     public bool questionnaireTime;
     bool conditionBool;
@@ -104,7 +103,8 @@ public class ourGameManager : MonoBehaviour
 
         //UI setup
 
-
+        theCamera.transform.position = new Vector3(playerBoat.transform.position.x + 1.2f, playerBoat.transform.position.y, -10);
+        theCamera.transform.SetParent(playerBoat.transform);
 
         hookUpDownText.enabled = false;
         hookUpDown.enabled = false;
@@ -155,11 +155,6 @@ public class ourGameManager : MonoBehaviour
             }
         }
 
-        if (currentScreen == 0)
-        {
-            theCamera.transform.position = Vector3.Lerp(theCamera.transform.position, new Vector3(playerBoat.transform.position.x + 1.2f, playerBoat.transform.position.y, -10), 5);
-        }
-
         if (questionnaireTime)
         {
             if (Input.anyKeyDown)
@@ -206,10 +201,6 @@ public class ourGameManager : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
 
     void settingCondition()
     {
@@ -235,10 +226,10 @@ public class ourGameManager : MonoBehaviour
         switch (currentState)
         {
             case 0: //Changing from travel screen to fishing screen, where the player gains control of the hook.
+                theCamera.transform.parent = null;
                 playerScript.controlstate = false;
                 fishingScript.controlstate = true;
                 fishingScript.lowerKeyLetGo = false;
-                currentScreen = 1;
                 bubbleNumber += 1;
                 theCamera.transform.position = new Vector3(fishingCloseup.position.x, fishingCloseup.position.y, -10);
 
@@ -269,13 +260,15 @@ public class ourGameManager : MonoBehaviour
                     playerScript.controlstate = true;
                 }
                 steadyScript.controlstate = false;
-                currentScreen = 0;
                 hookedFishReset();
 
                 controlsWASD.enabled = true;
                 controlsWASDText.enabled = true;
                 hookUpDownText.enabled = false;
                 hookUpDown.enabled = false;
+
+                theCamera.transform.position = new Vector3(playerBoat.transform.position.x + 1.2f, playerBoat.transform.position.y, -10);
+                theCamera.transform.SetParent(playerBoat.transform);
 
                 //Also check to see if next fish should be a guaranteed catch or not, assuming correct input is entered.
 
