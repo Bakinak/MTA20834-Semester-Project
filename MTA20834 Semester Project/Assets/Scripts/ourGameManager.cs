@@ -77,6 +77,7 @@ public class ourGameManager : MonoBehaviour
         "0"
     };
 
+    int escapeStreak;
 
     // Start is called before the first frame update
     void Start()
@@ -198,6 +199,19 @@ public class ourGameManager : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            escapeStreak += 1;
+            if(escapeStreak >= 3)
+            {
+                Debug.Log("it worked");
+                Application.Quit();
+            }
+        } else if (Input.anyKeyDown)
+        {
+            escapeStreak = 0;
         }
 
     }
