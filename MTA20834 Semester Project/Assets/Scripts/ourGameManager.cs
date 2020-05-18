@@ -60,7 +60,9 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Image controlsWASD, hookUpDown;
     public Text controlsWASDText, hookUpDownText;
-    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition;
+    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition, numberTarget;
+    public Transform[] numberTargetPositions;
+    int numberConfirmation = 99;
 
     string[] numberKeys = new string[] //The inputs available when rating frustration, in order from lowest frustration to highest. 0 = 10.
     {
@@ -119,7 +121,7 @@ public class ourGameManager : MonoBehaviour
         introScreen.SetActive(false);
         instantfrustation.SetActive(false);
         globalfrustration.SetActive(false);
-
+        numberTarget.SetActive(false);
 
         loggingManager.AddNewEvent("Game Started!", currentCondition);
 
@@ -167,6 +169,7 @@ public class ourGameManager : MonoBehaviour
                         globalfrustration.SetActive(true);
                         instantFrustrationLevel = badWayToCheckKeys();
                         frustationQuestionNumber = true;
+                        numberConfirmation = 99;
                     }
 
                 }
@@ -181,6 +184,7 @@ public class ourGameManager : MonoBehaviour
                         frustationQuestionNumber = false;
                         Debug.Log(instantFrustrationLevel + " and " + globalFrustrationLevel);
                         loggingManager.logFrustrationLevels(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), instantFrustrationLevel.ToString(), globalFrustrationLevel.ToString());
+                        numberConfirmation = 99;
                     }
                 }
             }
@@ -402,7 +406,16 @@ public class ourGameManager : MonoBehaviour
             {
                 if (Input.inputString == numberKeys[i].ToString())
                 {
-                    frustrationValue = i+1;
+                    numberTarget.SetActive(true);
+                    numberTarget.transform.position = numberTargetPositions[i].transform.position;
+
+                    if (numberConfirmation == i)
+                    {
+                        frustrationValue = i + 1;
+                        numberTarget.SetActive(false);
+                    }
+
+                    numberConfirmation = i;
                 }
             }
         }
