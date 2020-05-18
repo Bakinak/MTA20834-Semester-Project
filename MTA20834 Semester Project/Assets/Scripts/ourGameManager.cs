@@ -155,19 +155,9 @@ public class ourGameManager : MonoBehaviour
             }
         }
 
-        if (currentScreen == 0) //This is being called each frame, not efficient, should just be turned into a method and called once when needed. Probably in switch controlstate.
+        if (currentScreen == 0)
         {
-            controlsWASD.enabled = true;
-            controlsWASDText.enabled = true;
-            hookUpDownText.enabled = false;
-            hookUpDown.enabled = false;
-            theCamera.transform.position = new Vector3(playerBoat.transform.position.x+1.2f, playerBoat.transform.position.y, -10);
-        } else
-        {
-            controlsWASDText.enabled = false;
-            controlsWASD.enabled = false;
-            hookUpDownText.enabled = true;
-            hookUpDown.enabled = true;
+            theCamera.transform.position = Vector3.Lerp(theCamera.transform.position, new Vector3(playerBoat.transform.position.x + 1.2f, playerBoat.transform.position.y, -10), 5);
         }
 
         if (questionnaireTime)
@@ -216,6 +206,11 @@ public class ourGameManager : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     void settingCondition()
     {
         steadyScript.experimentalCondition = experimentalCondition;
@@ -249,6 +244,10 @@ public class ourGameManager : MonoBehaviour
 
                 spawnFishies();
 
+                controlsWASDText.enabled = false;
+                controlsWASD.enabled = false;
+                hookUpDownText.enabled = true;
+                hookUpDown.enabled = true;
 
                 break;
 
@@ -272,6 +271,11 @@ public class ourGameManager : MonoBehaviour
                 steadyScript.controlstate = false;
                 currentScreen = 0;
                 hookedFishReset();
+
+                controlsWASD.enabled = true;
+                controlsWASDText.enabled = true;
+                hookUpDownText.enabled = false;
+                hookUpDown.enabled = false;
 
                 //Also check to see if next fish should be a guaranteed catch or not, assuming correct input is entered.
 
