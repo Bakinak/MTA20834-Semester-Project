@@ -259,6 +259,7 @@ public class playerSteadyBoat : MonoBehaviour
                 //tryingToSteady = true;
                 inputResgisteredCorrectly = true;
                 fishingAttemptUsed = true;
+                fishStillNeeded -= 1;
             }
             else if (roll < inputAccuracy) //Smaller feedback, like slowing the tilting.
             {
