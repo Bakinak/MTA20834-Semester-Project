@@ -1,0 +1,193 @@
+Date,Timestamp,currentCondition,Event,WorldID,FishID,TotalFishCaught,BubbleNumber,KeyCode,CorrectKey,KeyExpected,TimeSinceLastKey,SequenceCompleteTime,CorrectSequencesEntered,SequencesFailed,CorrectSequencesDiscarded,TotalAttemptsInBubble,GotFish,InstantFrustration,GlobalFrustration,
+19/05/2020,30:20.6,,Game Started!,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,30:48.2,Discrete,KeyDown,1,0,0,1,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,30:48.3,Discrete,KeyDown,1,0,0,1,r,Correct,R,0,692234,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,30:48.6,Discrete,KeyDown,1,0,0,1,w,Correct,W,0,3199047,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,30:48.7,Discrete,KeyDown,1,0,0,1,e,Correct,E,0,8322388,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,30:48.7,Discrete,Sequence Success,1,0,0,1,NA,NA,NA,NA,0,4723519,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,30:50.7,Discrete,InputWindowOver,1,0,1,1,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,31:10.6,Discrete,KeyDown,1,0,1,2,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,31:10.7,Discrete,KeyDown,1,0,1,2,r,Correct,R,0,6961539,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:10.9,Discrete,KeyDown,1,0,1,2,w,Correct,W,0,2081809,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:11.0,Discrete,KeyDown,1,0,1,2,e,Correct,E,0,833261,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:11.0,Discrete,Sequence Success,1,0,1,2,NA,NA,NA,NA,0,3611224,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:13.2,Discrete,InputWindowOver,1,0,1,2,NA,NA,NA,NA,NA,1,0,1,1,Fish Escaped,NA,NA,
+19/05/2020,31:32.2,Discrete,KeyDown,1,0,1,3,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,31:32.3,Discrete,KeyDown,1,0,1,3,r,Correct,R,0,486239,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:32.5,Discrete,KeyDown,1,0,1,3,w,Correct,W,0,2569296,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:32.6,Discrete,KeyDown,1,0,1,3,e,Correct,E,0,7646936,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:32.6,Discrete,Sequence Success,1,0,1,3,NA,NA,NA,NA,0,3820229,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:34.8,Discrete,InputWindowOver,1,0,2,3,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,31:54.1,Discrete,KeyDown,1,1,2,4,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,31:54.1,Discrete,KeyDown,1,1,2,4,r,Correct,R,0,695052,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:54.3,Discrete,KeyDown,1,1,2,4,w,Correct,W,0,2082548,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:54.4,Discrete,KeyDown,1,1,2,4,e,Correct,E,0,7656443,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:54.4,Discrete,Sequence Success,1,1,2,4,NA,NA,NA,NA,0,3543244,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:55.1,Discrete,KeyDown,1,1,2,4,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,31:55.1,Discrete,KeyDown,1,1,2,4,r,Correct,R,0,555081,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:55.4,Discrete,KeyDown,1,1,2,4,w,Correct,W,0,2431189,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:55.4,Discrete,KeyDown,1,1,2,4,e,Correct,E,0,6242931,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:55.4,Discrete,Sequence Success,1,1,2,4,NA,NA,NA,NA,0,3610563,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:56.1,Discrete,KeyDown,1,1,2,4,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,31:56.1,Discrete,KeyDown,1,1,2,4,r,Correct,R,0,41673,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:56.4,Discrete,KeyDown,1,1,2,4,w,Correct,W,0,2154027,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:56.4,Discrete,KeyDown,1,1,2,4,e,Correct,E,0,7639059,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:56.4,Discrete,Sequence Success,1,1,2,4,NA,NA,NA,NA,0,3334663,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,31:56.6,Discrete,InputWindowOver,1,1,2,4,NA,NA,NA,NA,NA,3,0,3,3,Fish Escaped,NA,NA,
+19/05/2020,32:14.8,Discrete,KeyDown,1,1,2,5,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,32:14.8,Discrete,KeyDown,1,1,2,5,r,Correct,R,0,694339,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:15.0,Discrete,KeyDown,1,1,2,5,w,Correct,W,0,2081748,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:15.1,Discrete,KeyDown,1,1,2,5,e,Correct,E,0,9728721,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:15.1,Discrete,Sequence Success,1,1,2,5,NA,NA,NA,NA,0,3748959,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:17.2,Discrete,InputWindowOver,1,1,3,5,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,32:40.1,Discrete,KeyDown,1,1,3,6,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,32:40.2,Discrete,KeyDown,1,1,3,6,r,Correct,R,0,555685,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:40.4,Discrete,KeyDown,1,1,3,6,w,Correct,W,0,2222119,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:40.5,Discrete,KeyDown,1,1,3,6,e,Correct,E,0,6960854,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:40.5,Discrete,Sequence Success,1,1,3,6,NA,NA,NA,NA,0,3473889,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,32:42.7,Discrete,InputWindowOver,1,1,4,6,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,33:05.0,Discrete,Frustration Questionnaire,NA,NA,4,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,
+19/05/2020,33:24.4,Discrete,KeyDown,2,2,4,7,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,33:24.4,Discrete,KeyDown,2,2,4,7,r,Correct,R,0,627359,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:24.6,Discrete,KeyDown,2,2,4,7,w,Correct,W,0,201297,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:24.7,Discrete,KeyDown,2,2,4,7,e,Correct,E,0,7637727,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:24.7,Discrete,Sequence Success,2,2,4,7,NA,NA,NA,NA,0,3404102,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:25.3,Discrete,KeyDown,2,2,4,7,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,33:25.4,Discrete,KeyDown,2,2,4,7,r,Correct,R,0,486405,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:25.6,Discrete,KeyDown,2,2,4,7,w,Correct,W,0,2220002,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:25.7,Discrete,KeyDown,2,2,4,7,e,Correct,E,0,8333483,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:25.7,Discrete,Sequence Success,2,2,4,7,NA,NA,NA,NA,0,3539755,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:26.2,Discrete,KeyDown,2,2,4,7,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,33:26.2,Discrete,KeyDown,2,2,4,7,r,Correct,R,0,479447,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:26.5,Discrete,KeyDown,2,2,4,7,w,Correct,W,0,243127,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:26.5,Discrete,KeyDown,2,2,4,7,e,Correct,E,0,6284758,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:26.5,Discrete,Sequence Success,2,2,4,7,NA,NA,NA,NA,0,3539192,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:26.9,Discrete,InputWindowOver,2,2,4,7,NA,NA,NA,NA,NA,3,0,3,3,Fish Escaped,NA,NA,
+19/05/2020,33:45.5,Discrete,KeyDown,2,2,4,8,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,33:45.6,Discrete,KeyDown,2,2,4,8,r,Correct,R,0,695501,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:45.8,Discrete,KeyDown,2,2,4,8,w,Correct,W,0,2222395,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:45.9,Discrete,KeyDown,2,2,4,8,e,Correct,E,0,5547538,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:45.9,Discrete,Sequence Success,2,2,4,8,NA,NA,NA,NA,0,347265,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,33:48.1,Discrete,InputWindowOver,2,2,5,8,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,34:08.8,Discrete,KeyDown,2,2,5,9,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:08.9,Discrete,KeyDown,2,2,5,9,r,Correct,R,0,903194,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:09.1,Discrete,KeyDown,2,2,5,9,w,Correct,W,0,2364205,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:09.2,Discrete,KeyDown,2,2,5,9,e,Correct,E,0,8304131,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:09.2,Discrete,Sequence Success,2,2,5,9,NA,NA,NA,NA,0,4097812,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:10.3,Discrete,KeyDown,2,2,5,9,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:10.3,Discrete,KeyDown,2,2,5,9,r,Correct,R,0,694904,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:10.5,Discrete,KeyDown,2,2,5,9,w,Correct,W,0,1806122,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:10.6,Discrete,KeyDown,2,2,5,9,e,Correct,E,0,6236613,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:10.6,Discrete,Sequence Success,2,2,5,9,NA,NA,NA,NA,0,3124688,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:11.3,Discrete,InputWindowOver,2,2,5,9,NA,NA,NA,NA,NA,2,0,2,2,Fish Escaped,NA,NA,
+19/05/2020,34:29.8,Discrete,KeyDown,2,2,5,10,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:29.8,Discrete,KeyDown,2,2,5,10,r,Correct,R,0,6249841,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:30.1,Discrete,KeyDown,2,2,5,10,w,Correct,W,0,2429819,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:30.2,Discrete,KeyDown,2,2,5,10,e,Correct,E,0,8370221,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:30.2,Discrete,Sequence Success,2,2,5,10,NA,NA,NA,NA,0,3891825,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:32.3,Discrete,InputWindowOver,2,2,6,10,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,34:51.8,Discrete,KeyDown,2,3,6,11,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:51.9,Discrete,KeyDown,2,3,6,11,r,Correct,R,0,763284,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:52.1,Discrete,KeyDown,2,3,6,11,w,Correct,W,0,2222776,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:52.2,Discrete,KeyDown,2,3,6,11,e,Correct,E,0,7651302,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:52.2,Discrete,Sequence Success,2,3,6,11,NA,NA,NA,NA,0,375119,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:52.9,Discrete,KeyDown,2,3,6,11,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:53.0,Discrete,KeyDown,2,3,6,11,r,Correct,R,0,763006,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:53.2,Discrete,KeyDown,2,3,6,11,w,Correct,W,0,2016471,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:53.2,Discrete,KeyDown,2,3,6,11,e,Correct,E,0,6930292,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:53.2,Discrete,Sequence Success,2,3,6,11,NA,NA,NA,NA,0,3472506,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:53.7,Discrete,KeyDown,2,3,6,11,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,34:53.8,Discrete,KeyDown,2,3,6,11,r,Correct,R,0,623553,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:54.0,Discrete,KeyDown,2,3,6,11,w,Correct,W,0,2222646,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:54.1,Discrete,KeyDown,2,3,6,11,e,Correct,E,0,6955323,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:54.1,Discrete,Sequence Success,2,3,6,11,NA,NA,NA,NA,0,3541731,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,34:54.5,Discrete,InputWindowOver,2,3,6,11,NA,NA,NA,NA,NA,3,0,3,3,Fish Escaped,NA,NA,
+19/05/2020,35:13.4,Discrete,KeyDown,2,3,6,12,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,35:13.5,Discrete,KeyDown,2,3,6,12,r,Correct,R,0,833903,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:13.8,Discrete,KeyDown,2,3,6,12,w,Correct,W,0,2847571,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:13.9,Discrete,KeyDown,2,3,6,12,e,Correct,E,0,9719816,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:13.9,Discrete,Sequence Success,2,3,6,12,NA,NA,NA,NA,0,4653455,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:16.0,Discrete,InputWindowOver,2,3,7,12,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,35:36.3,Discrete,KeyDown,2,3,7,13,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,35:36.4,Discrete,KeyDown,2,3,7,13,r,Correct,R,0,9026551,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:36.6,Discrete,KeyDown,2,3,7,13,w,Correct,W,0,2361268,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:36.7,Discrete,KeyDown,2,3,7,13,e,Correct,E,0,9718916,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:36.7,Discrete,Sequence Success,2,3,7,13,NA,NA,NA,NA,0,4235815,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,35:38.8,Discrete,InputWindowOver,2,3,8,13,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,36:08.1,Discrete,Frustration Questionnaire,NA,NA,8,13,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3,2,
+19/05/2020,36:34.9,Discrete,KeyDown,3,5,8,14,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,36:35.0,Discrete,KeyDown,3,5,8,14,r,Correct,R,0,486338,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:35.2,Discrete,KeyDown,3,5,8,14,w,Correct,W,0,2290238,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:35.3,Discrete,KeyDown,3,5,8,14,e,Correct,E,0,7648817,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:35.3,Discrete,Sequence Success,3,5,8,14,NA,NA,NA,NA,0,3541458,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:35.9,Discrete,KeyDown,3,5,8,14,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,36:35.9,Discrete,KeyDown,3,5,8,14,r,Correct,R,0,694962,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:36.2,Discrete,KeyDown,3,5,8,14,w,Correct,W,0,2292082,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:36.2,Discrete,KeyDown,3,5,8,14,e,Correct,E,0,6255615,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:36.2,Discrete,Sequence Success,3,5,8,14,NA,NA,NA,NA,0,3612605,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:36.6,Discrete,KeyDown,3,5,8,14,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,36:36.6,Discrete,KeyDown,3,5,8,14,r,Correct,R,0,417864,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:36.9,Discrete,KeyDown,3,5,8,14,w,Correct,W,0,2846472,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:37.0,Discrete,KeyDown,3,5,8,14,e,Correct,E,0,6958568,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:37.0,Discrete,Sequence Success,3,5,8,14,NA,NA,NA,NA,0,3960193,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:37.6,Discrete,InputWindowOver,3,5,8,14,NA,NA,NA,NA,NA,3,0,3,3,Fish Escaped,NA,NA,
+19/05/2020,36:59.3,Discrete,KeyDown,3,5,8,15,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,36:59.3,Discrete,KeyDown,3,5,8,15,r,Correct,R,0,7661139,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:59.5,Discrete,KeyDown,3,5,8,15,w,Correct,W,0,2082817,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:59.6,Discrete,KeyDown,3,5,8,15,e,Correct,E,0,9036168,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,36:59.6,Discrete,Sequence Success,3,5,8,15,NA,NA,NA,NA,0,3752548,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:01.8,Discrete,InputWindowOver,3,5,9,15,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,37:23.5,Discrete,KeyDown,3,5,9,16,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,37:23.6,Discrete,KeyDown,3,5,9,16,r,Correct,R,0,7677259,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:23.9,Discrete,KeyDown,3,5,9,16,w,Correct,W,0,2427593,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:24.0,Discrete,KeyDown,3,5,9,16,e,Correct,E,0,1041741,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:24.0,Discrete,Sequence Success,3,5,9,16,NA,NA,NA,NA,0,423706,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:26.1,Discrete,InputWindowOver,3,5,10,16,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,37:46.3,Discrete,KeyDown,3,4,10,17,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,37:46.4,Discrete,KeyDown,3,4,10,17,r,Correct,R,0,9037459,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:46.7,Discrete,KeyDown,3,4,10,17,w,Correct,W,0,2637642,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:46.8,Discrete,KeyDown,3,4,10,17,e,Correct,E,0,9043112,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:46.8,Discrete,Sequence Success,3,4,10,17,NA,NA,NA,NA,0,4445699,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:47.7,Discrete,KeyDown,3,4,10,17,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,37:47.7,Discrete,KeyDown,3,4,10,17,r,Correct,R,0,554853,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:47.9,Discrete,KeyDown,3,4,10,17,w,Correct,W,0,2015794,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.0,Discrete,KeyDown,3,4,10,17,e,Correct,E,0,6250301,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.0,Discrete,Sequence Success,3,4,10,17,NA,NA,NA,NA,0,3195677,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.3,Discrete,KeyDown,3,4,10,17,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,37:48.4,Discrete,KeyDown,3,4,10,17,r,Correct,R,0,347767,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.6,Discrete,KeyDown,3,4,10,17,w,Correct,W,0,2084847,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.6,Discrete,KeyDown,3,4,10,17,e,Correct,E,0,5544041,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:48.6,Discrete,Sequence Success,3,4,10,17,NA,NA,NA,NA,0,2987018,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,37:49.0,Discrete,InputWindowOver,3,4,10,17,NA,NA,NA,NA,NA,3,0,3,3,Fish Escaped,NA,NA,
+19/05/2020,38:16.6,Discrete,KeyDown,3,4,10,18,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,38:16.7,Discrete,KeyDown,3,4,10,18,r,Correct,R,0,972239,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:16.9,Discrete,KeyDown,3,4,10,18,w,Correct,W,0,2500096,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:17.0,Discrete,KeyDown,3,4,10,18,e,Correct,E,0,1181845,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:17.0,Discrete,Sequence Success,3,4,10,18,NA,NA,NA,NA,0,465418,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:19.1,Discrete,InputWindowOver,3,4,11,18,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,38:41.4,Discrete,KeyDown,3,4,11,19,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,38:41.5,Discrete,KeyDown,3,4,11,19,r,Correct,R,0,828928,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:41.7,Discrete,KeyDown,3,4,11,19,w,Correct,W,0,2227527,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:41.8,Discrete,KeyDown,3,4,11,19,e,Correct,E,0,8280349,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:41.8,Discrete,Sequence Success,3,4,11,19,NA,NA,NA,NA,0,388449,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:42.5,Discrete,KeyDown,3,4,11,19,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,38:42.5,Discrete,KeyDown,3,4,11,19,r,Correct,R,0,8319361,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:42.8,Discrete,KeyDown,3,4,11,19,w,Correct,W,0,243128,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:42.9,Discrete,KeyDown,3,4,11,19,e,Correct,E,0,9717959,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:42.9,Discrete,Sequence Success,3,4,11,19,NA,NA,NA,NA,0,4235012,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:43.2,Discrete,KeyDown,3,4,11,19,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,38:43.2,Discrete,KeyDown,3,4,11,19,r,Correct,R,0,553205,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:43.5,Discrete,KeyDown,3,4,11,19,w,Correct,W,0,2500191,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:43.6,Discrete,KeyDown,3,4,11,19,e,Correct,E,0,1458258,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:43.6,Discrete,Sequence Success,3,4,11,19,NA,NA,NA,NA,0,4511654,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:43.9,Discrete,KeyDown,3,4,11,19,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,38:44.0,Discrete,KeyDown,3,4,11,19,r,Correct,R,0,485788,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:44.0,Discrete,Sequence Failed,3,4,11,19,NA,NA,NA,NA,0,832967,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,38:44.0,Discrete,InputWindowOver,3,4,11,19,NA,NA,NA,NA,NA,3,1,3,4,Fish Escaped,NA,NA,
+19/05/2020,39:06.7,Discrete,KeyDown,3,4,11,20,t,Correct,T,0,NA,NA,NA,NA,NA,NA,NA,NA,
+19/05/2020,39:06.7,Discrete,KeyDown,3,4,11,20,r,Correct,R,0,762695,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,39:06.9,Discrete,KeyDown,3,4,11,20,w,Correct,W,0,1869269,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,39:07.1,Discrete,KeyDown,3,4,11,20,e,Correct,E,0,1249987,NA,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,39:07.1,Discrete,Sequence Success,3,4,11,20,NA,NA,NA,NA,0,3881951,NA,NA,NA,NA,NA,NA,NA
+19/05/2020,39:09.2,Discrete,InputWindowOver,3,4,12,20,NA,NA,NA,NA,NA,1,0,0,1,Got Fish,NA,NA,
+19/05/2020,39:21.7,Discrete,Frustration Questionnaire,NA,NA,12,20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,
