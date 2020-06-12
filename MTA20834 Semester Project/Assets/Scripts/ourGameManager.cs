@@ -12,8 +12,11 @@ public class ourGameManager : MonoBehaviour
     string currentCondition;
     int bubbleNumber;
     int fishCaught;
-    int instantFrustrationLevel, globalFrustrationLevel;
+    int instantFrustrationLevel, perceivedControlLevel;
 
+    int questCorrectSequencesEntered, questSequencesFailed, questCorrectSequencesDiscarded, questTotalAttempts,
+        sesCorrectSequencesEntered, sesSequencesFailed, sesCorrectSequencesDiscarded, sesTotalAttempts;
+    float averageFrustration;
 
     //This script should be responsible for correctly transitioning between sea screen and fishing screen.
     //Can also use this to update interface images.
@@ -34,7 +37,7 @@ public class ourGameManager : MonoBehaviour
     public QuestSystem QuestSystem;
 
     bool intro = false;
-    public bool questionnaireTime;
+    public bool questionnaireTime, gameComplete;
     bool conditionBool;
     bool frustationQuestionNumber;
 
@@ -60,7 +63,7 @@ public class ourGameManager : MonoBehaviour
     //Updating UI Elements
     public Image controlsWASD, hookUpDown;
     public Text controlsWASDText, hookUpDownText;
-    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition, numberTarget;
+    public GameObject prepareText, steadyText, introScreen, instantfrustation, globalfrustration, chooseCondition, numberTarget, quitText;
     public Transform[] numberTargetPositions;
     int numberConfirmation = 99;
 
@@ -122,6 +125,7 @@ public class ourGameManager : MonoBehaviour
         instantfrustation.SetActive(false);
         globalfrustration.SetActive(false);
         numberTarget.SetActive(false);
+        quitText.SetActive(false);
 
         loggingManager.AddNewEvent("Game Started!", currentCondition);
 
@@ -166,10 +170,35 @@ public class ourGameManager : MonoBehaviour
                     if(badWayToCheckKeys() > 0)
                     {
                         instantfrustation.SetActive(false);
-                        globalfrustration.SetActive(true);
-                        instantFrustrationLevel = badWayToCheckKeys();
-                        frustationQuestionNumber = true;
+                        instantFrustrationLevel = badWayToCheckKeys();                        
                         numberConfirmation = 99;
+                        if (gameComplete)
+                        {
+                            loggingManager.logFrustrationLevels(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), instantFrustrationLevel.ToString(), 
+                                questCorrectSequencesEntered.ToString(), questSequencesFailed.ToString(), questCorrectSequencesDiscarded.ToString(), questTotalAttempts.ToString());
+                            frustationQuestionNumber = true;
+                            globalfrustration.SetActive(true);
+                        }
+                        else
+                        {
+                            questionnaireTime = false;
+                            playerScript.controlstate = true;
+                            loggingManager.logFrustrationLevels(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), instantFrustrationLevel.ToString(),
+                                 questCorrectSequencesEntered.ToString(), questSequencesFailed.ToString(), questCorrectSequencesDiscarded.ToString(), questTotalAttempts.ToString());
+                        }
+
+                        sesCorrectSequencesEntered += questCorrectSequencesEntered;
+                        sesSequencesFailed += questSequencesFailed;
+                        sesCorrectSequencesDiscarded += questCorrectSequencesDiscarded;
+                        sesTotalAttempts += questTotalAttempts;
+
+                        questCorrectSequencesEntered = 0;
+                        questSequencesFailed = 0;
+                        questCorrectSequencesDiscarded = 0;
+                        questTotalAttempts = 0;
+
+                        averageFrustration += instantFrustrationLevel;
+
                     }
 
                 }
@@ -178,13 +207,16 @@ public class ourGameManager : MonoBehaviour
                     if(badWayToCheckKeys() > 0)
                     {
                         globalfrustration.SetActive(false);
-                        globalFrustrationLevel = badWayToCheckKeys();
+                        perceivedControlLevel = badWayToCheckKeys();
                         questionnaireTime = false;
                         playerScript.controlstate = true;
                         frustationQuestionNumber = false;
-                        Debug.Log(instantFrustrationLevel + " and " + globalFrustrationLevel);
-                        loggingManager.logFrustrationLevels(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), instantFrustrationLevel.ToString(), globalFrustrationLevel.ToString());
+                        Debug.Log(instantFrustrationLevel);
+                        averageFrustration = averageFrustration / 3;
+                        loggingManager.logSessionSummary(currentCondition, fishCaught.ToString(), bubbleNumber.ToString(), averageFrustration.ToString(), sesCorrectSequencesEntered.ToString()
+                            , sesSequencesFailed.ToString(), sesCorrectSequencesDiscarded.ToString(), sesTotalAttempts.ToString(), perceivedControlLevel.ToString());
                         numberConfirmation = 99;
+                        quitText.SetActive(true);
                     }
                 }
             }
@@ -393,6 +425,13 @@ public class ourGameManager : MonoBehaviour
         loggingManager.inputWindowOverLog(currentCondition, currentLocation.ToString(), fishAIScript.fishtype.ToString(), fishCaught.ToString(), bubbleNumber.ToString(),
             correctSequencesEntered.ToString(), sequencesFailed.ToString(), correctSequencesDiscarded.ToString(), totalAttemptsInBubble.ToString(), fishGot);
         steadyText.SetActive(false);
+
+        //Add to the total quest data. Remember to reset when frustration questionnaire is filled, after having added them there to the session data.
+        questCorrectSequencesEntered += correctSequencesEntered;
+        questSequencesFailed += sequencesFailed;
+        questCorrectSequencesDiscarded += correctSequencesDiscarded;
+        questTotalAttempts += totalAttemptsInBubble;
+
     }
 
     int badWayToCheckKeys() //Check which number has been pressed, and return the correct value.

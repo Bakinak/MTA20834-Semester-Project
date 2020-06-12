@@ -129,6 +129,7 @@ public class QuestSystem : MonoBehaviour
             isryderComplete.enabled = true;
 
             manager.questionnaireTime = true;
+            manager.gameComplete = true;
         }
     }
 }

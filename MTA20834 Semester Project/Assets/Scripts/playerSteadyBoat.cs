@@ -329,7 +329,7 @@ public class playerSteadyBoat : MonoBehaviour
 
         int totalSequenceAttempts = sequencesComplete + sequencesFailed;
 
-        manager.inputWindowOver(inputResgisteredCorrectly, sequencesComplete, sequencesFailed, discardedInputs, sequencesComplete + sequencesFailed); //Update UI and log data.
+        manager.inputWindowOver(inputResgisteredCorrectly, sequencesComplete, sequencesFailed, discardedInputs, totalSequenceAttempts); //Update UI and log data.
 
         inputResgisteredCorrectly = false;
     }
