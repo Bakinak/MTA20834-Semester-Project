@@ -28,7 +28,7 @@ public class playerSteadyBoat : MonoBehaviour
     int correctContinuousInputs;
     bool inputResgisteredCorrectly;
     float roll;
-    float accuracyModifier; //Change this to ensure a player catches a fish next time they input correct sequence, or make sure they DON'T catch a fish, in case they've gotten too many in a row.
+    float accuracyModifier = -1; //Change this to ensure a player catches a fish next time they input correct sequence, or make sure they DON'T catch a fish, in case they've gotten too many in a row.
     int keyStreak;
     float slowTiltTimer; //Used to provide a bit of feedback in the continuous condition.
     bool continuousSmallFeedback;
@@ -61,7 +61,7 @@ public class playerSteadyBoat : MonoBehaviour
     };
     int sequenceIndex = 0;
 
-
+    public ParticleSystem part1;
 
     // Start is called before the first frame update
     void Start()
@@ -237,6 +237,7 @@ public class playerSteadyBoat : MonoBehaviour
             {
                 Debug.Log("Input registered, how lucky!");
                 tryingToSteady = true;
+                emitFeedback(15);
                 inputResgisteredCorrectly = true;
                 fishStillNeeded -= 1;
             }
@@ -266,6 +267,12 @@ public class playerSteadyBoat : MonoBehaviour
                 tiltSpeed = originalTiltSpeed / 2;
                 continuousSmallFeedback = true;
                 slowTiltTimer = 0;
+                emitFeedback(10);
+                if(maxTilt < 0 && transform.rotation.z < 0 || maxTilt > 0 && transform.rotation.z > 0)
+                {
+                    maxTilt *= -1;
+                    targetRotation.eulerAngles = new Vector3(0, 0, maxTilt);
+                }
             }
             else
             {
@@ -274,6 +281,11 @@ public class playerSteadyBoat : MonoBehaviour
 
 
         }
+    }
+
+    void emitFeedback(int particles)
+    {
+        part1.Emit(particles);
     }
 
     bool rollDice()
