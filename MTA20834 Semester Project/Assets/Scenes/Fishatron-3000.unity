@@ -6961,7 +6961,7 @@ PrefabInstance:
     - target: {fileID: 682087960557721773, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}
       propertyPath: inputAccuracy
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 682087960557721774, guid: cb3363dd2b310db4b82ec67794b6a39a,
         type: 3}

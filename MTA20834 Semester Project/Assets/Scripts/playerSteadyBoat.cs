@@ -36,7 +36,7 @@ public class playerSteadyBoat : MonoBehaviour
     float maxTilt = -20;
 
     //Ensuring it takes exacty 20 attempts to catch 12 fish, IF, and only IF, the player inputs correct sequence at least 12 times.
-    int fishStreak;
+    int fishStreak, feedbackStreak, feedbackModifier;
     int fishStillNeeded = 12;
     int attemptsLeft = 20;
 
@@ -149,7 +149,7 @@ public class playerSteadyBoat : MonoBehaviour
 
             if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
             {
-                Debug.Log("Sequence Started");
+                //Debug.Log("Sequence Started");
                 if (keyStreak < 3)
                 {
                     timePassed = 0;
@@ -167,7 +167,7 @@ public class playerSteadyBoat : MonoBehaviour
                 sequenceIndex += 1;
                 if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
                 {
-                    Debug.Log("Correct Sequence Entered");
+                    //Debug.Log("Correct Sequence Entered");
                     //tryingToSteady = true;
                     inputDelay = Random.value*1.5f;
                     correctInput();
@@ -177,7 +177,7 @@ public class playerSteadyBoat : MonoBehaviour
             }
             else if (Input.anyKeyDown && attemptStarted || timePassed > sequenceInputTime ) //else, if we input any other key, or spend too long trying to input the sequence, start over.
             {
-                Debug.Log("failed");
+                //Debug.Log("failed");
                 sequenceResult = false;
                 sequenceOver = true;
             }
@@ -235,7 +235,7 @@ public class playerSteadyBoat : MonoBehaviour
         {
             if (rollDice() && fishingAttemptUsed == false) //Catching a fish
             {
-                Debug.Log("Input registered, how lucky!");
+                //Debug.Log("Input registered, how lucky!");
                 tryingToSteady = true;
                 emitFeedback(15);
                 inputResgisteredCorrectly = true;
@@ -254,7 +254,7 @@ public class playerSteadyBoat : MonoBehaviour
         else //Continuous condition
         {
             correctContinuousInputs += 1; //Counting up everytime they do it correcly. Reach some number before we try to roll dice.
-
+            
             if (correctContinuousInputs >= numberOfContinuousInputsNeeded && rollDice() && fishingAttemptUsed == false)
             {
                 //tryingToSteady = true;
@@ -262,8 +262,15 @@ public class playerSteadyBoat : MonoBehaviour
                 fishingAttemptUsed = true;
                 fishStillNeeded -= 1;
             }
-            else if (roll < inputAccuracy) //Smaller feedback, like slowing the tilting.
+            else if (roll < inputAccuracy + feedbackModifier) //Smaller feedback, like slowing the tilting.
             {
+                feedbackStreak += 1;
+                feedbackModifier = 0;
+                if(feedbackStreak >= 2)
+                {
+                    feedbackModifier = -1;
+                    
+                }
                 tiltSpeed = originalTiltSpeed / 2;
                 continuousSmallFeedback = true;
                 slowTiltTimer = 0;
@@ -273,13 +280,18 @@ public class playerSteadyBoat : MonoBehaviour
                     maxTilt *= -1;
                     targetRotation.eulerAngles = new Vector3(0, 0, maxTilt);
                 }
+                Debug.Log("Feedback");
             }
             else
             {
                 discardedInputs += 1;
+                feedbackStreak = 0;
+                feedbackModifier = 1;
+                Debug.Log("no feedback");
             }
 
-
+            //Debug.Log(roll);
+            //Debug.Log(inputAccuracy + feedbackModifier);
         }
     }
 
@@ -312,7 +324,7 @@ public class playerSteadyBoat : MonoBehaviour
 
         if (inputResgisteredCorrectly)//Change accuracyModifer based on whether fish was caught or not.
         {
-            Debug.Log("fishCaught");
+            //Debug.Log("fishCaught");
             accuracyModifier = 0; //Max two fish in a row rule applied here, as well as rest of accuracy modifier when you catch a fish after being guaranteed one from failing earlier.
             fishStreak += 1;
             if (fishStreak == 2)
@@ -393,7 +405,8 @@ public class playerSteadyBoat : MonoBehaviour
             sequencesComplete = 0;
             sequencesFailed = 0;
             discardedInputs = 0;
-
+            feedbackStreak = 0;
+            feedbackModifier = 0;
             resetContinuousFeedback();
             
            
