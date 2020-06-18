@@ -68,7 +68,7 @@ public class playerSteadyBoat : MonoBehaviour
     {
         originalTiltSpeed = tiltSpeed;
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<ourGameManager>();
-        sequenceInputTime = manager.sequenceInputTime;
+        sequenceInputTime = manager.sequenceInputTime; //no longer used due to error
         inputAccuracy = manager.inputAccuracy;
         numberOfContinuousInputsNeeded = manager.numberOfContinuousInputsNeeded;
     }
@@ -129,7 +129,7 @@ public class playerSteadyBoat : MonoBehaviour
         resetSequenceAttempt();
         resetContinuousFeedback();
     }
-
+    //makes sure that there is no changes in the next time you get feedback
     void resetContinuousFeedback()
     {
         continuousSmallFeedback = false;
@@ -147,7 +147,7 @@ public class playerSteadyBoat : MonoBehaviour
 
             keyStreak += 1;
 
-            if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer
+            if (Input.GetKeyDown(sequence[0])) //If input is the very first key in the sequence, assume user is trying to start sequence from the beginning, and reset timer (0 = T)
             {
                 //Debug.Log("Sequence Started");
                 if (keyStreak < 3)
@@ -164,7 +164,7 @@ public class playerSteadyBoat : MonoBehaviour
                 correctKeyOrNot = "Correct";
                 
 
-                sequenceIndex += 1;
+                sequenceIndex += 1; //Everytime you enter correctly the sequence will go up with one
                 if (sequenceIndex == sequence.Length) // sequenceIndex is equal to the length of the sequence array, because if it is, we have correctly done the sequence
                 {
                     //Debug.Log("Correct Sequence Entered");
@@ -200,7 +200,7 @@ public class playerSteadyBoat : MonoBehaviour
         }
         
     }
-
+    //logger stuff
     void sequenceOverMethod(bool sequenceResult)
     {
         if (sequenceResult) //Doing things for the logging system
@@ -229,11 +229,11 @@ public class playerSteadyBoat : MonoBehaviour
     }
 
 
-    public void correctInput() // called from the playerSteadyBoat script whenever a key sequence has been correctly inputted? Handle it differently based on experimental condition.
+    public void correctInput() //Handle it differently based on experimental condition.
     {
         if (experimentalCondition == false) //Discrete condition
         {
-            if (rollDice() && fishingAttemptUsed == false) //Catching a fish
+            if (rollDice() && fishingAttemptUsed == false) //Catching a fish. One one time we want to know if they press correct
             {
                 //Debug.Log("Input registered, how lucky!");
                 tryingToSteady = true;
@@ -302,7 +302,7 @@ public class playerSteadyBoat : MonoBehaviour
 
     bool rollDice()
     {
-        roll = Random.value;
+        roll = Random.value; //between 0-1. inputAccuracy er 0,6. Modifier er -1, 0 eller 1.  Over 0,6 = ingen fisk. Under 0,6 = fisk
         if (roll < inputAccuracy + accuracyModifier)
         {
             return true;
@@ -312,7 +312,7 @@ public class playerSteadyBoat : MonoBehaviour
     }
 
 
-    public void waveGoodbye() //Called when a wave has passed the boat. Called from playerSteadyBoat, in the onTriggerExit2D function. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.
+    public void waveGoodbye() //Called when a wave has passed the boat. Used to let us exit fishing screen if we missed all waves, without trying to input any key sequence.
     {
         if (attemptStarted)
         {
@@ -351,6 +351,7 @@ public class playerSteadyBoat : MonoBehaviour
 
         fishingAttemptUsed = false;
 
+        //Logger stuff
         int totalSequenceAttempts = sequencesComplete + sequencesFailed;
 
         manager.inputWindowOver(inputResgisteredCorrectly, sequencesComplete, sequencesFailed, discardedInputs, totalSequenceAttempts); //Update UI and log data.
@@ -358,7 +359,7 @@ public class playerSteadyBoat : MonoBehaviour
         inputResgisteredCorrectly = false;
     }
 
-    void tiltBoat()
+    void tiltBoat() //Anders yndlings
     {
         if (inWave)
         {
@@ -373,7 +374,7 @@ public class playerSteadyBoat : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //Checks if wave touches boat, so we can enter key sequence
     {
         if (collision.tag == "wave")
         {
@@ -385,7 +386,7 @@ public class playerSteadyBoat : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) //As long as we are in contact with a wave, allow the player to enter the keysequences.
+    private void OnTriggerStay2D(Collider2D collision) //As long as we are in contact with a wave, the boat tilts.
     {
         if (collision.tag == "wave")
         {           
