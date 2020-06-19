@@ -1,0 +1,71 @@
+---
+title: "analysisReport"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Med8 BCI
+
+
+```{r perCFrust, include=FALSE}
+source("DataImportAndShaping.R")
+
+```
+
+## plots of all central variables
+
+```{r pressure, echo=FALSE}
+
+ggplot(dfAllWide, aes(x = PC_All, y = F_avgInst, colour = condition)) +
+  geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  theme_bw()
+```
+```{r} 
+
+ggplot(dfAllWide, aes(x = PC_All, y = F_avgGlob, colour = condition)) +
+  geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  theme_bw()
+```
+```{r} 
+ggplot(dfAllWide, aes(x = condition, y = PC_All)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1, colour = "red") +
+  theme_bw()
+```
+```{r} 
+  ggplot(dfAllWide, aes(x = condition, y = F_avgInst)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1, colour = "red") +
+  theme_bw()
+```
+```{r} 
+ggplot(dfAllWide, aes(x = condition, y = PC_KeySeq)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1, colour = "red") +
+  theme_bw()
+```
+```{r} 
+ggplot(dfAllWide, aes(x = condition, y = PC_FishReel)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1, colour = "red") +
+  theme_bw()
+```
+```{r} 
+plot(dfAllWide$F_avgGlob, dfAllWide$F_avgInst)
+cor(dfAllWide$F_avgGlob, dfAllWide$F_avgInst)
+```
+qqnorm(dfAllWide$F_avgGlob)
+qqline(dfAllWide$F_avgGlob)
+
+qqnorm(dfAllWide$F_avgInst)
+qqline(dfAllWide$F_avgInst)
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
